@@ -1,0 +1,149 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes, tiering' 
+summary: Saiba as novidades na disposição em camadas do BlueXP . 
+---
+= Novidades na disposição em camadas do BlueXP 
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Saiba as novidades na disposição em camadas do BlueXP .
+
+
+
+== 9 de agosto de 2023
+
+
+
+=== Use um prefixo personalizado para o nome do bucket
+
+No passado, você precisava usar o prefixo padrão "Fabric-pool" ao definir o nome do bucket, por exemplo, _Fabric-pool-bucket1_. Agora você pode usar um prefixo personalizado ao nomear seu bucket. Esse recurso está disponível somente ao categorizar dados no Amazon S3. https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html#prepare-your-aws-environment["Saiba mais"].
+
+
+
+=== PESQUISE um cluster em todos os conetores BlueXP
+
+Se você estiver usando vários conetores para gerenciar todos os sistemas de storage no ambiente, alguns clusters nos quais você deseja implementar a disposição em camadas podem estar em conetores diferentes. Se você não tiver certeza de qual conetor está gerenciando um determinado cluster, poderá pesquisar em todos os conetores usando a disposição em camadas do BlueXP . https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#search-for-a-cluster-across-all-bluexp-connectors["Saiba mais"].
+
+
+
+== 4 de julho de 2023
+
+
+
+=== Ajuste a largura de banda para transferir dados inativos
+
+Ao ativar a disposição em camadas do BlueXP , o ONTAP pode usar uma quantidade ilimitada de largura de banda da rede para transferir os dados inativos de volumes no cluster para o storage de objetos. Se você notar que a disposição em categorias de tráfego está afetando as cargas de trabalho normais do usuário, poderá controlar a quantidade de largura de banda que pode ser usada durante a transferência. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage["Saiba mais"].
+
+
+
+=== Evento de disposição em camadas exibido no Centro de notificações
+
+O evento de disposição em camadas "armazene dados adicionais do cluster <name> ao storage de objetos para aumentar a eficiência de storage" agora aparece como uma notificação quando um cluster está em camadas menos de 20% dos dados inativos, incluindo clusters que não estão em camadas.
+
+Esta notificação é uma "recomendação" para ajudar a tornar seus sistemas mais eficientes e economizar nos custos de armazenamento. Ele fornece um link para o https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de economia e custo total de propriedade em camadas do BlueXP"^] para ajudá-lo a calcular suas economias de custo.
+
+
+
+== 3 de abril de 2023
+
+
+
+=== O separador Licenciamento foi removido
+
+A guia Licenciamento foi removida da interface de disposição em camadas do BlueXP . Todo o licenciamento para assinaturas de pagamento conforme o uso (PAYGO) é acessado a partir do Painel no local de disposição em camadas do BlueXP  agora. Também há um link dessa página para a carteira digital da BlueXP  para que você possa visualizar e gerenciar qualquer BYOL (bring-your-own-licenses) em camadas do BlueXP .
+
+
+
+=== As guias de disposição em camadas foram renomeadas e atualizadas
+
+A guia "Painel de clusters" foi renomeada para "clusters" e a guia "Visão geral on-Prem" foi renomeada para "Painel on-premises". Essas páginas adicionaram algumas informações que o ajudarão a avaliar se você pode otimizar seu espaço de armazenamento com configuração adicional de disposição em camadas.
+
+
+
+== 5 de março de 2023
+
+
+
+=== Gerar um relatório de disposição em camadas para volumes
+
+É possível fazer download de um relatório na página volumes de categorias para verificar o status de disposição em categorias de todos os volumes nos clusters que você está gerenciando. O BlueXP  Tiering gera um arquivo .CSV que pode ser revisado e enviado para outras pessoas da sua empresa conforme necessário. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#download-a-tiering-report-for-your-volumes["Veja como fazer o download do relatório de disposição em camadas"].
+
+
+
+== 6 de dezembro de 2022
+
+
+
+=== Alterações no ponto de extremidade de acesso à Internet de saída do conetor
+
+Devido a uma alteração na disposição em camadas do BlueXP , você precisa alterar os seguintes pontos de extremidade do conetor para uma operação de disposição em camadas bem-sucedida do BlueXP :
+
+[cols="50,50"]
+|===
+| Endpoint antigo | Novo endpoint 
+
+
+| https://cloudmanager.cloud.NetApp.com | https://api.BlueXP .NetApp.com 
+
+
+| https://*.cloudmanager.cloud.NetApp.com | https://*.api.BlueXP .NetApp.com 
+|===
+Consulte a lista completa de pontos de extremidade do seu https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-aws.html#outbound-internet-access["AWS"^] https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-google.html#outbound-internet-access["Google Cloud"^] ambiente de nuvem , ou https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-azure.html#outbound-internet-access["Azure"^] .
+
+
+
+== 6 de novembro de 2022
+
+
+
+=== Arraste e solte para ativar a disposição em camadas para destinos adicionais
+
+Se o destino de disposição em camadas do Azure Blob, Google Cloud Storage ou StorageGRID existir como um ambiente de trabalho no Canvas, você poderá arrastar seu ambiente de trabalho do ONTAP local para o destino para iniciar o assistente de configuração de disposição em categorias.
+
+
+
+== 19 de setembro de 2022
+
+
+
+=== Configure o AWS PrivateLink ao dispor em camadas no Amazon S3
+
+Em versões anteriores, era muito demorado fornecer essa maneira segura de conetar seu cluster a um bucket do S3 por meio de um endpoint de VPC. Agora você pode seguir as etapas de pré-requisito para https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html#configure-your-system-for-a-private-connection-using-a-vpc-endpoint-interface["Configure seu sistema para uma conexão privada usando uma interface de endpoint VPC"] e, em seguida, selecionar o PrivateLink durante o assistente de configuração de categorização na página rede.
+
+https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html["Revise os requisitos e as etapas para categorizar dados inativos no Amazon S3"].
+
+
+
+=== Arraste e solte para habilitar a disposição em camadas no Amazon S3
+
+Se o destino de disposição em camadas do Amazon S3 existir como um ambiente de trabalho no Canvas, você poderá arrastar o ambiente de trabalho do ONTAP local para o destino para iniciar o assistente de configuração de disposição em categorias.
+
+
+
+=== Escolha o comportamento de disposição em camadas ao remover o armazenamento de objetos espelhados
+
+Ao remover o armazenamento de objetos espelhados de uma configuração do MetroCluster, você será perguntado se deseja remover o armazenamento de objetos principal também. Você pode optar por manter o armazenamento de objetos primário anexado ao agregado ou removê-lo.
+
+
+
+== 3 de agosto de 2022
+
+
+
+=== Configurar armazenamentos de objetos adicionais para outros agregados
+
+A IU do Cloud Tiering adicionou um novo conjunto de páginas para a configuração de storage de objetos. Você pode adicionar novos armazenamentos de objetos, conetar vários armazenamentos de objetos a um agregado para espelhamento FabricPool, trocar os armazenamentos de objetos primário e espelhado, excluir conexões de armazenamento de objetos a agregados e muito mais. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-object-storage.html["Saiba mais sobre a nova funcionalidade de armazenamento de objetos."]
+
+
+
+=== Suporte de licença para configurações MetroCluster
+
+Agora, as licenças de disposição em camadas na nuvem podem ser compartilhadas com os clusters que estão nas configurações do MetroCluster. Você não precisa mais usar as licenças FabricPool obsoletas para esses cenários. Isso facilita o uso das licenças "flutuantes" do Cloud Tiering em mais de seus clusters. https://docs.netapp.com/us-en/bluexp-tiering/task-licensing-cloud-tiering.html#apply-bluexp-tiering-licenses-to-clusters-in-special-configurations["Veja como licenciar e configurar esses tipos de clusters."]

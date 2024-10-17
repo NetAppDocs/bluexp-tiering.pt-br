@@ -1,0 +1,525 @@
+---
+sidebar: sidebar 
+permalink: faq-cloud-tiering.html 
+keywords: faq, questions, requirements, service connector, object store, object storage, aws, azure, bucket, cluster, aggregate, s3, storage class, standard, inactive data reporting, auto, volume tiering policy, policy, tiering policy, snapshot, cold, inactive, infrequent 
+summary: Este FAQ pode ajudar se você está apenas procurando uma resposta rápida para uma pergunta. 
+---
+= Perguntas frequentes sobre a disposição em camadas do BlueXP 
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Este FAQ pode ajudar se você está apenas procurando uma resposta rápida para uma pergunta.
+
+
+
+== Serviço de disposição em camadas do BlueXP 
+
+As perguntas frequentes a seguir estão relacionadas a como funciona a disposição em camadas do BlueXP .
+
+
+
+=== Quais são os benefícios de usar o serviço de disposição em camadas do BlueXP ?
+
+O BlueXP  Tiering soluciona os desafios que surgem com o crescimento rápido dos dados, oferecendo benefícios como:
+
+* Extensão fácil do data center para a nuvem, fornecendo até 50x vezes mais espaço
+* Otimização de storage, gerando uma economia média de storage de 70%
+* Redução do custo total de propriedade em 30%, em média
+* Não há necessidade de refatorar as aplicações
+
+
+
+
+=== Que tipo de dados é útil para categorizar na nuvem?
+
+No essencial, todos os dados que sejam considerados inativos em sistemas de storage primário e secundário são uma boa meta para migrar para a nuvem. Em sistemas primários, esses dados podem incluir snapshots, Registros históricos e projetos concluídos. Em sistemas secundários, isso inclui todos os volumes que contêm cópias de dados primários feitas para fins de recuperação de desastres e backup.
+
+
+
+=== Posso categorizar dados de volumes nas e volumes SAN?
+
+Sim, é possível categorizar dados de volumes nas para a nuvem pública ou nuvens privadas, como o StorageGRID. Ao dispor em camadas os dados acessados por protocolos SAN, a NetApp recomenda o uso de nuvens privadas porque os protocolos SAN são mais sensíveis a problemas de conectividade do que nas.
+
+
+
+=== Qual é a definição de dados inativos ou dados pouco usados e como isso é controlado?
+
+A definição do que também pode ser referido a dados frios é: "Blocos de volume (metadados excluídos) que não foram acessados por algum tempo". O "tempo" é determinado por um atributo de política de disposição em camadas chamado dias de resfriamento.
+
+
+
+=== A disposição em camadas do BlueXP  reterá minha economia de eficiência de storage na camada de nuvem?
+
+Sim, as eficiências de storage em nível de volume do ONTAP, como compressão, deduplicação e compactação, são preservadas ao mover dados para a categoria de nuvem.
+
+
+
+=== Qual é a diferença entre a disposição em camadas do FabricPool e do BlueXP ?
+
+O FabricPool é a tecnologia de disposição em camadas do ONTAP que pode ser autogerenciada, usando a CLI e o System Manager da ONTAP, ou gerenciada como um serviço com a disposição em camadas do BlueXP . A disposição em camadas do BlueXP  transforma o FabricPool em um serviço gerenciado com processos avançados de automação, na ONTAP e na nuvem, proporcionando maior visibilidade e controle sobre a disposição em camadas em implantações híbridas e multicloud.
+
+
+
+=== Os dados dispostos em camadas na nuvem podem ser usados para recuperação de desastres ou para backup/arquivamento?
+
+Não. Como os metadados do volume nunca são dispostos em camadas na camada de performance, os dados armazenados no storage de objetos não podem ser acessados diretamente.
+
+No entanto, a disposição em camadas do BlueXP  pode ser usada para obter backup e recuperação de desastres econômicos, habilitando-a em sistemas secundários e volumes de destino do SnapMirror (volumes de DP), para categorizar todos os dados (metadados excluídos), reduzindo o espaço físico e o TCO do data center.
+
+
+
+=== A disposição em camadas do BlueXP  é aplicada no nível de volume ou agregado?
+
+A disposição em camadas do BlueXP  é habilitada no nível do volume associando uma política de disposição em categorias a cada volume. A identificação de dados inativos é feita no nível do bloco.
+
+
+
+=== Como a disposição em camadas do BlueXP  determina quais blocos devem ser categorizados na nuvem?
+
+A política de disposição em camadas associada ao volume é o mecanismo que controla quais blocos são dispostos e quando. A política define o tipo de blocos de dados (instantâneos, dados do usuário ou ambos) e o período de resfriamento. link:concept-cloud-tiering.html#volume-tiering-policies["Políticas de disposição em categorias de volume"]Consulte para obter detalhes.
+
+
+
+=== Como a disposição em camadas do BlueXP  afeta a capacidade do volume?
+
+A disposição em camadas do BlueXP  não afeta a capacidade do volume, mas sim o uso da camada de performance do agregado.
+
+
+
+=== A disposição em camadas do BlueXP  ativa o relatório de dados inativos?
+
+Sim, a disposição em camadas do BlueXP  ativa o Relatório de dados inativos (IDR) em cada agregado. Essa configuração nos permite identificar a quantidade de dados inativos que podem ser dispostos em camadas em armazenamento de objetos de baixo custo.
+
+
+
+=== Quanto tempo demora o IDR para mostrar informações a partir do momento em que começo a executá-las?
+
+O IDR começa a mostrar informações após o período de arrefecimento configurado ter passado. Usando o ONTAP 9.7 e anterior, o IDR teve um período de resfriamento não ajustável de 31 dias. A partir do ONTAP 9.8, o período de resfriamento IDR pode ser configurado até 183 dias.
+
+
+
+== Licenças e custos
+
+As perguntas frequentes a seguir estão relacionadas a licenciamento e custos para usar a disposição em camadas do BlueXP .
+
+
+
+=== Quanto custa usar a disposição em camadas do BlueXP ?
+
+Ao categorizar dados pouco acessados na nuvem pública:
+
+* Para o pagamento conforme o uso (PAYGO), assinatura baseada no uso: $0,05 por GB/mês.
+* Para a assinatura anual (BYOL), baseada no prazo: A partir de $0,033 GB/mês.
+
+
+https://bluexp.netapp.com/pricing["Consulte os detalhes de preços"].
+
+Ao categorizar dados pouco acessados em um sistema NetApp StorageGRID (nuvem privada) sem custo.
+
+
+
+=== Posso ter uma licença BYOL e PAYGO para o mesmo cluster ONTAP?
+
+Sim. O BlueXP  Tiering permite que você use uma licença BYOL, uma assinatura PAYGO ou uma combinação de ambos.
+
+
+
+=== O que acontece se eu tiver atingido o limite de capacidade BYOL?
+
+Se você atingir o limite de capacidade do BYOL, a disposição em categorias de novos dados inativos será interrompida. Todos os dados em camadas anteriores permanecem acessíveis, o que significa que você pode recuperar e usar esses dados. Quando recuperados, esses dados são movidos de volta para o nível de performance da nuvem.
+
+No entanto, se você tiver uma assinatura do mercado PAYGO ao _BlueXP  - implantar e gerenciar serviços de dados em nuvem_, os novos dados inativos continuarão sendo dispostos no storage de objetos e você pagará por esses encargos de acordo com o uso.
+
+
+
+=== A licença de disposição em camadas do BlueXP  inclui as cobranças de saída do fornecedor de nuvem?
+
+Não, não.
+
+
+
+=== A reidratação dos sistemas locais está sujeita ao custo de saída cobrado pelos fornecedores de nuvem?
+
+Sim. Todas as leituras da nuvem pública estão sujeitas a taxas de saída.
+
+
+
+=== Como posso estimar minhas cobranças na nuvem? Existe um modo "e se" para a disposição em camadas do BlueXP ?
+
+A melhor maneira de estimar o quanto um provedor de nuvem cobrará por hospedar seus dados é usar suas calculadoras: https://calculator.aws/#/["AWS"], https://azure.microsoft.com/en-us/pricing/calculator/["Azure"] E https://cloud.google.com/products/calculator["Google Cloud"].
+
+
+
+=== Os provedores de nuvem cobram taxas extras para ler/recuperar dados do storage de objetos para o storage no local?
+
+Sim. Verifique https://aws.amazon.com/s3/pricing/["Definição de preço do Amazon S3"], https://azure.microsoft.com/en-us/pricing/details/storage/blobs/["Preços de Blob em bloco"] e https://cloud.google.com/storage/pricing["Preços do Cloud Storage"] para obter preços adicionais incorridos com a leitura/recuperação de dados.
+
+
+
+=== Como posso estimar a economia dos meus volumes e obter um relatório de dados inativos antes de habilitar a disposição em camadas do BlueXP ?
+
+Para obter uma estimativa, basta adicionar seu cluster ONTAP ao BlueXP  e inspecioná-lo na página clusters de disposição em camadas do BlueXP . Clique em *Calcule potenciais poupanças em camadas* para que o cluster inicie o https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de TCO em camadas da BlueXP "^] para ver quanto dinheiro pode poupar.
+
+
+
+== ONTAP
+
+As seguintes perguntas dizem respeito ao ONTAP.
+
+
+
+=== Quais versões do ONTAP são compatíveis com a disposição em camadas do BlueXP ?
+
+A disposição em camadas do BlueXP  é compatível com o ONTAP versão 9,2 e posterior.
+
+
+
+=== Que tipos de sistemas ONTAP são suportados?
+
+A disposição em camadas do BlueXP  é compatível com clusters de AFF, FAS e ONTAP Select de alta disponibilidade e nó único. Os clusters nas configurações de espelhamento do FabricPool e configurações de MetroCluster também são compatíveis.
+
+
+
+=== Posso categorizar dados de sistemas FAS somente com HDDs?
+
+Sim, ao iniciar o ONTAP 9.8, você pode categorizar dados de volumes hospedados em agregados HDD.
+
+
+
+=== Posso categorizar dados de um AFF registrado em um cluster que tem nós de FAS com HDDs?
+
+Sim. A disposição em camadas do BlueXP  pode ser configurada para volumes de camadas hospedados em qualquer agregado. A configuração de categorização de dados é irrelevante para o tipo de controlador usado e se o cluster é heterogêneo ou não.
+
+
+
+=== E o Cloud Volumes ONTAP?
+
+Se você tiver sistemas Cloud Volumes ONTAP, os encontrará na página clusters de disposição em camadas do BlueXP . Assim, você terá uma visão completa da disposição de dados em sua infraestrutura de nuvem híbrida. No entanto, os sistemas Cloud Volumes ONTAP são somente leitura da disposição em camadas do BlueXP . Não é possível configurar a disposição de dados em categorias no Cloud Volumes ONTAP a partir do BlueXP . https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["Você configurou a disposição em camadas para sistemas Cloud Volumes ONTAP a partir do ambiente de trabalho no BlueXP "^].
+
+
+
+=== Quais outros requisitos são necessários para meus clusters ONTAP?
+
+Depende de onde você categoriza os dados inativos. Consulte os seguintes links para obter mais detalhes:
+
+* link:task-tiering-onprem-aws.html#prepare-your-ontap-cluster["Disposição em camadas de dados no Amazon S3"]
+* link:task-tiering-onprem-azure.html#preparing-your-ontap-clusters["Disposição em camadas de dados no storage Azure Blob"]
+* link:task-tiering-onprem-gcp.html#preparing-your-ontap-clusters["Disposição em camadas dos dados no Google Cloud Storage"]
+* link:task-tiering-onprem-storagegrid.html#preparing-your-ontap-clusters["Disposição de dados em camadas no StorageGRID"]
+* link:task-tiering-onprem-s3-compat.html#preparing-your-ontap-clusters["Disposição de dados em camadas no storage de objetos S3"]
+
+
+
+
+== Storage de objetos
+
+As perguntas a seguir estão relacionadas ao armazenamento de objetos.
+
+
+
+=== Quais fornecedores de storage de objetos são compatíveis?
+
+A disposição em camadas do BlueXP  é compatível com os seguintes fornecedores de storage de objetos:
+
+* Amazon S3
+* Microsoft Azure Blob
+* Google Cloud Storage
+* NetApp StorageGRID
+* Armazenamento de objetos compatível com S3 (por exemplo, MinIO)
+* IBM Cloud Object Storage (a configuração do FabricPool deve ser feita usando o System Manager ou a CLI do ONTAP)
+
+
+
+
+=== Posso usar meu próprio balde/recipiente?
+
+Sim, você pode. Ao configurar a disposição de dados em categorias, você pode adicionar um novo bucket/contêiner ou selecionar um bucket/contêiner existente.
+
+
+
+=== Quais regiões são suportadas?
+
+* link:reference-aws-support.html["Regiões AWS compatíveis"]
+* link:reference-azure-support.html["Regiões Azure compatíveis"]
+* link:reference-google-support.html["Regiões compatíveis do Google Cloud"]
+
+
+
+
+=== Quais classes de armazenamento S3 são suportadas?
+
+A disposição em camadas do BlueXP  oferece suporte à disposição em camadas de dados para as classes de armazenamento _Standard_, _Standard-uninfrequente Access_, _One Zone-unfrequente Access_, _Intelligent Tiering_ e _Glacier Instant Retrieval_. link:reference-aws-support.html["Classes de armazenamento S3 suportadas"]Consulte para obter mais detalhes.
+
+
+
+=== Por que o Amazon S3 Glacier é flexível e o S3 Glacier Deep Archive não são compatíveis com a disposição em camadas do BlueXP ?
+
+O principal motivo pelo qual o Amazon S3 Glacier Flexible e o S3 Glacier Deep Archive não são compatíveis é que a disposição em camadas do BlueXP  foi projetada como uma solução de disposição em camadas de alto desempenho. Assim, os dados devem estar continuamente disponíveis e rapidamente acessíveis para recuperação. Com o S3 Glacier Flexible e o S3 Glacier Deep Archive, a recuperação de dados pode durar entre alguns minutos e 48 horas.
+
+
+
+=== Posso usar outros serviços de storage de objetos compatíveis com o S3, como o MinIO, com disposição em camadas do BlueXP ?
+
+Sim, a configuração de storage de objetos compatível com S3 por meio da IU em camadas é compatível com clusters que usam o ONTAP 9.8 e versões posteriores. link:task-tiering-onprem-s3-compat.html["Veja os detalhes aqui"].
+
+
+
+=== Quais camadas de acesso do Blob do Azure são compatíveis?
+
+A disposição em camadas do BlueXP  é compatível com a disposição de dados nas camadas de acesso _Hot_ ou _Cool_ para os dados inativos. link:reference-azure-support.html["Camadas de acesso Azure Blob compatíveis"]Consulte para obter mais detalhes.
+
+
+
+=== Quais classes de armazenamento são compatíveis com o Google Cloud Storage?
+
+A disposição em camadas do BlueXP  oferece suporte à disposição de dados nas classes de armazenamento _Standard_, _Nearline_, _Coldline_ e _Archive_. link:reference-google-support.html["Classes de armazenamento do Google Cloud compatíveis"]Consulte para obter mais detalhes.
+
+
+
+=== A disposição em camadas do BlueXP  é compatível com o uso de políticas de gerenciamento de ciclo de vida?
+
+Sim. Você pode habilitar o gerenciamento de ciclo de vida para que a disposição em camadas do BlueXP  faça a transição dos dados da categoria de acesso/classe de storage padrão para uma categoria mais econômica após um determinado número de dias. A regra de ciclo de vida é aplicada a todos os objetos no bucket selecionado para o storage do Amazon S3 e do Google Cloud, bem como a todos os contêineres na conta de storage selecionada do Azure Blob.
+
+
+
+=== A disposição em camadas do BlueXP  usa um armazenamento de objetos para todo o cluster ou um por agregado?
+
+Em uma configuração típica, há um armazenamento de objetos para todo o cluster. A partir de agosto de 2022, você pode usar a página *Configuração Avançada* para adicionar armazenamentos de objetos adicionais para um cluster e, em seguida, anexar armazenamentos de objetos diferentes a diferentes agregados ou anexar armazenamentos de objetos 2 a um agregado para espelhamento.
+
+
+
+=== Vários buckets podem ser anexados ao mesmo agregado?
+
+É possível anexar até dois buckets por agregado para fins de espelhamento, onde os dados inativos são dispostos de forma síncrona em ambos os buckets. Os baldes podem ser de diferentes fornecedores e locais diferentes. A partir de agosto de 2022, você pode usar a página *Configuração Avançada* para anexar dois armazenamentos de objetos a um único agregado.
+
+
+
+=== Podem ser anexados diferentes buckets a diferentes agregados no mesmo cluster?
+
+Sim. A melhor prática geral é anexar um único balde a vários agregados. No entanto, ao usar a nuvem pública há uma limitação máxima de IOPS para os serviços de armazenamento de objetos, portanto, vários buckets devem ser considerados.
+
+
+
+=== O que acontece com os dados em camadas quando você migra um volume de um cluster para outro?
+
+Ao migrar um volume de um cluster para outro, todos os dados inativos são lidos da camada de nuvem. O local de gravação no cluster de destino depende se a disposição em categorias foi ativada e do tipo de política de disposição em camadas usada nos volumes de origem e destino.
+
+
+
+=== O que acontece com os dados em camadas quando você move um volume de um nó para outro no mesmo cluster?
+
+Se o agregado de destino não tiver uma camada de nuvem anexada, os dados serão lidos a partir da camada de nuvem do agregado de origem e gravados inteiramente no nível local do agregado de destino. Se o agregado de destino tiver uma categoria de nuvem anexada, os dados serão lidos a partir da camada de nuvem do agregado de origem e gravados primeiro no nível local do agregado de destino para facilitar a transferência rápida. Posteriormente, com base na política de disposição em camadas usada, ela é gravada na categoria de nuvem.
+
+A partir do ONTAP 9.6, se o agregado de destino estiver usando a mesma camada de nuvem que o agregado de origem, os dados inativos não serão movidos de volta para o nível local.
+
+
+
+=== Como posso trazer meus dados em categorias de volta no local para o nível de performance?
+
+Em geral, a gravação é feita de acordo com as leituras e depende do tipo de diretiva de disposição em camadas. Antes do ONTAP 9.8, a gravação de todo o volume pode ser feita com uma operação _volume Move_. A partir do ONTAP 9.8, a IU em categorias tem opções para *trazer de volta todos os dados* ou *trazer de volta o sistema de arquivos ativo*. link:task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier["Veja como mover os dados de volta para o nível de performance"].
+
+
+
+=== Ao substituir uma controladora AFF/FAS existente por uma nova, os dados em camadas seriam migrados de volta no local?
+
+Não. Durante o procedimento de "troca de cabeças", a única coisa que muda é a propriedade do agregado. Neste caso, ele será alterado para o novo controlador sem qualquer movimentação de dados.
+
+
+
+=== Posso usar o console do provedor de nuvem ou os exploradores de armazenamento de objetos para analisar os dados dispostos em camadas em um bucket? Posso usar os dados armazenados no storage de objetos diretamente sem o ONTAP?
+
+Não. Os objetos construídos e dispostos na nuvem não contêm um único arquivo, mas até 1.024 4KB blocos de vários arquivos. Os metadados de um volume sempre permanecem no nível local.
+
+
+
+== Conetores
+
+As seguintes questões referem-se ao conetor BlueXP .
+
+
+
+=== O que é o conetor?
+
+O conector é um software executado em uma instância de computação na sua conta de nuvem ou no local que permite que o BlueXP  gerencie com segurança os recursos de nuvem. Para usar o serviço de disposição em camadas do BlueXP , é necessário implantar um conector.
+
+
+
+=== Onde o conetor precisa ser instalado?
+
+* Ao categorizar os dados no S3, o conetor pode residir em uma VPC da AWS ou no local.
+* Ao categorizar dados no storage Blob, o conector pode residir em um Azure VNet ou no local.
+* Ao categorizar dados no Google Cloud Storage, o conector deve residir em uma VPC do Google Cloud Platform.
+* Ao categorizar dados no StorageGRID ou em outros fornecedores de storage compatíveis com S3, o conector precisa estar no local.
+
+
+
+
+=== Posso implantar o conetor no local?
+
+Sim. O software Connector pode ser baixado e instalado manualmente em um host Linux em sua rede. https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Veja como instalar o conetor nas suas instalações"].
+
+
+
+=== Antes de usar a disposição em camadas do BlueXP  é necessária uma conta com um fornecedor de serviços de nuvem?
+
+Sim. Você deve ter uma conta antes de definir o armazenamento de objetos que deseja usar. Uma conta com um provedor de armazenamento em nuvem também é necessária ao configurar o conetor na nuvem em uma VPC ou VNet.
+
+
+
+=== Quais são as implicações se o conetor falhar?
+
+No caso de uma falha no conetor, apenas a visibilidade nos ambientes em camadas é afetada. Todos os dados estão acessíveis e os dados inativos recém-identificados são automaticamente colocados em camadas no storage de objetos.
+
+
+
+== Políticas de disposição em camadas
+
+
+
+=== Quais são as políticas de disposição em camadas disponíveis?
+
+Há quatro políticas de disposição em camadas:
+
+* Nenhum: Classifica todos os dados como sempre ativos, impedindo que quaisquer dados do volume sejam movidos para o storage de objetos.
+* Snapshots inativos (somente Snapshot): Somente blocos de snapshot frios são movidos para o storage de objetos.
+* Dados do usuário inativos e snapshots (Auto): Os blocos de snapshot frio e os blocos de dados inativos do usuário são movidos para o storage de objetos.
+* Todos os dados do usuário (todos): Classifica todos os dados como inativos; movendo imediatamente todo o volume para o armazenamento de objetos.
+
+
+link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas"].
+
+
+
+=== Em que ponto meus dados são considerados frios?
+
+Como a categorização de dados é feita no nível do bloco, um bloco de dados é considerado inativo depois que ele não foi acessado por um determinado período de tempo, que é definido pelo atributo de dias de resfriamento mínimos da política de disposição em camadas. O intervalo aplicável é de 2-63 dias com o ONTAP 9.7 e anterior, ou 2-183 dias a partir do ONTAP 9.8.
+
+
+
+=== Qual é o período de resfriamento padrão dos dados antes que eles sejam dispostos na camada de nuvem?
+
+O período de resfriamento padrão da política de Cold Snapshot é de 2 dias, enquanto o período de resfriamento padrão para dados de usuários inativos e snapshots é de 31 dias. O parâmetro de dias de resfriamento não é aplicável à política de disposição em categorias.
+
+
+
+=== Todos os dados em camadas são recuperados do armazenamento de objetos quando eu faço um backup completo?
+
+Durante o backup completo, todos os dados inativos são lidos. A recuperação dos dados depende da política de disposição em camadas usada. Ao usar as políticas All and Cold User Data and Snapshots, os dados inativos não são gravados de volta no nível de performance. Ao usar a política Cold Snapshots, somente no caso de um snapshot antigo ser usado para o backup seus blocos inativos serão recuperados.
+
+
+
+=== Você pode escolher um tamanho de disposição em categorias por volume?
+
+Não. No entanto, você pode escolher quais volumes estão qualificados para disposição em categorias, o tipo de dados a serem dispostos em camadas e o período de resfriamento. Isso é feito associando uma política de disposição em categorias a esse volume.
+
+
+
+=== A política todos os dados do usuário é a única opção para volumes de proteção de dados?
+
+Os volumes de proteção de dados (DP) podem ser associados a qualquer uma das três políticas disponíveis. O tipo de política usada nos volumes de origem e destino (DP) determina o local de gravação dos dados.
+
+
+
+=== Redefinir a política de disposição em camadas de um volume para nenhum hidrata os dados inativos ou apenas impede que futuros blocos frios sejam movidos para a nuvem?
+
+Não ocorre reidratação quando uma política de disposição em camadas é redefinida, mas impedirá que novos blocos inativos sejam movidos para a categoria de nuvem.
+
+
+
+=== Depois de separar os dados na nuvem, posso alterar a política de disposição em categorias?
+
+Sim. O comportamento após a alteração depende da nova política associada.
+
+
+
+=== O que devo fazer se quiser garantir que certos dados não sejam movidos para a nuvem?
+
+Não associe uma política de disposição em camadas ao volume que contém esses dados.
+
+
+
+=== Onde os metadados dos arquivos são armazenados?
+
+Os metadados de um volume sempre são armazenados localmente na camada de performance. Eles nunca são dispostos em camadas na nuvem.
+
+
+
+== Rede e segurança
+
+As seguintes questões referem-se a redes e segurança.
+
+
+
+=== Quais são os requisitos de rede?
+
+* O cluster do ONTAP inicia uma conexão HTTPS pela porta 443 ao seu provedor de storage de objetos.
++
+O ONTAP lê e grava dados no storage de objetos. O armazenamento de objetos nunca inicia, ele apenas responde.
+
+* Para o StorageGRID, o cluster do ONTAP inicia uma conexão HTTPS por uma porta especificada pelo usuário para o StorageGRID (a porta é configurável durante a configuração de disposição em camadas).
+* Um conector precisa de uma conexão HTTPS de saída pela porta 443 para os clusters do ONTAP, para o armazenamento de objetos e para o serviço de disposição em camadas do BlueXP .
+
+
+Para obter mais detalhes, consulte:
+
+* link:task-tiering-onprem-aws.html["Disposição em camadas de dados no Amazon S3"]
+* link:task-tiering-onprem-azure.html["Disposição em camadas de dados no storage Azure Blob"]
+* link:task-tiering-onprem-gcp.html["Disposição em camadas dos dados no Google Cloud Storage"]
+* link:task-tiering-onprem-storagegrid.html["Disposição de dados em camadas no StorageGRID"]
+* link:task-tiering-onprem-s3-compat.html["Disposição de dados em camadas no storage de objetos S3"]
+
+
+
+
+=== Quais ferramentas posso usar para monitoramento e geração de relatórios para gerenciar dados inativos armazenados na nuvem?
+
+Além da disposição em camadas do BlueXP  https://docs.netapp.com/us-en/active-iq-unified-manager/["Active IQ Unified Manager"^], https://docs.netapp.com/us-en/active-iq/index.html["Consultor digital da BlueXP"^] pode ser usada para monitoramento e geração de relatórios.
+
+
+
+=== Quais são as implicações se o link de rede para o provedor de nuvem falhar?
+
+Em caso de falha de rede, o nível de desempenho local permanece on-line e os dados ativos permanecem acessíveis. No entanto, os blocos que já foram movidos para a camada de nuvem ficarão inacessíveis e os aplicativos receberão uma mensagem de erro ao tentar acessar esses dados. Depois que a conetividade for restaurada, todos os dados estarão perfeitamente acessíveis.
+
+
+
+=== Há uma recomendação de largura de banda de rede?
+
+A latência de leitura da tecnologia de disposição em camadas subjacente do FabricPool depende da conectividade à camada de nuvem. Embora a disposição em camadas funcione em qualquer largura de banda, recomenda-se colocar LIFs entre clusters em portas de 10 Gbps para fornecer desempenho adequado. Não há recomendações ou limitações de largura de banda para o conetor.
+
+Além disso, você pode controlar a quantidade de largura de banda de rede usada durante a transferência de dados inativos do volume para o armazenamento de objetos. A configuração _maximum transfer rate_ está disponível ao configurar seu cluster para disposição em camadas e depois na página *clusters*.
+
+
+
+=== Há alguma latência quando um usuário tenta acessar dados em camadas?
+
+Sim. As camadas de nuvem não fornecem a mesma latência que a camada local, já que a latência depende da conectividade. Para estimar a latência e a taxa de transferência de um armazenamento de objetos, a disposição em camadas do BlueXP  fornece um teste de desempenho na nuvem (baseado no profiler do armazenamento de objetos do ONTAP) que pode ser usado após o armazenamento de objetos ser anexado e antes da configuração da disposição em camadas.
+
+
+
+=== Como meus dados são protegidos?
+
+A criptografia AES-256-GCM é mantida nas camadas de performance e nuvem. A criptografia TLS 1,2 é usada para criptografar dados por cabo à medida que se move entre camadas e para criptografar a comunicação entre o conetor e o cluster ONTAP e o armazenamento de objetos.
+
+
+
+=== Preciso de uma porta Ethernet instalada e configurada no meu AFF?
+
+Sim. É necessário configurar um LIF entre clusters em uma porta ethernet, em cada nó dentro de um par de HA que hospede volumes com dados que você planeja categorizar na nuvem. Para obter mais informações, consulte a seção requisitos do fornecedor de nuvem no qual você planeja categorizar dados.
+
+
+
+=== Quais permissões são necessárias?
+
+* link:task-tiering-onprem-aws.html#set-up-s3-permissions["Para a Amazon, as permissões são necessárias para gerenciar o bucket do S3"].
+* Para o Azure, não são necessárias permissões extras fora das permissões que você precisa fornecer ao BlueXP .
+* link:task-tiering-onprem-gcp.html#preparing-google-cloud-storage["Para o Google Cloud, as permissões de administrador de armazenamento são necessárias para uma conta de serviço que tenha chaves de acesso ao armazenamento"].
+* link:task-tiering-onprem-storagegrid.html#preparing-storagegrid["Para o StorageGRID, são necessárias permissões S3"].
+* link:task-tiering-onprem-s3-compat.html#preparing-s3-compatible-object-storage["Para o armazenamento de objetos compatível com S3, são necessárias permissões S3"].
+

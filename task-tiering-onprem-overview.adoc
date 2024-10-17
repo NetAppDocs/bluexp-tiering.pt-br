@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-overview.html 
+keywords: overview, tiering overview, tiered clusters, clusters enabled for tiering, data tiering overview, cold data, hot data, tiered data, savings, savings opportunities, saving opportunity, policies, cold snapshots, all dp user data, cold user data & snapshots, cold user data and snapshots, all user data, no policy, marketplace subscriptions, clusters associated 
+summary: A disposição em camadas do BlueXP  fornece uma visualização agregada de categorização de dados em cada um dos seus clusters no local. Esta visão geral fornece uma imagem clara do seu ambiente e permite que você tome as medidas adequadas. 
+---
+= Ter uma visão geral da disposição de dados em camadas nos clusters
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A disposição em camadas do BlueXP  fornece uma visualização agregada de categorização de dados em cada um dos seus clusters no local. Esta visão geral fornece uma imagem clara do seu ambiente e permite que você tome as medidas adequadas.
+
+Basta clicar em *Categorização > Painel no local*. O BlueXP  Tiering fornece os detalhes a seguir sobre seu ambiente.
+
+image:screenshot_tiering_onprem_dashboard.png["Uma captura de tela da página do Painel local."]
+
+Clusters descobertos:: O número de clusters no local descobertos pelo BlueXP  Tiering. O gráfico fornece uma visão geral do status de disposição em camadas desses clusters.
++
+--
+* Alta disposição em camadas - clusters que estão em camadas mais de 20% dos dados inativos
+* Baixa disposição em camadas - clusters que estão em camadas menos de 20% dos dados inativos
+* Sem disposição em camadas - clusters que não estão em categorias de dados
+* Não qualificado - clusters que não oferecem suporte a categorização de dados
+
+
+--
+Visão geral dos dados:: A quantidade de dados que está sendo usada por todos os clusters descobertos. O gráfico indica a quantidade de dados que está sendo categorizados e muito mais para esses clusters.
++
+--
+* Dados em camadas - dados inativos totais sendo dispostos na nuvem
+* Dados inativos - Total de dados inativos que não estão sendo dispostos em camadas
+* Dados ativos - dados ativos totais que estão ativos sendo usados
+* Não elegível - Total de dados que não estão sendo dispostos em camadas porque o cluster ou o volume não oferece suporte à disposição em camadas de dados
+
+
+--
+Visão geral de disposição em camadas:: A quantidade de dados atualmente em camadas e a quantidade de dados inativos que podem potencialmente ser dispostos em camadas.
+Políticas:: O número de vezes que cada política de disposição em categorias foi aplicada a um volume.
+Subscrições do marketplace:: O número de clusters associados a cada tipo de assinatura do Marketplace e uma indicação sobre o status da assinatura.
+

@@ -1,0 +1,6 @@
+= 
+:allow-uri-read: 
+
+
+Volumes e agregados compatíveis:: O número total de volumes em que a disposição em camadas do BlueXP  pode ser menor que o número de volumes no sistema ONTAP. Isso porque os volumes não podem ser dispostos em camadas de alguns agregados. Consulte a documentação do ONTAP para https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["Funcionalidade ou recursos não suportados pelo FabricPool"^].
+

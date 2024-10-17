@@ -1,0 +1,241 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-gcp.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, google, gcp, google cloud storage 
+summary: Liberar espaço nos clusters do ONTAP no local ao categorizar dados inativos no Google Cloud Storage. 
+---
+= Disposição de dados em camadas de clusters ONTAP on-premises para o Google Cloud Storage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Liberar espaço nos clusters do ONTAP no local ao categorizar dados inativos no Google Cloud Storage.
+
+
+
+== Início rápido
+
+Comece rapidamente seguindo estas etapas ou role para baixo até as seções restantes para obter detalhes completos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"] Prepare-se para categorizar dados no Google Cloud Storage
+[role="quick-margin-para"]
+Você precisa do seguinte:
+
+[role="quick-margin-list"]
+* Um cluster ONTAP no local que executa o ONTAP 9.6 ou posterior e tem uma conexão HTTPS com o Google Cloud Storage. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
+* Uma conta de serviço que tem a função de administrador de armazenamento predefinida e as chaves de acesso ao armazenamento.
+* Um conetor instalado em uma VPC do Google Cloud Platform.
+* Rede para o conetor que permite uma conexão HTTPS de saída ao cluster do ONTAP no data center, ao Google Cloud Storage e ao serviço de disposição em camadas do BlueXP .
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"] Configurar a disposição em camadas
+[role="quick-margin-para"]
+No BlueXP , selecione um ambiente de trabalho local, clique em *Ativar* para o serviço de categorização e siga as instruções para categorizar dados no Google Cloud Storage.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"] Configure o licenciamento
+[role="quick-margin-para"]
+Após o término da avaliação gratuita, pague pela disposição em camadas do BlueXP  por meio de uma assinatura com pagamento conforme o uso, uma licença BYOL em categorias da ONTAP BlueXP  ou uma combinação de ambos:
+
+[role="quick-margin-list"]
+* Para se inscrever no GCP Marketplace, https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["Vá para a oferta do mercado BlueXP "^] clique em *Inscrever-se* e siga as instruções.
+* Para pagar usando uma licença BYOL de disposição em camadas do BlueXP , envie um e-mail:ng-cloud-Tiering para NetApp.com?subject:Contact US if you need to purchase one] e, em seguidalink:task-licensing-cloud-tiering.html#add-bluexp-tiering-byol-licenses-to-your-account["Adicione-o à sua conta a partir da carteira digital BlueXP "], .
+
+
+
+
+== Requisitos
+
+Verifique o suporte para o cluster ONTAP, configure a rede e prepare o armazenamento de objetos.
+
+A imagem a seguir mostra cada componente e as conexões que você precisa preparar entre eles:
+
+image:diagram_cloud_tiering_google.png["Imagem de arquitetura que mostra o serviço de disposição em camadas do BlueXP  com uma conexão ao conector no seu fornecedor de nuvem, o conetor com uma conexão ao cluster do ONTAP e uma conexão entre o cluster do ONTAP e o storage de objetos no seu fornecedor de nuvem. Os dados ativos residem no cluster do ONTAP, enquanto os dados inativos residem no storage de objetos."]
+
+
+NOTE: A comunicação entre o conetor e o Google Cloud Storage destina-se apenas à configuração de armazenamento de objetos.
+
+
+
+=== Preparando os clusters do ONTAP
+
+Os clusters do ONTAP precisam atender aos requisitos a seguir ao categorizar dados no Google Cloud Storage.
+
+Plataformas ONTAP compatíveis::
++
+--
+* Ao usar o ONTAP 9.8 e posterior: É possível categorizar dados de sistemas AFF ou sistemas FAS com agregados all-SSD ou agregados all-HDD.
+* Ao usar o ONTAP 9.7 e versões anteriores: É possível categorizar dados de sistemas AFF ou sistemas FAS com agregados all-SSD.
+
+
+--
+Versões de ONTAP compatíveis:: ONTAP 9 .6 ou posterior
+Requisitos de rede de cluster::
++
+--
+* O cluster do ONTAP inicia uma conexão HTTPS pela porta 443 para o Google Cloud Storage.
++
+O ONTAP lê e grava dados no storage de objetos. O armazenamento de objetos nunca inicia, ele apenas responde.
+
++
+Embora o Google Cloud Interconnect ofereça melhor desempenho e menores taxas de transferência de dados, isso não é necessário entre o cluster do ONTAP e o Google Cloud Storage. Mas fazer isso é a melhor prática recomendada.
+
+* Uma conexão de entrada é necessária a partir do conetor, que reside em uma VPC do Google Cloud Platform.
++
+Não é necessária uma conexão entre o cluster e o serviço de disposição em camadas do BlueXP .
+
+* É necessário um LIF entre clusters em cada nó do ONTAP que hospeda os volumes que você deseja categorizar. O LIF deve estar associado ao _IPspace_ que o ONTAP deve usar para se conetar ao armazenamento de objetos.
++
+Quando você configura a disposição de dados em categorias, o BlueXP  Tiering solicita que você use o espaço de IPspace. Você deve escolher o espaço IPspace ao qual cada LIF está associado. Esse pode ser o espaço IPspace "padrão" ou um espaço IPspace personalizado que você criou. Saiba mais sobre https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIFs"^] e https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["IPspaces"^].
+
+
+
+--
+Volumes e agregados compatíveis:: O número total de volumes em que a disposição em camadas do BlueXP  pode ser menor que o número de volumes no sistema ONTAP. Isso porque os volumes não podem ser dispostos em camadas de alguns agregados. Consulte a documentação do ONTAP para https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["Funcionalidade ou recursos não suportados pelo FabricPool"^].
+
+
+
+NOTE: A disposição em camadas do BlueXP  é compatível com FlexGroup volumes. A configuração funciona da mesma forma que qualquer outro volume.
+
+
+
+=== Descobrindo um cluster ONTAP
+
+Você precisa criar um ambiente de trabalho ONTAP no local no BlueXP  antes de começar a separar em categorias os dados inativos.
+
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
+
+
+
+=== Criação ou comutação de conetores
+
+Um conector é necessário para categorizar dados na nuvem. Ao categorizar dados no Google Cloud Storage, um conetor deve estar disponível em uma VPC do Google Cloud Platform. Você precisará criar um novo conetor ou certificar-se de que o conetor selecionado atualmente reside no GCP.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Saiba mais sobre conetores"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-quick-start-connector-google.html["Implantação de um conetor no GCP"^]
+
+
+
+
+=== Preparar a rede para o conetor
+
+Certifique-se de que o conetor tem as ligações de rede necessárias.
+
+.Passos
+. Verifique se a VPC onde o conetor está instalado habilita as seguintes conexões:
++
+** Uma conexão HTTPS pela porta 443 ao serviço de disposição em camadas do BlueXP  e ao seu Google Cloud Storage (https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-google.html#endpoints-contacted-for-day-to-day-operations["consulte a lista de endpoints"^])
+** Uma conexão HTTPS pela porta 443 ao LIF de gerenciamento de cluster do ONTAP
+
+
+. Opcional: Ative o acesso privado do Google na sub-rede onde pretende implementar o conetor.
++
+https://cloud.google.com/vpc/docs/configure-private-google-access["Acesso privado ao Google"^] O é recomendado se você tiver uma conexão direta do cluster do ONTAP com a VPC e quiser que a comunicação entre o conetor e o Google Cloud Storage permaneça em sua rede virtual privada. Observe que o Private Google Access funciona com instâncias de VM que possuem apenas endereços IP internos (privados) (sem endereços IP externos).
+
+
+
+
+
+=== Preparando o Google Cloud Storage
+
+Ao configurar a disposição em camadas, você precisa fornecer chaves de acesso ao storage para uma conta de serviço que tenha permissões de administrador do storage. Uma conta de serviço permite que o BlueXP  Tiering autentique e acesse buckets do Cloud Storage usados para categorização de dados. As chaves são necessárias para que o Google Cloud Storage saiba quem está fazendo a solicitação.
+
+Os buckets do Cloud Storage devem estar em um link:reference-google-support.html#supported-google-cloud-regions["Região compatível com a disposição em camadas do BlueXP "].
+
+
+NOTE: Se você está planejando configurar a disposição em camadas do BlueXP  para usar classes de storage de custo mais baixo para as quais os dados em camadas serão transferidos após um determinado número de dias, não será necessário selecionar nenhuma regra de ciclo de vida ao configurar o bucket na conta do GCP. A disposição em camadas do BlueXP  gerencia as transições de ciclo de vida.
+
+.Passos
+. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["Crie uma conta de serviço que tenha a função de administrador de storage predefinida"^].
+. Vá para https://console.cloud.google.com/storage/settings["Configurações de armazenamento do GCP"^] e crie chaves de acesso para a conta de serviço:
++
+.. Selecione um projeto e clique em *interoperabilidade*. Se ainda não o tiver feito, clique em *Ativar acesso à interoperabilidade*.
+.. Em *chaves de acesso para contas de serviço*, clique em *criar uma chave para uma conta de serviço*, selecione a conta de serviço que acabou de criar e clique em *criar chave*.
++
+Você precisará inserir as chaves mais tarde quando configurar a disposição em camadas do BlueXP .
+
+
+
+
+
+
+
+== Disposição em camadas dos dados inativos do primeiro cluster para o Google Cloud Storage
+
+Depois de preparar seu ambiente do Google Cloud, comece a categorizar os dados inativos no primeiro cluster.
+
+.O que você vai precisar
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Um ambiente de trabalho no local"^].
+* Chaves de acesso de armazenamento para uma conta de serviço que tem a função Administrador de armazenamento.
+
+
+.Passos
+. Selecione o ambiente de trabalho do ONTAP no local.
+. Clique em *Enable* para o serviço de categorização no painel direito.
++
+Se o destino de disposição em camadas do Google Cloud Storage existir como um ambiente de trabalho no Canvas, você poderá arrastar o cluster para o ambiente de trabalho do Google Cloud Storage para iniciar o assistente de configuração.
+
++
+image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção Habilitar que aparece no lado direito da tela depois de selecionar um ambiente de trabalho ONTAP local."]
+
+. *Definir Nome do armazenamento de objetos*: Insira um nome para este armazenamento de objetos. Deve ser exclusivo de qualquer outro storage de objetos que você esteja usando com agregados nesse cluster.
+. *Selecione Fornecedor*: Selecione *Google Cloud* e clique em *continuar*.
+. Conclua as etapas nas páginas *Create Object Storage*:
++
+.. *Bucket*: Adicione um novo bucket do Google Cloud Storage ou selecione um bucket existente.
+.. *Ciclo de vida da classe de storage*: A disposição em camadas do BlueXP  gerencia as transições de ciclo de vida dos dados em camadas. Os dados começam na classe _Standard_, mas você pode criar regras para aplicar diferentes classes de armazenamento após um determinado número de dias.
++
+Selecione a classe de armazenamento do Google Cloud para a qual você deseja transferir os dados categorizados e o número de dias antes que os dados sejam atribuídos a essa classe e clique em *continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Nearline_ da classe _Standard_ após 30 dias no armazenamento de objetos e, em seguida, à classe _Coldline_ após 60 dias no armazenamento de objetos.
+
++
+Se você escolher *manter dados nesta classe de armazenamento*, os dados permanecerão nessa classe de armazenamento. link:reference-google-support.html["Consulte classes de armazenamento suportadas"^].
+
++
+image:screenshot_tiering_lifecycle_selection_gcp.png["Uma captura de tela mostrando como selecionar classes de armazenamento adicionais que são atribuídas aos seus dados após um determinado número de dias."]
+
++
+Observe que a regra de ciclo de vida é aplicada a todos os objetos no intervalo selecionado.
+
+.. *Credenciais*: Insira a chave de acesso ao armazenamento e a chave secreta para uma conta de serviço que tenha a função Administrador do armazenamento.
+.. *Rede de cluster*: Selecione o espaço IPspace que o ONTAP deve usar para se conetar ao armazenamento de objetos.
++
+A seleção do espaço de IPspace correto garante que a disposição em camadas do BlueXP  possa configurar uma conexão do ONTAP ao storage de objetos do seu provedor de nuvem.
+
++
+Você também pode definir a largura de banda de rede disponível para carregar dados inativos para armazenamento de objetos definindo a "taxa de transferência máxima". Selecione o botão de opção *Limited* e insira a largura de banda máxima que pode ser usada ou selecione *Unlimited* para indicar que não há limite.
+
+
+
+. Clique em *continuar* para selecionar os volumes que deseja categorizar.
+. Na página _volumes de nível_, selecione os volumes para os quais você deseja configurar a disposição em categorias e inicie a página Diretiva de disposição em categorias:
++
+** Para selecionar todos os volumes, marque a caixa na linha de título (image:button_backup_all_volumes.png[""]) e clique em *Configurar volumes*.
+** Para selecionar vários volumes, marque a caixa para cada volume (image:button_backup_1_volume.png[""]) e clique em *Configurar volumes*.
+** Para selecionar um único volume, clique na linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) do volume.
++
+image:screenshot_tiering_initial_volumes.png["Uma captura de tela que mostra como selecionar um único volume, vários volumes ou todos os volumes e o botão modificar volumes selecionados."]
+
+
+
+. Na caixa de diálogo _Política de disposição em camadas_, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e clique em *aplicar*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
+
++
+image:screenshot_tiering_initial_policy_settings.png["Uma captura de tela que mostra as configurações de diretiva de disposição em camadas configuráveis."]
+
+
+
+.Resultado
+Você configurou com sucesso a disposição de dados em categorias de volumes no cluster para o storage de objetos do Google Cloud.
+
+.O que se segue?
+link:task-licensing-cloud-tiering.html["Certifique-se de assinar o serviço de disposição em camadas do BlueXP "].
+
+Você pode revisar informações sobre os dados ativos e inativos no cluster. link:task-managing-tiering.html["Saiba mais sobre como gerenciar suas configurações de disposição em camadas"].
+
+Também é possível criar storage de objetos adicional nos casos em que você pode querer categorizar dados de certos agregados em um cluster para armazenamentos de objetos diferentes. Ou se você planeja usar o espelhamento do FabricPool onde seus dados em camadas são replicados para um armazenamento de objetos adicional. link:task-managing-object-storage.html["Saiba mais sobre como gerenciar armazenamentos de objetos"].

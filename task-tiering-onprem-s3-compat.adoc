@@ -1,0 +1,222 @@
+---
+sidebar: sidebar 
+permalink: task-tiering-onprem-s3-compat.html 
+keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, s3, tier to s3, minio 
+summary: 'Liberar espaço nos clusters do ONTAP no local ao categorizar dados inativos em qualquer serviço de storage de objetos que usa o protocolo Simple Storage Service (S3).' 
+---
+= Disposição de dados em camadas de clusters ONTAP on-premises para storage de objetos S3
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Liberar espaço nos clusters do ONTAP no local ao categorizar dados inativos em qualquer serviço de storage de objetos que usa o protocolo Simple Storage Service (S3).
+
+Neste momento, o storage de objetos MinIO foi qualificado.
+
+[CAUTION]
+====
+Os clientes que desejam usar armazenamentos de objetos que não sejam oficialmente suportados como camada de nuvem podem fazê-lo usando estas instruções. Os clientes devem testar e confirmar se o armazenamento de objetos atende aos seus requisitos.
+
+A NetApp não suporta, nem é responsável, por quaisquer problemas decorrentes de qualquer Serviço de armazenamento de objetos de terceiros, especificamente quando não tiver acordos de suporte acordados com o terceiro com quem o produto se originou. É reconhecido e acordado que a NetApp não será responsável por qualquer dano associado ou que, de outra forma, será obrigada a fornecer suporte a esse produto de terceiros.
+
+====
+
+
+== Início rápido
+
+Comece rapidamente seguindo estas etapas ou role para baixo até as seções restantes para obter detalhes completos.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Um"] Prepare-se para categorizar dados em um storage de objetos compatível com S3
+[role="quick-margin-para"]
+Você precisa do seguinte:
+
+[role="quick-margin-list"]
+* Um cluster ONTAP de origem no local que está executando o ONTAP 9.8 ou posterior e uma conexão em uma porta especificada pelo usuário ao storage de objetos compatível com o destino S3. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
+* O FQDN, a chave de acesso e a chave secreta do servidor de armazenamento de objetos para que o cluster ONTAP possa acessar o intervalo.
+* Um conetor instalado nas suas instalações.
+* Rede para o conetor que habilita uma conexão HTTPS de saída ao cluster ONTAP de origem, ao storage de objetos compatível com S3 e ao serviço de disposição em camadas BlueXP .
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"] Configurar a disposição em camadas
+[role="quick-margin-para"]
+No BlueXP , selecione um ambiente de trabalho local, clique em *Ativar* para o serviço de categorização e siga as instruções para categorizar dados em camadas para storage de objetos compatível com S3.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"] Configure o licenciamento
+[role="quick-margin-para"]
+Pague em categorias pelo BlueXP  por meio de uma subscrição com pagamento conforme o uso do seu fornecedor de nuvem, uma NetApp BlueXP  Tiering traga sua própria licença ou uma combinação de ambos:
+
+[role="quick-margin-list"]
+* Para subscrever a oferta BlueXP  PAYGO no https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["AWS Marketplace"^], https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^], ou https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["GCP Marketplace"^], clique em *Inscrever-se* e siga as indicações.
+* Para pagar usando uma licença BYOL de disposição em camadas do BlueXP , envie um e-mail:ng-cloud-Tiering para NetApp.com?subject:Contact US if you need to purchase one] e, em seguidalink:task-licensing-cloud-tiering.html#add-bluexp-tiering-byol-licenses-to-your-account["Adicione-o à sua conta a partir da carteira digital BlueXP "], .
+
+
+
+
+== Requisitos
+
+Verifique o suporte para o cluster ONTAP, configure a rede e prepare o armazenamento de objetos.
+
+A imagem a seguir mostra cada componente e as conexões que você precisa preparar entre eles:
+
+image:diagram_cloud_tiering_s3_compat.png["Imagem de arquitetura que mostra o serviço de disposição em camadas do BlueXP  com uma conexão ao conector no local, o conetor com uma conexão ao cluster do ONTAP e uma conexão entre o cluster do ONTAP e o storage de objetos. Os dados ativos residem no cluster do ONTAP, enquanto os dados inativos residem no storage de objetos."]
+
+
+NOTE: A comunicação entre o conetor e o servidor de armazenamento de objetos compatível com S3 destina-se apenas à configuração de armazenamento de objetos.
+
+
+
+=== Preparando os clusters do ONTAP
+
+Seus clusters de ONTAP de origem precisam atender aos requisitos a seguir ao categorizar dados em storage de objetos compatível com S3.
+
+Plataformas ONTAP compatíveis:: É possível categorizar dados de sistemas AFF ou sistemas FAS com agregados all-SSD ou agregados all-HDD.
+Versão ONTAP suportada:: ONTAP 9 .8 ou posterior
+Requisitos de rede de cluster::
++
+--
+* O cluster do ONTAP inicia uma conexão HTTPS por uma porta especificada pelo usuário para o storage de objetos compatível com S3 (a porta é configurável durante a configuração de disposição em camadas).
++
+O sistema ONTAP de origem lê e grava dados do e para o storage de objetos. O armazenamento de objetos nunca inicia, ele apenas responde.
+
+* Uma conexão de entrada é necessária a partir do conetor, que deve residir em suas instalações.
++
+Não é necessária uma conexão entre o cluster e o serviço de disposição em camadas do BlueXP .
+
+* É necessário um LIF entre clusters em cada nó do ONTAP que hospeda os volumes que você deseja categorizar. O LIF deve estar associado ao _IPspace_ que o ONTAP deve usar para se conetar ao armazenamento de objetos.
++
+Quando você configura a disposição de dados em categorias, o BlueXP  Tiering solicita que você use o espaço de IPspace. Você deve escolher o espaço IPspace ao qual cada LIF está associado. Esse pode ser o espaço IPspace "padrão" ou um espaço IPspace personalizado que você criou. Saiba mais sobre https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIFs"^] e https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["IPspaces"^].
+
+
+
+--
+Volumes e agregados compatíveis:: O número total de volumes em que a disposição em camadas do BlueXP  pode ser menor que o número de volumes no sistema ONTAP. Isso porque os volumes não podem ser dispostos em camadas de alguns agregados. Consulte a documentação do ONTAP para https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html#functionality-or-features-not-supported-by-fabricpool["Funcionalidade ou recursos não suportados pelo FabricPool"^].
+
+
+
+TIP: O BlueXP  Tiering é compatível com FlexVol e FlexGroup volumes.
+
+
+
+=== Descobrindo um cluster ONTAP
+
+Você precisa criar um ambiente de trabalho do ONTAP no local no BlueXP  Canvas antes de começar a categorizar dados inativos.
+
+https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
+
+
+
+=== Preparando o armazenamento de objetos compatível com S3
+
+O storage de objetos compatível com S3 deve atender aos seguintes requisitos.
+
+S3 credenciais:: Ao configurar a disposição em camadas para armazenamento de objetos compatível com S3, você será solicitado a criar um bucket S3 ou selecionar um bucket S3 existente. Você precisa fornecer a disposição em camadas do BlueXP  com uma chave de acesso S3 e uma chave secreta. O BlueXP  Tiering usa as chaves para acessar seu bucket.
++
+--
+Essas chaves de acesso devem estar associadas a um usuário que tenha as seguintes permissões:
+
+[source, json]
+----
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+----
+--
+
+
+
+
+=== Criação ou comutação de conetores
+
+Um conector é necessário para categorizar dados na nuvem. Ao separar os dados em camadas em um storage de objetos compatível com S3, um conector precisa estar disponível no local. Você precisará instalar um novo conetor ou certificar-se de que o conetor selecionado atualmente reside no local.
+
+* https://docs.netapp.com/us-en/bluexp-setup-admin/concept-connectors.html["Saiba mais sobre conetores"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html["Instale e configure um conetor no local"^]
+* https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Alternar entre os conetores"^]
+
+
+
+
+=== Preparar a rede para o conetor
+
+Certifique-se de que o conetor tem as ligações de rede necessárias.
+
+.Passos
+. Certifique-se de que a rede onde o conetor está instalado permite as seguintes ligações:
++
+** Uma conexão HTTPS pela porta 443 para o serviço de disposição em camadas do BlueXP  (https://docs.netapp.com/us-en/bluexp-setup-admin/task-set-up-networking-on-prem.html#endpoints-contacted-for-day-to-day-operations["consulte a lista de endpoints"^])
+** Uma conexão HTTPS pela porta 443 para o armazenamento de objetos compatível com S3
+** Uma conexão HTTPS pela porta 443 ao LIF de gerenciamento de cluster do ONTAP
+
+
+
+
+
+
+== Disposição em camadas dos dados inativos do primeiro cluster para storage de objetos compatível com S3
+
+Depois de preparar seu ambiente, comece a categorizar os dados inativos do primeiro cluster.
+
+.O que você vai precisar
+* https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Um ambiente de trabalho no local"^].
+* O FQDN do servidor de armazenamento de objetos compatível com S3 e a porta que será usada para comunicações HTTPS.
+* Uma chave de acesso e chave secreta que tem as permissões S3 necessárias.
+
+
+.Passos
+. Selecione o ambiente de trabalho do ONTAP no local.
+. Clique em *Enable* para o serviço de categorização no painel direito.
++
+image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção disposição em categorias que aparece no lado direito da tela depois de selecionar um ambiente de trabalho ONTAP local."]
+
+. *Definir Nome do armazenamento de objetos*: Insira um nome para este armazenamento de objetos. Deve ser exclusivo de qualquer outro storage de objetos que você esteja usando com agregados nesse cluster.
+. *Selecione Fornecedor*: Selecione *compatível S3* e clique em *continuar*.
+. Conclua as etapas nas páginas *Create Object Storage*:
++
+.. *Servidor*: Insira o FQDN do servidor de armazenamento de objetos compatível com S3, a porta que o ONTAP deve usar para comunicação HTTPS com o servidor e a chave de acesso e chave secreta para uma conta que tenha as permissões S3 necessárias.
+.. *Bucket*: Adicione um novo bucket ou selecione um bucket existente e clique em *Continue*.
+.. *Rede de cluster*: Selecione o espaço IPspace que o ONTAP deve usar para se conetar ao armazenamento de objetos e clique em *continuar*.
++
+A seleção do espaço de IPspace correto garante que a disposição em camadas do BlueXP  possa configurar uma conexão do ONTAP ao seu storage de objetos compatível com S3.
+
++
+Você também pode definir a largura de banda de rede disponível para carregar dados inativos para armazenamento de objetos definindo a "taxa de transferência máxima". Selecione o botão de opção *Limited* e insira a largura de banda máxima que pode ser usada ou selecione *Unlimited* para indicar que não há limite.
+
+
+
+. Na página _success_, clique em *Continue* para configurar seus volumes agora.
+. Na página _volumes de nível_, selecione os volumes para os quais deseja configurar a disposição em categorias e clique em *continuar*:
++
+** Para selecionar todos os volumes, marque a caixa na linha de título (image:button_backup_all_volumes.png[""]) e clique em *Configurar volumes*.
+** Para selecionar vários volumes, marque a caixa para cada volume (image:button_backup_1_volume.png[""]) e clique em *Configurar volumes*.
+** Para selecionar um único volume, clique na linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) do volume.
++
+image:screenshot_tiering_initial_volumes.png["Uma captura de tela que mostra como selecionar um único volume, vários volumes ou todos os volumes e o botão modificar volumes selecionados."]
+
+
+
+. Na caixa de diálogo _Política de disposição em camadas_, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e clique em *aplicar*.
++
+link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
+
++
+image:screenshot_tiering_initial_policy_settings.png["Uma captura de tela que mostra as configurações de diretiva de disposição em camadas configuráveis."]
+
+
+
+.Resultado
+Você configurou com sucesso a disposição de dados em camadas de volumes no cluster para o storage de objetos compatível com S3.
+
+.O que se segue?
+link:task-licensing-cloud-tiering.html["Certifique-se de assinar o serviço de disposição em camadas do BlueXP "].
+
+Você pode revisar informações sobre os dados ativos e inativos no cluster. link:task-managing-tiering.html["Saiba mais sobre como gerenciar suas configurações de disposição em camadas"].
+
+Também é possível criar storage de objetos adicional nos casos em que você pode querer categorizar dados de certos agregados em um cluster para armazenamentos de objetos diferentes. Ou se você planeja usar o espelhamento do FabricPool onde seus dados em camadas são replicados para um armazenamento de objetos adicional. link:task-managing-object-storage.html["Saiba mais sobre como gerenciar armazenamentos de objetos"].

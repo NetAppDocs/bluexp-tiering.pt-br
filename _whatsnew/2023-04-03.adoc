@@ -1,0 +1,15 @@
+= O separador Licenciamento foi removido
+:allow-uri-read: 
+
+
+
+
+=== O separador Licenciamento foi removido
+
+A guia Licenciamento foi removida da interface de disposição em camadas do BlueXP . Todo o licenciamento para assinaturas de pagamento conforme o uso (PAYGO) é acessado a partir do Painel no local de disposição em camadas do BlueXP  agora. Também há um link dessa página para a carteira digital da BlueXP  para que você possa visualizar e gerenciar qualquer BYOL (bring-your-own-licenses) em camadas do BlueXP .
+
+
+
+=== As guias de disposição em camadas foram renomeadas e atualizadas
+
+A guia "Painel de clusters" foi renomeada para "clusters" e a guia "Visão geral on-Prem" foi renomeada para "Painel on-premises". Essas páginas adicionaram algumas informações que o ajudarão a avaliar se você pode otimizar seu espaço de armazenamento com configuração adicional de disposição em camadas.

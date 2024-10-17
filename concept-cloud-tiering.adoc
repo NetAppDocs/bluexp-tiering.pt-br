@@ -1,0 +1,219 @@
+---
+sidebar: sidebar 
+permalink: concept-cloud-tiering.html 
+keywords: cloud tiering, overview, conceptual, value, features, cost, charging, tiering policies, cooling period, fabricpool 
+summary: O serviço de disposição em camadas BlueXP  do NetApp estende o data center para a nuvem ao dispor automaticamente em camadas os dados inativos de clusters ONTAP on-premises para o storage de objetos. Isso libera espaço valioso no cluster para mais workloads, sem fazer alterações na camada de aplicação. A disposição em camadas do BlueXP  pode reduzir custos no data center e permite que você alterne de um modelo CAPEX para um modelo OPEX. 
+---
+= Saiba mais sobre a disposição em camadas do BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+O serviço de disposição em camadas BlueXP  do NetApp estende o data center para a nuvem ao dispor automaticamente em camadas os dados inativos de clusters ONTAP on-premises para o storage de objetos. Isso libera espaço valioso no cluster para mais workloads, sem fazer alterações na camada de aplicação. A disposição em camadas do BlueXP  pode reduzir custos no data center e permite que você alterne de um modelo CAPEX para um modelo OPEX.
+
+O serviço de disposição em camadas do BlueXP  aproveita os recursos do _FabricPool_. O FabricPool é uma tecnologia NetApp Data Fabric que permite a disposição automatizada em camadas de dados em storage de objetos de baixo custo. Os dados ativos (quentes) permanecem na categoria local (agregados ONTAP on-premises), enquanto os dados inativos (frios) são movidos para a categoria de nuvem. Tudo isso preservando a eficiência de dados da ONTAP.
+
+Originalmente compatível com sistemas AFF, FAS e ONTAP Select com agregados all-SSD, a partir do ONTAP 9.8, você pode categorizar dados de agregados que consistem em HDDs, além de SSDs de alta performance.  https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["Considerações e requisitos para usar o FabricPool"^]Consulte para obter detalhes.
+
+A disposição em camadas do BlueXP  pode ser configurada para clusters de nó único, clusters configurados de HA, clusters em configurações de espelhamento de categorias e configurações de MetroCluster usando o espelhamento do FabricPool. As licenças de disposição em camadas do BlueXP  são compartilhadas entre todos os clusters.
+
+https://bluexp.netapp.com/cloud-tiering-service-tco["Use a calculadora de TCO de disposição em camadas da BlueXP  para ver quanto dinheiro você pode economizar"^].
+
+
+
+== Caraterísticas
+
+A disposição em camadas do BlueXP  oferece automação, monitoramento, relatórios e uma interface de gerenciamento comum:
+
+* Com a automação, é mais fácil configurar e gerenciar a disposição de dados em camadas de clusters ONTAP no local para a nuvem
+* Você pode escolher a classe de storage/camada de acesso do fornecedor de nuvem padrão ou usar o gerenciamento de ciclo de vida para atribuir uma camada mais econômica a dados em camadas mais antigos
+* Você pode criar conexões com armazenamentos de objetos adicionais que podem ser usados para outros agregados em seu cluster
+* Usando a IU, você pode arrastar armazenamentos de objetos para um agregado para disposição em camadas e para espelhamento FabricPool
+* Um único painel remove a necessidade de gerenciar o FabricPool de forma independente em vários clusters
+* Os relatórios mostram a quantidade de dados ativos e inativos em cada cluster
+* O status de integridade em categorias ajuda você a identificar e corrigir problemas conforme eles ocorrem
+* Se você tiver sistemas Cloud Volumes ONTAP, os encontrará na página clusters para ter uma visão completa da disposição de dados em sua infraestrutura de nuvem híbrida
+
+
+Para obter mais detalhes sobre o valor que a disposição em camadas do BlueXP  fornece, https://bluexp.netapp.com/cloud-tiering["Confira a página de disposição em categorias do BlueXP  no site do BlueXP "^].
+
+
+TIP: Os sistemas Cloud Volumes ONTAP são somente leitura a partir da disposição em camadas do BlueXP . https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["Você configurou a disposição em camadas para sistemas Cloud Volumes ONTAP a partir do ambiente de trabalho no BlueXP "^].
+
+
+
+== Fornecedores de storage de objetos compatíveis
+
+É possível categorizar dados inativos de um sistema ONTAP no local para os seguintes fornecedores de storage de objetos:
+
+* Amazon S3
+* Microsoft Azure Blob
+* Google Cloud Storage
+* NetApp StorageGRID
+* Armazenamento de objetos compatível com S3 (por exemplo, MinIO)
+
+
+As licenças de disposição em camadas do BlueXP  também podem ser compartilhadas com os clusters que estão em camadas de dados no storage de objetos do IBM Cloud. A configuração do FabricPool deve ser configurada usando o Gerenciador de sistema ou a CLI do ONTAP, mas link:task-licensing-cloud-tiering.html#apply-bluexp-tiering-licenses-to-clusters-in-special-configurations["O licenciamento para esse tipo de configuração é concluído usando a disposição em camadas do BlueXP ."]
+
+
+NOTE: É possível categorizar dados de volumes nas para a nuvem pública ou nuvens privadas, como o StorageGRID. Ao dispor em camadas os dados acessados por protocolos SAN, a NetApp recomenda o uso de nuvens privadas devido a considerações de conectividade.
+
+
+
+=== Camadas de storage de objetos
+
+Os clusters do ONTAP podem categorizar dados inativos em um único armazenamento de objetos ou em vários armazenamentos de objetos. Ao configurar a disposição de dados em categorias, você pode adicionar um novo bucket/contêiner ou selecionar um bucket/contêiner existente, juntamente com uma classe de storage ou uma categoria de acesso.
+
+* link:reference-aws-support.html["Saiba mais sobre as classes de armazenamento compatíveis do AWS S3"]
+* link:reference-azure-support.html["Saiba mais sobre os níveis de acesso Blob do Azure compatíveis"]
+* link:reference-google-support.html["Saiba mais sobre as classes de armazenamento compatíveis do Google Cloud"]
+
+
+A disposição em camadas do BlueXP  usa a classe de storage padrão/camada de acesso do fornecedor de nuvem para seus dados inativos. No entanto, você pode aplicar uma regra de ciclo de vida para que os dados transitem automaticamente da classe de storage padrão para outra classe de storage após um determinado número de dias. Isso pode ajudar a reduzir os custos, movendo dados muito inativos para um storage mais barato.
+
+
+NOTE: Não é possível selecionar regras de ciclo de vida para dados dispostos em camadas no storage compatível com StorageGRID ou S3.
+
+
+
+== Preços e licenças
+
+Pague em categorias pelo BlueXP  com uma subscrição com pagamento conforme o uso, uma subscrição anual, uma licença "traga sua própria disposição" em categorias da BlueXP  ou uma combinação. Uma avaliação gratuita de 30 dias está disponível para o seu primeiro cluster se você não tiver uma licença.
+
+Não há cobrança ao categorizar dados no StorageGRID. Nem uma licença BYOL ou Registro PAYGO são necessários.
+
+https://bluexp.netapp.com/pricing#tiering["Ver detalhes de preços"^].
+
+Como a disposição em camadas do BlueXP  preserva as eficiências de storage do volume de origem, você paga os custos de storage de objetos do fornecedor de nuvem pelos dados em camadas após as eficiências de ONTAP (para o menor volume de dados após a aplicação de deduplicação e compactação).
+
+
+
+=== teste gratuito de 30 dias
+
+Se você não tiver uma licença de disposição em camadas do BlueXP , uma avaliação gratuita de 30 dias da disposição em camadas do BlueXP  será iniciada quando você configurar a disposição em camadas no primeiro cluster. Após o término da avaliação gratuita de 30 dias, você precisará pagar pela disposição em camadas do BlueXP  por meio de uma assinatura paga conforme o uso, uma assinatura anual, uma licença BYOL ou uma combinação.
+
+Se a avaliação gratuita terminar e você não tiver assinado ou adicionado uma licença, o ONTAP não poderá mais classificar os dados inativos no storage de objetos. Todos os dados em camadas anteriores permanecem acessíveis, o que significa que você pode recuperar e usar esses dados. Quando recuperados, esses dados são movidos de volta para o nível de performance da nuvem.
+
+
+
+=== Subscrição com pagamento conforme o uso
+
+A disposição em camadas do BlueXP  oferece licenciamento baseado no consumo em um modelo de pagamento conforme o uso. Depois de se inscrever no mercado do seu provedor de nuvem, você paga por GB pelos dados que estão dispostos em camadas - não há pagamento inicial. Você é cobrado pelo seu provedor de nuvem por meio da sua fatura mensal.
+
+Você deve se inscrever mesmo se você tiver uma avaliação gratuita ou se você trouxer sua própria licença (BYOL):
+
+* A assinatura garante que não haja interrupção do serviço após o término da avaliação gratuita.
++
+Quando a avaliação terminar, você será cobrado por hora de acordo com a quantidade de dados categorizados.
+
+* Se você categorizar mais dados do que o permitido pela sua licença BYOL, a categorização de dados continuará em sua assinatura com pagamento conforme o uso.
++
+Por exemplo, se você tiver uma licença de 10 TB, toda a capacidade além dos 10 TB será cobrada por meio da assinatura paga conforme o uso.
+
+
+
+Você não será cobrado pela sua assinatura paga conforme o uso durante a avaliação gratuita ou se não tiver excedido a licença BYOL em categorias do BlueXP .
+
+link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-paygo-subscription["Saiba como configurar uma assinatura paga conforme o uso"].
+
+
+
+=== Contrato anual
+
+A disposição em camadas do BlueXP  oferece um contrato anual ao categorizar dados inativos no Amazon S3 ou Azure. Está disponível em termos de 1, 2 ou 3 anos.
+
+Atualmente, os contratos anuais não são compatíveis com a disposição em camadas no Google Cloud.
+
+
+
+=== Traga sua própria licença
+
+Traga sua própria licença comprando uma licença *BlueXP  Tiering* da NetApp (anteriormente conhecida como uma licença de "disposição em camadas na nuvem"). Você pode comprar licenças de prazo de 1, 2 ou 3 anos e especificar qualquer quantidade de capacidade de disposição em camadas (começando no mínimo 10 TIB). A licença de disposição em camadas do BYOL BlueXP  é uma licença _flutuante_ que pode ser usada em vários clusters ONTAP locais. A capacidade de disposição em camadas total definida na sua licença de disposição em camadas do BlueXP  pode ser usada por todos os clusters no local.
+
+Depois de comprar uma licença de disposição em camadas do BlueXP , você precisará usar a carteira digital do BlueXP  no BlueXP  para adicionar a licença. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Veja como usar uma licença BYOL em camadas do BlueXP "].
+
+Como mencionado acima, recomendamos que você configure uma assinatura paga conforme o uso, mesmo que você tenha adquirido uma licença BYOL.
+
+
+NOTE: A partir de agosto de 2021, a antiga licença *FabricPool* foi substituída pela licença *disposição em camadas na nuvem*. link:task-licensing-cloud-tiering.html#bluexp-tiering-byol-licensing-starting-in-2021["Leia mais sobre como a licença de disposição em camadas do BlueXP  é diferente da licença do FabricPool"].
+
+
+
+== Como funciona a disposição em camadas do BlueXP 
+
+A disposição em camadas do BlueXP  é um serviço gerenciado por NetApp que usa a tecnologia FabricPool para categorizar automaticamente os dados inativos (frios) dos clusters ONTAP no local para o storage de objetos na nuvem pública ou privada. As ligações ao ONTAP ocorrem a partir de um conetor.
+
+A imagem a seguir mostra a relação entre cada componente:
+
+image:diagram_cloud_tiering.png["Imagem de arquitetura que mostra o serviço de disposição em camadas do BlueXP  com uma conexão ao conector no seu fornecedor de nuvem, o conetor com uma conexão ao cluster do ONTAP e uma conexão entre o cluster do ONTAP e o storage de objetos no seu fornecedor de nuvem. Os dados ativos residem no cluster do ONTAP, enquanto os dados inativos residem no storage de objetos."]
+
+Em um alto nível, a disposição em camadas do BlueXP  funciona assim:
+
+. Descubra seu cluster no local com a BlueXP .
+. Configure a disposição em camadas fornecendo detalhes sobre o storage de objetos, incluindo o bucket/contêiner, uma classe de storage ou camada de acesso, e regras de ciclo de vida dos dados categorizados.
+. O BlueXP  configura o ONTAP para usar o fornecedor de storage de objetos e descobre a quantidade de dados ativos e inativos no cluster.
+. Você escolhe os volumes a categorizar e a política de disposição em camadas a serem aplicados a esses volumes.
+. O ONTAP começa a categorizar dados inativos no armazenamento de objetos assim que os dados atingirem os limites a serem considerados inativos (<<Políticas de disposição em camadas de volume>>consulte ).
+. Se você tiver aplicado uma regra de ciclo de vida aos dados em camadas (disponível apenas para alguns provedores), os dados em camadas mais antigos serão atribuídos a um nível mais econômico após um determinado número de dias.
+
+
+
+
+=== Políticas de disposição em camadas de volume
+
+Quando você seleciona os volumes que deseja categorizar, você escolhe uma política de disposição em camadas _volume_ para aplicar a cada volume. Uma política de disposição em categorias determina quando ou se os blocos de dados de usuário de um volume são movidos para a nuvem.
+
+Você também pode ajustar o *período de resfriamento*. Esse é o número de dias em que os dados do usuário em um volume devem permanecer inativos antes de serem considerados "frios" e movidos para o storage de objetos. Para políticas de disposição em camadas que permitem ajustar o período de resfriamento, os valores válidos são de 2 a 183 dias ao usar o ONTAP 9.8 e posterior e de 2 a 63 dias para versões anteriores do ONTAP; 2 a 63 é a prática recomendada.
+
+Nenhuma política (Nenhuma):: Mantém os dados em um volume na categoria de performance, impedindo que eles sejam movidos para a categoria de nuvem.
+Snapshots inativos (somente Snapshot):: O ONTAP dispõe de blocos de Snapshot frio no volume que não são compartilhados com o sistema de arquivos ativo para o storage de objetos. Se lidos, os blocos de dados inativos na camada de nuvem ficam ativos e são movidos para a categoria de performance.
++
+--
+Os dados são dispostos somente depois que um agregado atingiu a capacidade de 50% e quando os dados alcançaram o período de resfriamento. O número padrão de dias de resfriamento é 2, mas você pode ajustar esse número.
+
+
+NOTE: Os dados reaquecidos são gravados de volta ao nível de performance somente se houver espaço. Se a capacidade da categoria de performance estiver acima de 70% cheia, os blocos continuarão sendo acessados a partir da camada de nuvem.
+
+--
+Dados inativos do utilizador e instantâneos (Auto):: O ONTAP coloca todos os blocos inativos no volume (não incluindo metadados) no storage de objetos. Os dados inativos incluem não apenas cópias Snapshot, mas também os dados de usuários inativos do sistema de arquivos ativo.
++
+--
+Se forem lidos por leituras aleatórias, os blocos de dados inativos na camada de nuvem ficam ativos e são movidos para a camada de performance. Se forem lidos por leituras sequenciais, como as associadas a verificações de índice e antivírus, os blocos de dados inativos na camada de nuvem permanecem inativos e não são gravados na camada de performance. Esta política está disponível a partir do ONTAP 9.4.
+
+Os dados são dispostos somente depois que um agregado atingiu a capacidade de 50% e quando os dados alcançaram o período de resfriamento. O número padrão de dias de resfriamento é 31, mas você pode ajustar esse número.
+
+
+NOTE: Os dados reaquecidos são gravados de volta ao nível de performance somente se houver espaço. Se a capacidade da categoria de performance estiver acima de 70% cheia, os blocos continuarão sendo acessados a partir da camada de nuvem.
+
+--
+Todos os dados do utilizador (todos):: Todos os dados (não incluindo metadados) são imediatamente marcados como frios e dispostos em camadas no storage de objetos o mais rápido possível. Não há necessidade de esperar 48 horas para que novos blocos em um volume fiquem frios. Observe que os blocos localizados no volume antes da política tudo ser definida exigem 48 horas para ficarem frios.
++
+--
+Se lidos, os blocos de dados inativos na categoria de nuvem não são gravados de volta na categoria de performance. Esta política está disponível a partir do ONTAP 9.6.
+
+Leve o seguinte em consideração antes de escolher essa política de disposição em categorias:
+
+* A disposição de dados em categorias reduz imediatamente as eficiências de storage (somente inline).
+* Você deve usar esta política somente se tiver certeza de que os dados inativos no volume não serão alterados.
+* O armazenamento de objetos não é transacional e resultará em fragmentação significativa se sujeito a alterações.
+* Considere o impacto das transferências SnapMirror antes de atribuir a política de todas as categorias aos volumes de origem em relacionamentos de proteção de dados.
++
+Como os dados são dispostos imediatamente, o SnapMirror lê os dados da camada de nuvem e não da camada de performance. Isso resultará em operações mais lentas do SnapMirror - possivelmente retardando outras operações do SnapMirror mais tarde na fila - mesmo que estejam usando políticas de disposição em camadas diferentes.
+
+* O backup e a recuperação do BlueXP  são igualmente afetados por volumes definidos com uma política de disposição em camadas. https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-ontap-backup-to-cloud.html#fabricpool-tiering-policy-considerations["Consulte considerações sobre a política de disposição em camadas com backup e recuperação do BlueXP "^].
+
+
+--
+Todos os dados do usuário DP (Backup):: Todos os dados em um volume de proteção de dados (não incluindo metadados) são movidos imediatamente para a categoria de nuvem. Se lidos, os blocos de dados inativos na categoria de nuvem permanecem inativos e não são gravados de volta na categoria de performance (começando com ONTAP 9.4).
++
+--
+
+NOTE: Esta política está disponível para o ONTAP 9.5 ou anterior. Ela foi substituída pela política de disposição em camadas *All* a partir do ONTAP 9.6.
+
+--
+

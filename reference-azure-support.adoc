@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: reference-azure-support.html 
+keywords: microsoft azure, azure, hot, access tier, cold, regions 
+summary: A disposição em camadas do BlueXP  é compatível com duas categorias de acesso e a maioria das regiões. 
+---
+= Camadas e regiões de acesso Blob do Azure compatíveis
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+A disposição em camadas do BlueXP  é compatível com duas categorias de acesso e a maioria das regiões.
+
+
+
+== Camadas de acesso Azure Blob compatíveis
+
+Quando você configura a disposição de dados em categorias no Azure a partir de seus sistemas ONTAP locais, a disposição em camadas do BlueXP  usa automaticamente o nível _Hot_ Access para seus dados inativos. A disposição em camadas do BlueXP  pode aplicar uma regra de ciclo de vida para que os dados transitem do nível de acesso _quente_ para o nível de acesso _frio_ depois de um determinado número de dias.
+
+Se você não escolher o nível de acesso _Cool_, os dados permanecerão no nível de acesso _Hot_ e nenhuma regra será aplicada.
+
+Quando você configura uma regra de ciclo de vida em camadas do BlueXP , não deve configurar nenhuma regra de ciclo de vida ao configurar o contêiner em sua conta do Azure.
+
+https://docs.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview["Saiba mais sobre os níveis de acesso ao Blob do Azure"^].
+
+
+
+== Regiões Azure compatíveis
+
+A disposição em camadas do BlueXP  é compatível com a disposição em camadas em qualquer conta de storage em qualquer região que possa ser acessada pelo conector.

@@ -1,0 +1,17 @@
+= Ajuste a largura de banda para transferir dados inativos
+:allow-uri-read: 
+
+
+
+
+=== Ajuste a largura de banda para transferir dados inativos
+
+Ao ativar a disposição em camadas do BlueXP , o ONTAP pode usar uma quantidade ilimitada de largura de banda da rede para transferir os dados inativos de volumes no cluster para o storage de objetos. Se você notar que a disposição em categorias de tráfego está afetando as cargas de trabalho normais do usuário, poderá controlar a quantidade de largura de banda que pode ser usada durante a transferência. https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage["Saiba mais"].
+
+
+
+=== Evento de disposição em camadas exibido no Centro de notificações
+
+O evento de disposição em camadas "armazene dados adicionais do cluster <name> ao storage de objetos para aumentar a eficiência de storage" agora aparece como uma notificação quando um cluster está em camadas menos de 20% dos dados inativos, incluindo clusters que não estão em camadas.
+
+Esta notificação é uma "recomendação" para ajudar a tornar seus sistemas mais eficientes e economizar nos custos de armazenamento. Ele fornece um link para o https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de economia e custo total de propriedade em camadas do BlueXP"^] para ajudá-lo a calcular suas economias de custo.

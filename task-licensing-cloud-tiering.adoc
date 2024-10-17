@@ -1,0 +1,321 @@
+---
+sidebar: sidebar 
+permalink: task-licensing-cloud-tiering.html 
+keywords: subscribe, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering 
+summary: Uma avaliação gratuita de 30 dias da disposição em camadas do BlueXP  começa quando você configura a disposição em camadas no primeiro cluster. Após o término da avaliação gratuita, você precisará pagar pela disposição em camadas do BlueXP  por meio de uma assinatura anual ou de pagamento conforme o uso no mercado do seu fornecedor de nuvem, uma licença BYOL da NetApp ou uma combinação de ambos. 
+---
+= Configurar o licenciamento para a disposição em camadas do BlueXP 
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Uma avaliação gratuita de 30 dias da disposição em camadas do BlueXP  começa quando você configura a disposição em camadas no primeiro cluster. Após o término da avaliação gratuita, você precisará pagar pela disposição em camadas do BlueXP  por meio de uma assinatura anual ou de pagamento conforme o uso no mercado do seu fornecedor de nuvem, uma licença BYOL da NetApp ou uma combinação de ambos.
+
+Algumas notas antes de ler mais:
+
+* Se você já se inscreveu na assinatura BlueXP  (PAYGO) no mercado do seu fornecedor de nuvem, também se inscreveu automaticamente em BlueXP  Tiering para sistemas ONTAP no local. Você verá uma assinatura ativa na guia BlueXP  Tiering *on-premises dashboard*. Você não precisará se inscrever novamente. Você verá uma assinatura ativa na carteira digital BlueXP .
+* A licença de disposição em camadas do BYOL BlueXP  (anteriormente conhecida como uma licença de "disposição em camadas na nuvem") é uma licença _flutuante_ que pode ser usada em vários clusters ONTAP locais na sua organização do BlueXP . Isso é diferente (e muito mais fácil) do que no passado, onde você comprou uma licença _FabricPool_ para cada cluster.
+* Não há cobrança ao categorizar dados no StorageGRID. Portanto, nem uma licença BYOL ou Registro PAYGO são necessários. Esses dados em camadas não contam com a capacidade adquirida em sua licença.
+
+
+link:concept-cloud-tiering.html#pricing-and-licenses["Saiba mais sobre como o licenciamento funciona para a disposição em camadas do BlueXP "].
+
+
+
+== teste gratuito de 30 dias
+
+Se você não tiver uma licença de disposição em camadas do BlueXP , uma avaliação gratuita de 30 dias da disposição em camadas do BlueXP  será iniciada quando você configurar a disposição em camadas no primeiro cluster. Após o término da avaliação gratuita de 30 dias, você precisará pagar pela disposição em camadas do BlueXP  por meio de uma assinatura paga conforme o uso, uma assinatura anual, uma licença BYOL ou uma combinação.
+
+Se a avaliação gratuita terminar e você não tiver assinado ou adicionado uma licença, o ONTAP não poderá mais classificar os dados inativos no storage de objetos. Todos os dados em camadas anteriores permanecem acessíveis, o que significa que você pode recuperar e usar esses dados. Quando recuperados, esses dados são movidos de volta para o nível de performance da nuvem.
+
+
+
+== Use uma subscrição PAYGO com disposição em camadas do BlueXP 
+
+As assinaturas com pagamento conforme o uso do mercado do seu fornecedor de nuvem permitem que você licencie o uso de sistemas Cloud Volumes ONTAP e muitos Serviços de dados em nuvem, como a disposição em camadas do BlueXP .
+
+
+
+=== Subscrever a partir do AWS Marketplace
+
+Inscreva-se na disposição em camadas do BlueXP  no AWS Marketplace para configurar uma assinatura com pagamento conforme o uso para disposição de dados em categorias dos clusters do ONTAP no AWS S3.
+
+[[subscribe-aws]]
+.Passos
+. No BlueXP , clique em *Mobilidade > disposição em categorias > Painel local*.
+. Na seção _assinaturas do Marketplace_, clique em *Inscrever-se* em Amazon Web Services e clique em *continuar*.
+. Assine a partir do https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4["AWS Marketplace"^]e, em seguida, faça login novamente no site da BlueXP  para concluir o Registro.
++
+O vídeo a seguir mostra o processo:
+
++
+video::video_subscribing_aws_tiering.mp4[width=848,height=480]
+
+
+
+
+=== Subscrever a partir do Azure Marketplace
+
+Inscreva-se na disposição em camadas do BlueXP  no mercado do Azure para configurar uma assinatura de pagamento conforme o uso para categorização de dados dos clusters do ONTAP para o storage Azure Blob.
+
+[[subscribe-azure]]
+.Passos
+. No BlueXP , clique em *Mobilidade > disposição em categorias > Painel local*.
+. Na seção _assinaturas do Marketplace_, clique em *Subscribe* em Microsoft Azure e clique em *Continue*.
+. Assine a partir do https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Azure Marketplace"^]e, em seguida, faça login novamente no site da BlueXP  para concluir o Registro.
++
+O vídeo a seguir mostra o processo:
+
++
+video::video_subscribing_azure_tiering.mp4[width=848,height=480]
+
+
+
+
+=== Subscrever a partir do Google Cloud Marketplace
+
+Inscreva-se na disposição em camadas do BlueXP  no mercado para configurar uma assinatura com pagamento conforme o uso para categorização de dados dos clusters do ONTAP para o storage do Google Cloud.
+
+[[subscribe-gcp]]
+.Passos
+. No BlueXP , clique em *Mobilidade > disposição em categorias > Painel local*.
+. Na seção _assinaturas do Marketplace_, clique em *Inscrever-se* no Google Cloud e clique em *continuar*.
+. Assine a partir do https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project["Google Cloud Marketplace"^]e, em seguida, faça login novamente no site da BlueXP  para concluir o Registro.
++
+O vídeo a seguir mostra o processo:
+
++
+video::video_subscribing_gcp_tiering.mp4[width=848,height=480]
+
+
+
+
+== Use um contrato anual
+
+Pague pela disposição em camadas do BlueXP  anualmente comprando um contrato anual. Os contratos anuais estão disponíveis em termos de 1, 2 ou 3 anos.
+
+Ao categorizar dados inativos na AWS, você pode assinar um contrato anual do https://aws.amazon.com/marketplace/pp/prodview-q7dg6zwszplri["Página do AWS Marketplace"^]. Se você quiser usar essa opção, configure sua assinatura na página do Marketplace e, em seguida https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-aws-accounts.html#associate-an-aws-subscription["Associe a assinatura às suas credenciais da AWS"^], .
+
+Ao categorizar dados inativos no Azure, você pode assinar um contrato anual do https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-bluexp["Página do Azure Marketplace"^]. Se você quiser usar essa opção, configure sua assinatura na página do Marketplace e, em seguida https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-azure-accounts.html#subscribe["Associe a assinatura às suas credenciais do Azure"^], .
+
+Atualmente, os contratos anuais não são compatíveis com a disposição em categorias no Google Cloud.
+
+
+
+== Use uma licença BYOL em camadas da BlueXP 
+
+As licenças bring-your-own da NetApp fornecem termos de 1, 2 ou 3 anos. A licença BYOL *BlueXP  Tiering* (anteriormente conhecida como uma licença de "disposição em camadas na nuvem") é uma licença _flutuante_ que você pode usar em vários clusters ONTAP locais em sua organização do BlueXP . A capacidade total de disposição em camadas definida na sua licença de disposição em camadas do BlueXP  é compartilhada entre *todos* dos clusters no local, facilitando o licenciamento e a renovação iniciais. A capacidade mínima para uma licença BYOL em camadas começa em 10 TIB.
+
+Se você não tiver uma licença de disposição em camadas do BlueXP , entre em Contato conosco para comprar uma:
+
+* O NetApp.com está sujeito a licenciamento[Enviar e-mail para comprar uma licença].
+* Clique no ícone de bate-papo no canto inferior direito do BlueXP  para solicitar uma licença.
+
+
+Opcionalmente, se você tiver uma licença não atribuída baseada em nó para o Cloud Volumes ONTAP que não usará, poderá convertê-la em uma licença de disposição em camadas do BlueXP  com a mesma equivalência em dólar e a mesma data de expiração. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses["Acesse aqui para obter detalhes"^].
+
+Você usa a página da carteira digital do BlueXP  para gerenciar as licenças BYOL em camadas do BlueXP . Você pode adicionar novas licenças e atualizar as licenças existentes.
+
+
+
+=== BlueXP  disposição em camadas no licenciamento BYOL a partir de 2021
+
+A nova licença *BlueXP  Tiering* foi introduzida em agosto de 2021 para configurações de disposição em camadas compatíveis com o BlueXP  usando o serviço BlueXP  Tiering. O BlueXP  atualmente oferece suporte à disposição em camadas no seguinte storage de nuvem: Amazon S3, storage de Blob do Azure, Google Cloud Storage, NetApp StorageGRID e storage de objetos compatível com S3.
+
+A licença *FabricPool* que você pode ter usado no passado para categorizar dados ONTAP on-premises na nuvem está sendo retida apenas para implantações ONTAP em sites que não têm acesso à Internet (também conhecidos como "dark sites") e para categorizar configurações no armazenamento de objetos em nuvem. Se você estiver usando esse tipo de configuração, instale uma licença do FabricPool em cada cluster usando o Gerenciador do sistema ou a CLI do ONTAP.
+
+
+TIP: Observe que a disposição em categorias no StorageGRID não exige uma licença de disposição em camadas do FabricPool ou do BlueXP .
+
+Se você estiver usando o licenciamento do FabricPool, não será afetado até que sua licença do FabricPool atinja a data de expiração ou a capacidade máxima. Entre em Contato com a NetApp quando precisar atualizar sua licença ou anterior para garantir que não haja interrupção na capacidade de categorizar dados na nuvem.
+
+* Se você estiver usando uma configuração compatível com o BlueXP , suas licenças do FabricPool serão convertidas em licenças de disposição em camadas do BlueXP  e aparecerão na carteira digital do BlueXP . Quando essas licenças iniciais expirarem, você precisará atualizar as licenças de disposição em camadas do BlueXP .
+* Se você estiver usando uma configuração que não é suportada no BlueXP , continuará usando uma licença do FabricPool. https://docs.netapp.com/us-en/ontap/cloud-install-fabricpool-task.html["Veja como licenciar a disposição em camadas usando o System Manager"^].
+
+
+Aqui estão algumas coisas que você precisa saber sobre as duas licenças:
+
+[cols="50,50"]
+|===
+| Licença de disposição em camadas do BlueXP  | Licença FabricPool 
+
+
+| É uma licença _flutuante_ que você pode usar em vários clusters ONTAP on-premises. | É uma licença por cluster que você compra e licencia para _every_ cluster. 
+
+
+| Está registado na carteira digital BlueXP . | Ela é aplicada a clusters individuais usando o System Manager ou a CLI do ONTAP. 
+
+
+| O gerenciamento e a configuração de disposição em camadas são feitos pelo serviço de disposição em camadas do BlueXP  no BlueXP . | O gerenciamento e a configuração de disposição em camadas são feitos pelo System Manager ou pela CLI do ONTAP. 
+
+
+| Uma vez configurado, você pode usar o serviço de disposição em camadas sem licença por 30 dias usando a avaliação gratuita. | Uma vez configurado, você pode categorizar os primeiros 10 TB de dados gratuitamente. 
+|===
+
+
+=== Obter seu arquivo de licença de disposição em camadas do BlueXP 
+
+Depois de adquirir sua licença de disposição em camadas do BlueXP , você ativa a licença no BlueXP  inserindo o número de série e a conta NSS do BlueXP , ou carregando o arquivo de licença do NLF. As etapas abaixo mostram como obter o arquivo de licença NLF se você planeja usar esse método.
+
+.Antes de começar
+Você precisará do número de série de disposição em camadas do BlueXP . Localize esse número no seu pedido de vendas ou entre em Contato com a equipe da conta para obter essas informações.
+
+.Passos
+. Encontre o ID da sua conta BlueXP :
++
+.. No canto superior direito do console BlueXP , image:icon-settings-option.png["O ícone de configurações que é exibido no canto superior direito do console da Web do BlueXP ."]selecione > *Gerenciamento de identidade e acesso*.
+.. Na página Organização, procure o ID da sua conta e copie-o.
++
+Se não houver um ID de conta listado e você tiver apenas um ID de organização, precisará copiar os primeiros oito carateres do ID da organização e anexá-lo a _conta-_
+
++
+Por exemplo, digamos que este é o ID da sua organização:
+
++
+ea10e1c6-80cc-4219-8e99-3c3e6b161ba5
+
++
+O seu ID de conta seria o seguinte:
+
++
+conta-ea10e1c6
+
+
+
+. Inicie sessão no https://mysupport.netapp.com["Site de suporte da NetApp"^] e clique em *sistemas > licenças de software*.
+. Insira o número de série da licença de disposição em camadas do BlueXP .
++
+image:screenshot_cloud_tiering_license_step1.gif["Uma captura de tela que mostra uma tabela de licenças depois de pesquisar por número de série."]
+
+. Na coluna *chave de licença*, clique em *obter ficheiro de licença NetApp*.
+. Introduza a sua ID de conta do BlueXP  (chamada ID do locatário no site de suporte) e clique em *Enviar* para transferir o ficheiro de licença.
++
+image:screenshot_cloud_tiering_license_step2.gif["Uma captura de tela que mostra a caixa de diálogo obter licença onde você insere seu ID de locatário e, em seguida, clique em Enviar para baixar o arquivo de licença."]
+
+
+
+
+
+=== Adicione licenças BYOL de disposição em camadas do BlueXP  à sua conta
+
+Depois de adquirir uma licença de disposição em camadas do BlueXP , você precisa adicionar a licença ao BlueXP  para usar o serviço de disposição em camadas do BlueXP .
+
+.Passos
+. Clique em *Governança > carteira digital > licenças de serviços de dados*.
+. Clique em *Adicionar licença*.
+. Na caixa de diálogo _Adicionar licença_, insira as informações da licença e clique em *Adicionar licença*:
++
+** Se você tiver o número de série da licença de disposição em camadas e souber sua conta NSS, selecione a opção *Inserir número de série* e insira essas informações.
++
+Se a conta do site de suporte da NetApp não estiver disponível na lista suspensa, https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["Adicione a conta NSS ao BlueXP"^].
+
+** Se você tiver o arquivo de licença em camadas, selecione a opção *Upload License File* e siga as instruções para anexar o arquivo.
++
+image:screenshot_services_license_add.png["Uma captura de tela que mostra a página para adicionar a licença BYOL de disposição em camadas do BlueXP ."]
+
+
+
+
+
+.Resultado
+O BlueXP  adiciona a licença para que seu serviço de disposição em camadas do BlueXP  fique ativo.
+
+
+
+=== Atualizar uma licença BYOL de disposição em camadas do BlueXP 
+
+Se o seu prazo licenciado estiver próximo à data de expiração ou se a capacidade licenciada estiver atingindo o limite, você será notificado em BlueXP  Tiering.
+
+image:screenshot_services_license_expire2.png["Uma captura de tela que mostra uma licença expirando na página de disposição em camadas do BlueXP ."]
+
+Este estado também aparece na página da carteira digital BlueXP .
+
+image:screenshot_services_license_expire1.png["Uma captura de tela que mostra uma licença expirando na página da carteira digital do BlueXP ."]
+
+Você pode atualizar sua licença de disposição em categorias do BlueXP  antes que ela expire, para que não haja interrupção na capacidade de categorizar dados na nuvem.
+
+.Passos
+. Clique no ícone de bate-papo no canto inferior direito do BlueXP  para solicitar uma extensão para seu termo ou capacidade adicional para sua licença de disposição em camadas do BlueXP  para o número de série específico.
++
+Depois de pagar a licença e esta ser registada no Site de suporte da NetApp, a BlueXP  atualiza automaticamente a licença na carteira digital da BlueXP  e a página licenças dos Serviços de dados refletirá a alteração em 5 a 10 minutos.
+
+. Se o BlueXP  não conseguir atualizar automaticamente a licença, você precisará fazer o upload manual do arquivo de licença.
++
+.. Você pode <<Obter seu arquivo de licença de disposição em camadas do BlueXP ,Obtenha o arquivo de licença no site de suporte da NetApp>>.
+.. Na página carteira digital do BlueXP  na guia _licenças de serviços de dados_, clique image:screenshot_horizontal_more_button.gif["Ícone mais"] para obter o número de série do serviço que você está atualizando e clique em *Atualizar licença*.
++
+image:screenshot_services_license_update.png["Uma captura de tela da seleção do botão Atualizar Licença para um serviço específico."]
+
+.. Na página _Atualizar Licença_, carregue o arquivo de licença e clique em *Atualizar Licença*.
+
+
+
+
+.Resultado
+O BlueXP  atualiza a licença para que seu serviço de disposição em camadas do BlueXP  continue ativo.
+
+
+
+== Aplicar licenças de disposição em camadas do BlueXP  aos clusters em configurações especiais
+
+Os clusters do ONTAP nas configurações a seguir podem usar as licenças de disposição em camadas do BlueXP , mas a licença deve ser aplicada de maneira diferente dos clusters de nó único, clusters configurados de HA, clusters em configurações de disposição em camadas espelhadas e configurações do MetroCluster usando o espelhamento do FabricPool:
+
+* Clusters que são dispostos em camadas no IBM Cloud Object Storage
+* Clusters que são instalados em "locais escuros"
+
+
+
+
+=== Processo para clusters existentes que têm uma licença FabricPool
+
+Quando você link:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering["Descubra qualquer um desses tipos de cluster especiais na disposição em camadas do BlueXP "], a disposição em camadas do BlueXP  reconhece a licença do FabricPool e a adiciona à carteira digital do BlueXP . Esses clusters continuarão a dispor os dados em camadas como de costume. Quando a licença do FabricPool expirar, você precisará comprar uma licença de disposição em camadas do BlueXP .
+
+
+
+=== Processo para clusters recém-criados
+
+Ao descobrir clusters típicos em disposição em camadas do BlueXP , você configurará a disposição em camadas usando a interface de disposição em camadas do BlueXP . Nesses casos, as seguintes ações acontecem:
+
+. A licença de disposição em camadas do BlueXP  "pai" controla a capacidade que está sendo usada para disposição em camadas por todos os clusters para garantir que haja capacidade suficiente na licença. A capacidade total licenciada e a data de expiração são mostradas na carteira digital da BlueXP .
+. Uma licença de disposição em camadas "filho" é instalada automaticamente em cada cluster para se comunicar com a licença "pai".
+
+
+
+NOTE: A capacidade licenciada e a data de expiração mostradas no Gerenciador de sistema ou na CLI do ONTAP para a licença "filho" não são as informações reais, portanto, não se preocupe se as informações não forem as mesmas. Esses valores são gerenciados internamente pelo software de disposição em camadas da BlueXP . A informação real é rastreada na carteira digital BlueXP .
+
+Para as duas configurações listadas acima, você precisará configurar a disposição em camadas usando o Gerenciador do sistema ou a CLI do ONTAP (não usando a interface de disposição em camadas do BlueXP ). Então, nesses casos, você precisará enviar a licença "filho" para esses clusters manualmente a partir da interface de disposição em camadas do BlueXP .
+
+Observe que, como os dados são categorizados em dois locais de armazenamento de objetos diferentes para configurações do Tiering Mirror, você precisará adquirir uma licença com capacidade suficiente para separar os dados em categorias em ambos os locais.
+
+.Passos
+. Instale e configure clusters do ONTAP usando o Gerenciador do sistema ou a CLI do ONTAP.
++
+Não configure a disposição em camadas neste momento.
+
+. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Compre uma licença de disposição em camadas do BlueXP "] para a capacidade necessária para o novo cluster, ou clusters.
+. Em BlueXP link:task-licensing-cloud-tiering.html#add-bluexp-tiering-byol-licenses-to-your-account["Adicione a licença à carteira digital BlueXP "], .
+. Na disposição em camadas do BlueXP link:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering["descubra os novos clusters"], .
+. Na página clusters, clique image:screenshot_horizontal_more_button.gif["Ícone mais"] em para o cluster e selecione *Deploy License*.
++
+image:screenshot_tiering_deploy_license.png["Uma captura de tela mostrando como implantar uma licença de disposição em camadas em um cluster do ONTAP."]
+
+. Na caixa de diálogo _Deploy License_, clique em *Deploy*.
++
+A licença filho é implantada no cluster do ONTAP.
+
+. Retorne ao Gerenciador do sistema ou à CLI do ONTAP e configure sua configuração de disposição em categorias.
++
+https://docs.netapp.com/us-en/ontap/fabricpool/manage-mirrors-task.html["Informações de configuração do espelho FabricPool"]
+
++
+https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["Informações de configuração do FabricPool MetroCluster"]
+
++
+https://docs.netapp.com/us-en/ontap/fabricpool/setup-ibm-object-storage-cloud-tier-task.html["Disposição em camadas nas informações do IBM Cloud Object Storage"]
+
+

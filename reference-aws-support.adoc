@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: reference-aws-support.html 
+keywords: aws, amazon, s3, support, regions, storage classes 
+summary: O BlueXP  Tiering é compatível com várias classes de storage S3 e a maioria das regiões. 
+---
+= Classes e regiões de armazenamento S3 compatíveis
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+O BlueXP  Tiering é compatível com várias classes de storage S3 e a maioria das regiões.
+
+
+
+== Classes de armazenamento S3 suportadas
+
+Quando você configura a disposição de dados em categorias na AWS a partir de seus sistemas ONTAP no local, a disposição em camadas do BlueXP  usa automaticamente a classe de storage _padrão_ para seus dados inativos. A disposição em camadas do BlueXP  pode aplicar uma regra de ciclo de vida para que os dados transitem da classe de storage _padrão_ para outra classe de storage após um determinado número de dias. Você pode escolher entre as seguintes classes de armazenamento:
+
+* Acesso padrão-infrequente (S3 Standard-IA)
+* Uma zona-Acesso pouco frequente (S3 uma zona-IA)
+* Disposição em categorias inteligentes (disposição em categorias inteligentes do S3)
+* Recuperação instantânea do Glacier
+
+
+Se você não escolher outra classe de armazenamento, os dados permanecerão na classe de armazenamento _Standard_ e nenhuma regra será aplicada.
+
+Quando você configura uma regra de ciclo de vida em camadas do BlueXP , não deve configurar nenhuma regra de ciclo de vida ao configurar o bucket na sua conta da AWS.
+
+https://aws.amazon.com/s3/storage-classes/["Saiba mais sobre as classes de armazenamento S3"^].
+
+
+
+== Regiões AWS compatíveis
+
+O BlueXP  Tiering é compatível com as seguintes regiões da AWS.
+
+
+
+=== Ásia-Pacífico
+
+* Mumbai
+* Seul
+* Singapura
+* Sydney
+* Tóquio
+
+
+
+
+=== Europa
+
+* Frankfurt
+* Irlanda
+* Londres
+* Paris
+* Estocolmo
+
+
+
+
+=== América do Norte
+
+* Canadá Central
+* Leste DOS EUA (Norte da Virgínia)
+* Leste DOS EUA (Ohio)
+* Oeste DOS EUA (Norte da Califórnia)
+* Oeste DOS EUA (Oregon)
+
+
+
+
+=== América do Sul
+
+* São Paulo
+

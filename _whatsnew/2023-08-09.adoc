@@ -1,0 +1,15 @@
+= Use um prefixo personalizado para o nome do bucket
+:allow-uri-read: 
+
+
+
+
+=== Use um prefixo personalizado para o nome do bucket
+
+No passado, você precisava usar o prefixo padrão "Fabric-pool" ao definir o nome do bucket, por exemplo, _Fabric-pool-bucket1_. Agora você pode usar um prefixo personalizado ao nomear seu bucket. Esse recurso está disponível somente ao categorizar dados no Amazon S3. https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html#prepare-your-aws-environment["Saiba mais"].
+
+
+
+=== PESQUISE um cluster em todos os conetores BlueXP
+
+Se você estiver usando vários conetores para gerenciar todos os sistemas de storage no ambiente, alguns clusters nos quais você deseja implementar a disposição em camadas podem estar em conetores diferentes. Se você não tiver certeza de qual conetor está gerenciando um determinado cluster, poderá pesquisar em todos os conetores usando a disposição em camadas do BlueXP . https://docs.netapp.com/us-en/bluexp-tiering/task-managing-tiering.html#search-for-a-cluster-across-all-bluexp-connectors["Saiba mais"].

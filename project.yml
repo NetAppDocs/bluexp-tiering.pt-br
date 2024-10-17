@@ -1,0 +1,70 @@
+---
+settings:
+  name: BlueXP tiering
+  platform: cloud
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  rss_page: whats-new.html
+  release_notes_autogen:
+    release_notes_repo: bluexp-relnotes
+  langs: pt-br,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr,it-it
+sidebar:
+  entries:
+  - title: BlueXP  disposição em camadas docs
+    url: "/index.html"
+  - title: Notas de lançamento
+    url: "/whats-new.html"
+  - title: Comece agora
+    entries:
+    - title: Saiba mais sobre a disposição em camadas do BlueXP
+      url: "/concept-cloud-tiering.html"
+    - title: Armazene dados no local na nuvem
+      entries:
+      - title: Faça a camada no Amazon S3
+        url: "/task-tiering-onprem-aws.html"
+      - title: Disponha em categorias no storage Azure Blob
+        url: "/task-tiering-onprem-azure.html"
+      - title: Disponha no Google Cloud Storage em categorias
+        url: "/task-tiering-onprem-gcp.html"
+      - title: Coloque em categorias no StorageGRID
+        url: "/task-tiering-onprem-storagegrid.html"
+      - title: Disponha em categorias em S3 storage de objetos
+        url: "/task-tiering-onprem-s3-compat.html"
+    - title: Configure o licenciamento
+      url: "/task-licensing-cloud-tiering.html"
+    - title: FAQ
+      url: "/faq-cloud-tiering.html"
+  - title: Use a disposição em camadas do BlueXP 
+    entries:
+    - title: Gerenciar a disposição de dados em camadas
+      url: "/task-managing-tiering.html"
+    - title: Gerenciar o storage de objetos
+      url: "/task-managing-object-storage.html"
+    - title: Teste o desempenho da nuvem
+      url: "/task-tiering-test.html"
+    - title: Exibir a visão geral de disposição em camadas de todos os clusters
+      url: "/task-tiering-onprem-overview.html"
+    - title: Monitorar o status dos alertas em categorias
+      url: "/task-monitor-tiering-alerts.html"
+  - title: Referência
+    entries:
+    - title: Regiões e classes de armazenamento do Amazon S3 compatíveis
+      url: "/reference-aws-support.html"
+    - title: Camadas e regiões de acesso do Azure compatíveis
+      url: "/reference-azure-support.html"
+    - title: Regiões e classes de armazenamento do Google Cloud compatíveis
+      url: "/reference-google-support.html"
+  - title: Conhecimento e apoio
+    entries:
+    - title: Registre-se para obter suporte
+      url: "/task-support-registration.html"
+    - title: Obtenha ajuda
+      url: "/task-get-help.html"
+  - title: Avisos legais
+    url: "/legal-notices.html"
+product-family:
+  name: BlueXP
+  repo: bluexp-family

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: task-monitor-tiering-alerts.html 
+keywords: tiering, status, monitor, alert, notification 
+summary: Você pode ver o status dos alertas de disposição em camadas na Central de notificações do BlueXP . 
+---
+= Monitorar o status dos alertas em categorias
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Você pode ver o status dos alertas de disposição em camadas na Central de notificações do BlueXP .
+
+A Central de notificações rastreia o progresso dos incidentes em camadas para que você possa verificar se eles foram resolvidos ou não. Pode visualizar as notificações clicando em (image:icon_bell.png["campainha de notificação"]) na barra de menus do BlueXP .
+
+Neste momento, há um evento de disposição em camadas que aparecerá como uma notificação:
+
+Armazene dados adicionais do <name> de cluster no storage de objetos para aumentar a eficiência de storage
+
+Esta notificação é uma "recomendação" para ajudar a tornar seus sistemas mais eficientes e economizar nos custos de armazenamento. Isso indica que um cluster está em camadas menos de 20% dos dados inativos, incluindo clusters que não estão em categorias de dados. Ele fornece um link para o https://bluexp.netapp.com/cloud-tiering-service-tco["Calculadora de economia e custo total de propriedade em camadas do BlueXP"^] para ajudá-lo a calcular suas economias de custo.
+
+O BlueXP  não envia um e-mail para esta notificação.
+
+https://docs.netapp.com/us-en/bluexp-setup-admin/task-monitor-cm-operations.html["Saiba mais sobre o Centro de notificações"^].

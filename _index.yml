@@ -1,0 +1,68 @@
+---
+indexpage:
+  title: Documentação de disposição em camadas do BlueXP 
+  summary: A disposição em camadas do BlueXP  estende o data center para a nuvem ao
+    dispor automaticamente em camadas os dados inativos de clusters ONTAP on-premises
+    para o storage de objetos.
+  keywords: bluexp, ontap, cloud tiering, documentation
+  lead: A disposição em camadas do BlueXP  estende o data center para a nuvem ao dispor
+    automaticamente em camadas os dados inativos de clusters ONTAP on-premises para
+    o storage de objetos.
+  tiles:
+  - title: Comece agora
+    links:
+    - title: Saiba mais sobre a disposição em camadas do BlueXP
+      url: concept-cloud-tiering.html
+    - title: Novidades
+      url: whats-new.html
+    - title: Configure o licenciamento
+      url: task-licensing-cloud-tiering.html
+  - title: Armazene dados ONTAP no local na nuvem
+    links:
+    - title: Faça a camada no Amazon S3
+      url: task-tiering-onprem-aws.html
+    - title: Categorizar no Azure Blob
+      url: task-tiering-onprem-azure.html
+    - title: Disponha em categorias no Google Cloud
+      url: task-tiering-onprem-gcp.html
+    - title: Coloque em categorias no StorageGRID
+      url: task-tiering-onprem-storagegrid.html
+    - title: Tier para genérico S3
+      url: task-tiering-onprem-s3-compat.html
+  - title: Gerenciar configurações de disposição em camadas
+    links:
+    - title: Alterar a política de disposição em camadas de um volume
+      url: task-managing-tiering.html#changing-a-volumes-tiering-policy
+    - title: Revise as informações de disposição em camadas de um cluster
+      url: task-managing-tiering.html#reviewing-tiering-info-for-a-cluster
+    - title: Categorizar dados de volumes adicionais
+      url: task-managing-tiering.html#tiering-data-from-additional-volumes
+    - title: Altere a largura de banda para carregar dados inativos para o armazenamento
+        de objetos
+      url: task-managing-tiering.html#changing-the-network-bandwidth-available-to-upload-inactive-data-to-object-storage
+    - title: Migre dados da nuvem de volta para a categoria de performance
+      url: task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier
+    - title: Gerenciar configurações de disposição em camadas em agregados
+      url: task-managing-tiering.html#managing-tiering-settings-on-aggregates
+  - title: Gerenciar o storage de objetos
+    links:
+    - title: Adicione um novo armazenamento de objetos para um cluster
+      url: task-managing-object-storage.html#adding-a-new-object-store
+    - title: Adicione um segundo armazenamento de objetos a um agregado para espelhamento
+      url: task-managing-object-storage.html#attaching-a-second-object-store-to-an-aggregate-for-mirroring
+    - title: Troque o armazenamento de objetos primário e espelhado
+      url: task-managing-object-storage.html#swapping-the-primary-and-mirror-object-store
+    - title: Remova um armazenamento de objetos do espelho
+      url: task-managing-object-storage.html#removing-a-mirror-object-store-from-an-aggregate
+  - title: Blogs & comunidade
+    links:
+    - title: Comunidade NetApp
+      url: https://community.netapp.com/t5/BlueXP-and-Services/ct-p/CDS
+    - title: Blog de disposição em camadas do BlueXP 
+      url: https://bluexp.netapp.com/blog/topic/cloud-tiering
+    - title: Webinars na nuvem
+      url: https://bluexp.netapp.com/events
+  - title: Outros recursos
+    links:
+    - title: Casos de uso do BlueXP 
+      url: https://bluexp.netapp.com/cloud-tiering

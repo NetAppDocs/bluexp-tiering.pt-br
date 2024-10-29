@@ -7,7 +7,7 @@ summary: 'O NetApp fornece suporte para BlueXP  de várias maneiras. Amplas op�
 = Obtenha ajuda
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ./media/
 
 
 [role="lead"]

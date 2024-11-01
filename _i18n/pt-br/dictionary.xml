@@ -753,8 +753,6 @@
   <block id="62535f3c9c3ff4986c76ec562401261c" category="paragraph"><block ref="62535f3c9c3ff4986c76ec562401261c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1c6f788cc58525a729abe259a80f0029" category="inline-link">Saiba como categorizar dados inativos de sistemas Cloud Volumes ONTAP para storage de objetos de baixo custo</block>
   <block id="6bb336fa34007914ba1bfae5f5362b71" category="paragraph">Note que o visor é diferente para sistemas Cloud Volumes ONTAP. Embora o Cloud Volumes ONTAP volumes possa ter dados dispostos em camadas na nuvem, eles não usam o serviço de disposição em camadas do BlueXP .<block ref="eaf889252d8f72ddfa96df4e5912a14b" category="inline-link-rx"></block>.</block>
-  <block id="29fdfd7eb2f0e4bc1264e61841c1e15c" category="inline-link">Exibir informações de disposição em camadas de um cluster no Digital Advisor</block>
-  <block id="4beb855fa991422619d33c99b74d1365" category="paragraph">Você também pode<block ref="ba21940cc7b1756c6b93b4daf8cfd4fb" category="inline-link-rx"></block> se você estiver familiarizado com este produto NetApp. Basta selecionar *Cloud Recommendations* no painel de navegação à esquerda.</block>
   <block id="d80d78ee61a9d0887caddafbd12776c6" category="inline-image-macro">Uma captura de tela que mostra informações do FabricPool para um cluster usando o consultor do FabricPool do consultor digital.</block>
   <block id="dc0605b8b2de4441cff5b013be511267" category="paragraph"><block ref="dc0605b8b2de4441cff5b013be511267" category="inline-image-macro-rx" type="image"></block></block>
   <block id="93772529b8117fc8010ab6872129a19c" category="section-title">Disposição em camadas de dados de volumes adicionais</block>
@@ -1446,4 +1444,9 @@
   <block id="51ae64fb3620d7b88a6fc20148f0e2d7" category="sidebar">Regiões e classes de armazenamento do Amazon S3 compatíveis</block>
   <block id="483b947377ff3a8f0bfe2df65d4f5292" category="sidebar">Camadas e regiões de acesso do Azure compatíveis</block>
   <block id="0adc03eac86772ad2c75c8f140be417e" category="sidebar">Conhecimento e apoio</block>
+  <block id="8ddd07f4c199accad92d619cc396eaef" category="video-title">Inscreva-se no BlueXP  no AWS Marketplace</block>
+  <block id="040832c90148c5bba767901a4a55ebe4" category="video-title">Inscreva-se no BlueXP  a partir do Azure Marketplace</block>
+  <block id="c6e17aa071476599f5e5fc5b8bc42431" category="video-title">Inscreva-se no BlueXP  no Google Cloud Marketplace</block>
+  <block id="2e02ef063e4f9a11ed835693daa2e7d1" category="inline-link">Exibir informações de disposição em camadas de um cluster do consultor digital da Active IQ (também conhecido como consultor digital)</block>
+  <block id="aac4751e2e50c3f9d64afc60244ec854" category="paragraph">Você também pode<block ref="ab766f8aad1f1b4bf567a28cf12cabcb" category="inline-link-rx"></block> se você estiver familiarizado com este produto NetApp. Basta selecionar *Cloud Recommendations* no painel de navegação à esquerda.</block>
 </blocks>

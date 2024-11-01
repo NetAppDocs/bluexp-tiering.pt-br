@@ -54,7 +54,8 @@ Inscreva-se na disposição em camadas do BlueXP  no AWS Marketplace para confi
 O vídeo a seguir mostra o processo:
 
 +
-video::video_subscribing_aws_tiering.mp4[width=848,height=480]
+.Inscreva-se no BlueXP  no AWS Marketplace
+video::096e1740-d115-44cf-8c27-b051011611eb[panopto]
 
 
 
@@ -72,7 +73,8 @@ Inscreva-se na disposição em camadas do BlueXP  no mercado do Azure para conf
 O vídeo a seguir mostra o processo:
 
 +
-video::video_subscribing_azure_tiering.mp4[width=848,height=480]
+.Inscreva-se no BlueXP  a partir do Azure Marketplace
+video::b7e97509-2ecf-4fa0-b39b-b0510109a318[panopto]
 
 
 
@@ -90,7 +92,8 @@ Inscreva-se na disposição em camadas do BlueXP  no mercado para configurar um
 O vídeo a seguir mostra o processo:
 
 +
-video::video_subscribing_gcp_tiering.mp4[width=848,height=480]
+.Inscreva-se no BlueXP  no Google Cloud Marketplace
+video::373b96de-3691-4d84-b3f3-b05101161638[panopto]
 
 
 

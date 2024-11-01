@@ -39,7 +39,7 @@ image:screenshot_tiering_cluster_info.png["Uma captura de tela que mostra a capa
 
 Note que o visor é diferente para sistemas Cloud Volumes ONTAP. Embora o Cloud Volumes ONTAP volumes possa ter dados dispostos em camadas na nuvem, eles não usam o serviço de disposição em camadas do BlueXP . https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-tiering.html["Saiba como categorizar dados inativos de sistemas Cloud Volumes ONTAP para storage de objetos de baixo custo"^].
 
-Você também pode https://docs.netapp.com/us-en/active-iq/task-informed-decisions-based-on-cloud-recommendations.html#tiering["Exibir informações de disposição em camadas de um cluster no Digital Advisor"^] se você estiver familiarizado com este produto NetApp. Basta selecionar *Cloud Recommendations* no painel de navegação à esquerda.
+Você também pode https://docs.netapp.com/us-en/active-iq/task-informed-decisions-based-on-cloud-recommendations.html#tiering["Exibir informações de disposição em camadas de um cluster do consultor digital da Active IQ (também conhecido como consultor digital)"^] se você estiver familiarizado com este produto NetApp. Basta selecionar *Cloud Recommendations* no painel de navegação à esquerda.
 
 image:screenshot_tiering_aiq_fabricpool_info.png["Uma captura de tela que mostra informações do FabricPool para um cluster usando o consultor do FabricPool do consultor digital."]
 

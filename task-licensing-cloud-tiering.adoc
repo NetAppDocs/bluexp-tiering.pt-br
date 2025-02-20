@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-licensing-cloud-tiering.html 
-keywords: subscribe, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering 
+keywords: subscribe, digital wallet, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering 
 summary: Uma avaliação gratuita de 30 dias da disposição em camadas do BlueXP  começa quando você configura a disposição em camadas no primeiro cluster. Após o término da avaliação gratuita, você precisará pagar pela disposição em camadas do BlueXP  por meio de uma assinatura anual ou de pagamento conforme o uso no mercado do seu fornecedor de nuvem, uma licença BYOL da NetApp ou uma combinação de ambos. 
 ---
 = Configurar o licenciamento para a disposição em camadas do BlueXP 
@@ -161,106 +161,11 @@ Aqui estão algumas coisas que você precisa saber sobre as duas licenças:
 |===
 
 
-=== Obter seu arquivo de licença de disposição em camadas do BlueXP 
+=== Gerenciar as licenças de disposição em camadas do BlueXP 
 
-Depois de adquirir sua licença de disposição em camadas do BlueXP , você ativa a licença no BlueXP  inserindo o número de série e a conta NSS do BlueXP , ou carregando o arquivo de licença do NLF. As etapas abaixo mostram como obter o arquivo de licença NLF se você planeja usar esse método.
+Se o seu prazo licenciado estiver próximo à data de expiração ou se a sua capacidade licenciada estiver atingindo o limite, você será notificado em BlueXP  Tiering, bem como em carteira digital.
 
-.Antes de começar
-Você precisará do número de série de disposição em camadas do BlueXP . Localize esse número no seu pedido de vendas ou entre em Contato com a equipe da conta para obter essas informações.
-
-.Passos
-. Encontre o ID da sua conta BlueXP :
-+
-.. No canto superior direito do console BlueXP , image:icon-settings-option.png["O ícone de configurações que é exibido no canto superior direito do console da Web do BlueXP ."]selecione > *Gerenciamento de identidade e acesso*.
-.. Na página Organização, procure o ID da sua conta e copie-o.
-+
-Se não houver um ID de conta listado e você tiver apenas um ID de organização, precisará copiar os primeiros oito carateres do ID da organização e anexá-lo a _conta-_
-
-+
-Por exemplo, digamos que este é o ID da sua organização:
-
-+
-ea10e1c6-80cc-4219-8e99-3c3e6b161ba5
-
-+
-O seu ID de conta seria o seguinte:
-
-+
-conta-ea10e1c6
-
-
-
-. Inicie sessão no https://mysupport.netapp.com["Site de suporte da NetApp"^] e clique em *sistemas > licenças de software*.
-. Insira o número de série da licença de disposição em camadas do BlueXP .
-+
-image:screenshot_cloud_tiering_license_step1.gif["Uma captura de tela que mostra uma tabela de licenças depois de pesquisar por número de série."]
-
-. Na coluna *chave de licença*, clique em *obter ficheiro de licença NetApp*.
-. Introduza a sua ID de conta do BlueXP  (chamada ID do locatário no site de suporte) e clique em *Enviar* para transferir o ficheiro de licença.
-+
-image:screenshot_cloud_tiering_license_step2.gif["Uma captura de tela que mostra a caixa de diálogo obter licença onde você insere seu ID de locatário e, em seguida, clique em Enviar para baixar o arquivo de licença."]
-
-
-
-
-
-=== Adicione licenças BYOL de disposição em camadas do BlueXP  à sua conta
-
-Depois de adquirir uma licença de disposição em camadas do BlueXP , você precisa adicionar a licença ao BlueXP  para usar o serviço de disposição em camadas do BlueXP .
-
-.Passos
-. Clique em *Governança > carteira digital > licenças de serviços de dados*.
-. Clique em *Adicionar licença*.
-. Na caixa de diálogo _Adicionar licença_, insira as informações da licença e clique em *Adicionar licença*:
-+
-** Se você tiver o número de série da licença de disposição em camadas e souber sua conta NSS, selecione a opção *Inserir número de série* e insira essas informações.
-+
-Se a conta do site de suporte da NetApp não estiver disponível na lista suspensa, https://docs.netapp.com/us-en/bluexp-setup-admin/task-adding-nss-accounts.html["Adicione a conta NSS ao BlueXP"^].
-
-** Se você tiver o arquivo de licença em camadas, selecione a opção *Upload License File* e siga as instruções para anexar o arquivo.
-+
-image:screenshot_services_license_add.png["Uma captura de tela que mostra a página para adicionar a licença BYOL de disposição em camadas do BlueXP ."]
-
-
-
-
-
-.Resultado
-O BlueXP  adiciona a licença para que seu serviço de disposição em camadas do BlueXP  fique ativo.
-
-
-
-=== Atualizar uma licença BYOL de disposição em camadas do BlueXP 
-
-Se o seu prazo licenciado estiver próximo à data de expiração ou se a capacidade licenciada estiver atingindo o limite, você será notificado em BlueXP  Tiering.
-
-image:screenshot_services_license_expire2.png["Uma captura de tela que mostra uma licença expirando na página de disposição em camadas do BlueXP ."]
-
-Este estado também aparece na página da carteira digital BlueXP .
-
-image:screenshot_services_license_expire1.png["Uma captura de tela que mostra uma licença expirando na página da carteira digital do BlueXP ."]
-
-Você pode atualizar sua licença de disposição em categorias do BlueXP  antes que ela expire, para que não haja interrupção na capacidade de categorizar dados na nuvem.
-
-.Passos
-. Clique no ícone de bate-papo no canto inferior direito do BlueXP  para solicitar uma extensão para seu termo ou capacidade adicional para sua licença de disposição em camadas do BlueXP  para o número de série específico.
-+
-Depois de pagar a licença e esta ser registada no Site de suporte da NetApp, a BlueXP  atualiza automaticamente a licença na carteira digital da BlueXP  e a página licenças dos Serviços de dados refletirá a alteração em 5 a 10 minutos.
-
-. Se o BlueXP  não conseguir atualizar automaticamente a licença, você precisará fazer o upload manual do arquivo de licença.
-+
-.. Você pode <<Obter seu arquivo de licença de disposição em camadas do BlueXP ,Obtenha o arquivo de licença no site de suporte da NetApp>>.
-.. Na página carteira digital do BlueXP  na guia _licenças de serviços de dados_, clique image:screenshot_horizontal_more_button.gif["Ícone mais"] para obter o número de série do serviço que você está atualizando e clique em *Atualizar licença*.
-+
-image:screenshot_services_license_update.png["Uma captura de tela da seleção do botão Atualizar Licença para um serviço específico."]
-
-.. Na página _Atualizar Licença_, carregue o arquivo de licença e clique em *Atualizar Licença*.
-
-
-
-
-.Resultado
-O BlueXP  atualiza a licença para que seu serviço de disposição em camadas do BlueXP  continue ativo.
+Você pode atualizar as licenças existentes, exibir o status da licença e adicionar novas licenças através da carteira digital BlueXP . https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["Saiba mais sobre como gerenciar licenças na carteira digital"^].
 
 
 

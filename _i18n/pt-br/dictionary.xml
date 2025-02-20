@@ -582,60 +582,8 @@
   <block id="a7bd9725f68ab51f56b292638f876d9b" category="cell">O gerenciamento e a configuração de disposição em camadas são feitos pelo System Manager ou pela CLI do ONTAP.</block>
   <block id="84d29247572532708a78dd9938063ac5" category="cell">Uma vez configurado, você pode usar o serviço de disposição em camadas sem licença por 30 dias usando a avaliação gratuita.</block>
   <block id="0f54a92e132940776f23febb26ca8ceb" category="cell">Uma vez configurado, você pode categorizar os primeiros 10 TB de dados gratuitamente.</block>
-  <block id="316a7aed758eb7b043492e848b931117" category="section-title">Obter seu arquivo de licença de disposição em camadas do BlueXP </block>
-  <block id="c52a9d7f6355ad24bacb2c5f23c0e863" category="paragraph">Depois de adquirir sua licença de disposição em camadas do BlueXP , você ativa a licença no BlueXP  inserindo o número de série e a conta NSS do BlueXP , ou carregando o arquivo de licença do NLF. As etapas abaixo mostram como obter o arquivo de licença NLF se você planeja usar esse método.</block>
-  <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">Antes de começar</block>
-  <block id="0e48ab0bd412e2c6d662a3a4540397a0" category="paragraph">Você precisará do número de série de disposição em camadas do BlueXP . Localize esse número no seu pedido de vendas ou entre em Contato com a equipe da conta para obter essas informações.</block>
-  <block id="e53331a3231a958d20a4871d8efc35d8" category="list-text">Encontre o ID da sua conta BlueXP :</block>
-  <block id="e0e8a7d90375792efecad34c0c923e32" category="inline-image-macro">O ícone de configurações que é exibido no canto superior direito do console da Web do BlueXP .</block>
-  <block id="cd42e1c1af0a908f68d68ae6103b5c30" category="list-text">No canto superior direito do console BlueXP , <block ref="32173ab85f1c68a28384d1a40cf387db" category="inline-image-macro-rx" type="image"></block>selecione &gt; *Gerenciamento de identidade e acesso*.</block>
-  <block id="3bcef3f6238058ae825d608e1557c538" category="list-text">Na página Organização, procure o ID da sua conta e copie-o.</block>
-  <block id="2bd8c9344d3768dd44b910db169ef1fa" category="paragraph">Se não houver um ID de conta listado e você tiver apenas um ID de organização, precisará copiar os primeiros oito carateres do ID da organização e anexá-lo a _conta-_</block>
-  <block id="14da2ef10b9e4cc4d0981b05fff98072" category="paragraph">Por exemplo, digamos que este é o ID da sua organização:</block>
-  <block id="2740d3013330ec13ae7693ee76bc6509" category="paragraph">ea10e1c6-80cc-4219-8e99-3c3e6b161ba5</block>
-  <block id="6ffe1a2d88424dc37ba43bdf5999183e" category="paragraph">O seu ID de conta seria o seguinte:</block>
-  <block id="c0b58edc6437b03c81d24f7ded6f3648" category="paragraph">conta-ea10e1c6</block>
-  <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link">Site de suporte da NetApp</block>
-  <block id="80c4b6e3dfa1d4f33033585b7c74e7e9" category="list-text">Inicie sessão no<block ref="fcc52edac3ce57829c48ee35d97a295d" category="inline-link-rx"></block> e clique em *sistemas &gt; licenças de software*.</block>
-  <block id="9b1441120e66cf63798ba27aa3531664" category="list-text">Insira o número de série da licença de disposição em camadas do BlueXP .</block>
-  <block id="5190e9ec018f5e661ec4b31ff1b34423" category="inline-image-macro">Uma captura de tela que mostra uma tabela de licenças depois de pesquisar por número de série.</block>
-  <block id="d15379b9f839ac6523d1b06ad8763875" category="paragraph"><block ref="d15379b9f839ac6523d1b06ad8763875" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a6cfac773f21906007a8ddf407596067" category="list-text">Na coluna *chave de licença*, clique em *obter ficheiro de licença NetApp*.</block>
-  <block id="d4393f7d35eb6fcb480572ab5d418710" category="list-text">Introduza a sua ID de conta do BlueXP  (chamada ID do locatário no site de suporte) e clique em *Enviar* para transferir o ficheiro de licença.</block>
-  <block id="56273f3344c87fabbf5196fba9816fff" category="inline-image-macro">Uma captura de tela que mostra a caixa de diálogo obter licença onde você insere seu ID de locatário e, em seguida, clique em Enviar para baixar o arquivo de licença.</block>
-  <block id="212f5a95c637538f9375d966345ca9f7" category="paragraph"><block ref="212f5a95c637538f9375d966345ca9f7" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1a8eb6c0b4ba023742d25f05dbe5273d" category="section-title">Adicione licenças BYOL de disposição em camadas do BlueXP  à sua conta</block>
-  <block id="921d59a1a10f4e2423dfe3d60997086a" category="paragraph">Depois de adquirir uma licença de disposição em camadas do BlueXP , você precisa adicionar a licença ao BlueXP  para usar o serviço de disposição em camadas do BlueXP .</block>
-  <block id="58db88b7cd0054a3b13ce2930a48dad9" category="list-text">Clique em *Governança &gt; carteira digital &gt; licenças de serviços de dados*.</block>
-  <block id="ea9a2b9ac34c9aab133f21aa5b67976e" category="list-text">Clique em *Adicionar licença*.</block>
-  <block id="c1b2dc0798d3960e25b8a12c751f53ec" category="list-text">Na caixa de diálogo _Adicionar licença_, insira as informações da licença e clique em *Adicionar licença*:</block>
-  <block id="80b8da08efcb9500667b0fc290bbe1f6" category="list-text">Se você tiver o número de série da licença de disposição em camadas e souber sua conta NSS, selecione a opção *Inserir número de série* e insira essas informações.</block>
-  <block id="bae190eec3db4a0dd635ae72756acde8" category="inline-link">Adicione a conta NSS ao BlueXP</block>
-  <block id="30fc689a9c3cd4222329fe3a4c818a33" category="paragraph">Se a conta do site de suporte da NetApp não estiver disponível na lista suspensa,<block ref="06a3bc9d474b5d4e44d1a2733cac785a" category="inline-link-rx"></block>.</block>
-  <block id="4488cc251929ad2c43c07191375ca26e" category="list-text">Se você tiver o arquivo de licença em camadas, selecione a opção *Upload License File* e siga as instruções para anexar o arquivo.</block>
-  <block id="6b4dd8f152b00922385ef0e152554720" category="inline-image-macro">Uma captura de tela que mostra a página para adicionar a licença BYOL de disposição em camadas do BlueXP .</block>
-  <block id="0a54431ad29a96ceb71a9ab3f197983c" category="paragraph"><block ref="0a54431ad29a96ceb71a9ab3f197983c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">Resultado</block>
-  <block id="6b151ce754bba307afbfbdfbdb41717b" category="paragraph">O BlueXP  adiciona a licença para que seu serviço de disposição em camadas do BlueXP  fique ativo.</block>
-  <block id="28b875681d54f556230ca5c52173e3df" category="section-title">Atualizar uma licença BYOL de disposição em camadas do BlueXP </block>
-  <block id="85884cbcf3bef3a960250a4bea4d78c9" category="paragraph">Se o seu prazo licenciado estiver próximo à data de expiração ou se a capacidade licenciada estiver atingindo o limite, você será notificado em BlueXP  Tiering.</block>
-  <block id="a257270f45c3400d010c6b64e1918bbc" category="inline-image-macro">Uma captura de tela que mostra uma licença expirando na página de disposição em camadas do BlueXP .</block>
-  <block id="823ff9e6c8c5bae175b237dc370d0f90" category="paragraph"><block ref="823ff9e6c8c5bae175b237dc370d0f90" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="01b47f7bb171f9330df8674ddf7b5762" category="paragraph">Este estado também aparece na página da carteira digital BlueXP .</block>
-  <block id="0553876f11122be0920f9fa9c803d152" category="inline-image-macro">Uma captura de tela que mostra uma licença expirando na página da carteira digital do BlueXP .</block>
-  <block id="be95aaa9ff9dad75f49bfadf917b8f70" category="paragraph"><block ref="be95aaa9ff9dad75f49bfadf917b8f70" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0404c6f4bcf79c09ea3f68a74aa284df" category="paragraph">Você pode atualizar sua licença de disposição em categorias do BlueXP  antes que ela expire, para que não haja interrupção na capacidade de categorizar dados na nuvem.</block>
-  <block id="0df47d96ab99d3765b297d66af42219e" category="list-text">Clique no ícone de bate-papo no canto inferior direito do BlueXP  para solicitar uma extensão para seu termo ou capacidade adicional para sua licença de disposição em camadas do BlueXP  para o número de série específico.</block>
-  <block id="b23b97d3c26b0f7e2265329756cea9ca" category="paragraph">Depois de pagar a licença e esta ser registada no Site de suporte da NetApp, a BlueXP  atualiza automaticamente a licença na carteira digital da BlueXP  e a página licenças dos Serviços de dados refletirá a alteração em 5 a 10 minutos.</block>
-  <block id="822f69d2e49d7da6f8c764e0680f2f75" category="list-text">Se o BlueXP  não conseguir atualizar automaticamente a licença, você precisará fazer o upload manual do arquivo de licença.</block>
-  <block id="b2b168bd64a341a85c749cb61bba40cb" category="inline-xref">Obtenha o arquivo de licença no site de suporte da NetApp</block>
-  <block id="d7f004a77faee56e8076bcfdfa7b0560" category="list-text">Você pode <block ref="025fb98ec9c8a155e5ac365eabb828dc" category="inline-xref-macro-rx"></block>.</block>
   <block id="8f0a75d2d5a82f31f2cf069c3b0ee684" category="inline-image-macro">Ícone mais</block>
-  <block id="70196feeb01dc8dfdb5276a2398e60f9" category="list-text">Na página carteira digital do BlueXP  na guia _licenças de serviços de dados_, clique <block ref="50acd719b1954eb4890c002b3b5e71a6" category="inline-image-macro-rx" type="image"></block> para obter o número de série do serviço que você está atualizando e clique em *Atualizar licença*.</block>
-  <block id="3ce750f001c2369e23b68f3210d9f100" category="inline-image-macro">Uma captura de tela da seleção do botão Atualizar Licença para um serviço específico.</block>
-  <block id="2bdb7af2b6613fafdba930fb09034d3f" category="paragraph"><block ref="2bdb7af2b6613fafdba930fb09034d3f" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="41e921305ae1b027e5d364af4a2a9df2" category="list-text">Na página _Atualizar Licença_, carregue o arquivo de licença e clique em *Atualizar Licença*.</block>
-  <block id="89e28d16ae270dfde9199b600dc87aa5" category="paragraph">O BlueXP  atualiza a licença para que seu serviço de disposição em camadas do BlueXP  continue ativo.</block>
   <block id="9af45e6d474a73f991c4a2515264ca3c" category="section-title">Aplicar licenças de disposição em camadas do BlueXP  aos clusters em configurações especiais</block>
   <block id="ba4742e3fc97f92aee8dd17337d92765" category="paragraph">Os clusters do ONTAP nas configurações a seguir podem usar as licenças de disposição em camadas do BlueXP , mas a licença deve ser aplicada de maneira diferente dos clusters de nó único, clusters configurados de HA, clusters em configurações de disposição em camadas espelhadas e configurações do MetroCluster usando o espelhamento do FabricPool:</block>
   <block id="04b39654e6e5a443553195d1e2779190" category="list-text">Clusters que são dispostos em camadas no IBM Cloud Object Storage</block>
@@ -1449,4 +1397,8 @@
   <block id="c6e17aa071476599f5e5fc5b8bc42431" category="video-title">Inscreva-se no BlueXP  no Google Cloud Marketplace</block>
   <block id="2e02ef063e4f9a11ed835693daa2e7d1" category="inline-link">Exibir informações de disposição em camadas de um cluster do consultor digital da Active IQ (também conhecido como consultor digital)</block>
   <block id="aac4751e2e50c3f9d64afc60244ec854" category="paragraph">Você também pode<block ref="ab766f8aad1f1b4bf567a28cf12cabcb" category="inline-link-rx"></block> se você estiver familiarizado com este produto NetApp. Basta selecionar *Cloud Recommendations* no painel de navegação à esquerda.</block>
+  <block id="936ae05f91caeb56b08682cd274bed64" category="section-title">Gerenciar as licenças de disposição em camadas do BlueXP </block>
+  <block id="1430b68e61364b237636f6f0ce8e282a" category="paragraph">Se o seu prazo licenciado estiver próximo à data de expiração ou se a sua capacidade licenciada estiver atingindo o limite, você será notificado em BlueXP  Tiering, bem como em carteira digital.</block>
+  <block id="f59ab7df4b9fd3526a4fbed390f7fa9a" category="inline-link">Saiba mais sobre como gerenciar licenças na carteira digital</block>
+  <block id="bdfa472a184585b4fa4633165dc44d15" category="paragraph">Você pode atualizar as licenças existentes, exibir o status da licença e adicionar novas licenças através da carteira digital BlueXP .<block ref="eb38d0c8186bca45da4435026f76609b" category="inline-link-rx"></block>.</block>
 </blocks>

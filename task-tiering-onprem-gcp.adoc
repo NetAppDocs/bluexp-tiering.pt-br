@@ -43,7 +43,7 @@ Após o término da avaliação gratuita, pague pela disposição em camadas do 
 
 [role="quick-margin-list"]
 * Para se inscrever no GCP Marketplace, https://console.cloud.google.com/marketplace/details/netapp-cloudmanager/cloud-manager?supportedpurview=project&rif_reserved["Vá para a oferta do mercado BlueXP "^] clique em *Inscrever-se* e siga as instruções.
-* Para pagar usando uma licença BYOL de disposição em camadas do BlueXP , envie um e-mail:ng-cloud-Tiering para NetApp.com?subject:Contact US if you need to purchase one] e, em seguidalink:task-licensing-cloud-tiering.html#add-bluexp-tiering-byol-licenses-to-your-account["Adicione-o à sua conta a partir da carteira digital BlueXP "], .
+* Para pagar usando uma licença BYOL de disposição em camadas do BlueXP , envie um e-mail:ng-cloud-Tiering para NetApp.com?subject:Contact US if you need to purchase one] e, em seguidalink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["Adicione-o à sua conta a partir da carteira digital BlueXP "^], .
 
 
 

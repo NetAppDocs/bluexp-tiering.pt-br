@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-licensing-cloud-tiering.html 
-keywords: subscribe, digital wallet, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering 
+keywords: subscribe, digital wallet, trial, marketplace, subscription, paygo, pay as you go, byol, bring your own license, annual, tiering, cloud tiering, license 
 summary: Uma avaliação gratuita de 30 dias da disposição em camadas do BlueXP  começa quando você configura a disposição em camadas no primeiro cluster. Após o término da avaliação gratuita, você precisará pagar pela disposição em camadas do BlueXP  por meio de uma assinatura anual ou de pagamento conforme o uso no mercado do seu fornecedor de nuvem, uma licença BYOL da NetApp ou uma combinação de ambos. 
 ---
 = Configurar o licenciamento para a disposição em camadas do BlueXP 
@@ -38,6 +38,8 @@ Se a avaliação gratuita terminar e você não tiver assinado ou adicionado uma
 == Use uma subscrição PAYGO com disposição em camadas do BlueXP 
 
 As assinaturas com pagamento conforme o uso do mercado do seu fornecedor de nuvem permitem que você licencie o uso de sistemas Cloud Volumes ONTAP e muitos Serviços de dados em nuvem, como a disposição em camadas do BlueXP .
+
+Depois de assinar o BlueXP  Tiering, você pode gerenciar suas assinaturas em carteira digital. link:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-subscriptions.html#view-your-subscriptions["Saiba como usar a carteira digital."^]
 
 
 
@@ -122,7 +124,7 @@ Se você não tiver uma licença de disposição em camadas do BlueXP , entre e
 
 Opcionalmente, se você tiver uma licença não atribuída baseada em nó para o Cloud Volumes ONTAP que não usará, poderá convertê-la em uma licença de disposição em camadas do BlueXP  com a mesma equivalência em dólar e a mesma data de expiração. https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-manage-node-licenses.html#exchange-unassigned-node-based-licenses["Acesse aqui para obter detalhes"^].
 
-Você usa a página da carteira digital do BlueXP  para gerenciar as licenças BYOL em camadas do BlueXP . Você pode adicionar novas licenças e atualizar as licenças existentes.
+Você usa a página da carteira digital do BlueXP  para gerenciar as licenças BYOL em camadas do BlueXP . Você pode adicionar novas licenças e atualizar as licenças existentes. link:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["Saiba como usar a carteira digital."^]
 
 
 

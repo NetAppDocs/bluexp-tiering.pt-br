@@ -130,9 +130,9 @@ Sim. O BlueXP  Tiering permite que você use uma licença BYOL, uma assinatura 
 
 
 
-=== O que acontece se eu tiver atingido o limite de capacidade BYOL?
+=== O que acontece se eu tiver atingido o limite de capacidade BYOL ou se minha licença BYOL expirar?
 
-Se você atingir o limite de capacidade do BYOL, a disposição em categorias de novos dados inativos será interrompida. Todos os dados em camadas anteriores permanecem acessíveis, o que significa que você pode recuperar e usar esses dados. Quando recuperados, esses dados são movidos de volta para o nível de performance da nuvem.
+Se você atingir o limite de capacidade do BYOL ou se a sua licença BYOL expirar, a disposição em camadas de novos dados inativos será interrompida, a disposição em camadas de novos dados inativos será interrompida. Todos os dados em camadas anteriores permanecem acessíveis, o que significa que você pode recuperar e usar esses dados. Quando recuperados, esses dados são movidos de volta para o nível de performance da nuvem.
 
 No entanto, se você tiver uma assinatura do mercado PAYGO ao _BlueXP  - implantar e gerenciar serviços de dados em nuvem_, os novos dados inativos continuarão sendo dispostos no storage de objetos e você pagará por esses encargos de acordo com o uso.
 

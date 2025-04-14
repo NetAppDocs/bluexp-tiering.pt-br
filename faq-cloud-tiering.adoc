@@ -168,6 +168,12 @@ Para obter uma estimativa, basta adicionar seu cluster ONTAP ao BlueXP  e inspe
 
 
 
+=== Como sou cobrado por disposição em categorias quando uso um ONTAP MetroCluster?
+
+Quando usado em ambientes MetroCluster, a capacidade licenciada em camadas é aplicada igualmente aos buckets espelhados. Por exemplo, se você tiver uma licença para 100TiB TB de disposição em camadas, ambos os buckets podem ser dispostos em camadas até 100 TIB. Não há custo adicional para baldes espelhados. Ao dispor em camadas de agregados sem espelhamento em ambientes MetroCluster, a licença de disposição em camadas do BlueXP  é aplicada normalmente e a capacidade total categorizada em ambos os buckets é usada. Por exemplo, se você tiver uma licença para 100TiB TB de disposição em camadas, ambos os buckets podem ser dispostos em camadas até 50TB TB.
+
+
+
 == ONTAP
 
 As seguintes perguntas dizem respeito ao ONTAP.

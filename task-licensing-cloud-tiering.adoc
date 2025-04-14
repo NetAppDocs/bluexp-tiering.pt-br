@@ -208,7 +208,7 @@ Observe que, como os dados são categorizados em dois locais de armazenamento de
 Não configure a disposição em camadas neste momento.
 
 . link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Compre uma licença de disposição em camadas do BlueXP "] para a capacidade necessária para o novo cluster, ou clusters.
-. Em BlueXP link:task-licensing-cloud-tiering.html#add-bluexp-tiering-byol-licenses-to-your-account["Adicione a licença à carteira digital BlueXP "], .
+. No BlueXP , <<licenses,Adicione a licença à carteira digital BlueXP >>[adicionar a licença à carteira digital BlueXP ].
 . Na disposição em camadas do BlueXP link:task-managing-tiering.html#discovering-additional-clusters-from-bluexp-tiering["descubra os novos clusters"], .
 . Na página clusters, clique image:screenshot_horizontal_more_button.gif["Ícone mais"] em para o cluster e selecione *Deploy License*.
 +

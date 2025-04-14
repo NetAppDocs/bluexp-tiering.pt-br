@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-managing-object-storage.html 
-keywords: object storage, mirror object storage, create object storage, remove object storage, swap object storage, display object storage 
+keywords: object storage, mirror object storage, create object storage, remove object storage, swap object storage, display object storage, license 
 summary: Depois de configurar os clusters do ONTAP no local para categorizar dados em um storage de objetos específico, você pode executar tarefas adicionais de storage de objetos. Você pode adicionar um novo storage de objetos, espelhar seus dados em camadas em um storage de objetos secundário, trocar o storage de objetos primário e espelhado, remover um armazenamento de objetos espelhados de um agregado e muito mais. 
 ---
 = Gerenciamento do storage de objetos usado para categorização de dados
@@ -91,9 +91,9 @@ Agora você pode anexar o armazenamento de objetos a um agregado no cluster.
 
 É possível anexar um segundo armazenamento de objetos a um agregado para criar um espelhamento FabricPool para categorizar dados de maneira síncrona em dois armazenamentos de objetos. Você deve ter um armazenamento de objetos já anexado ao agregado. https://docs.netapp.com/us-en/ontap/fabricpool/create-mirror-task.html["Saiba mais sobre espelhos FabricPool"^].
 
-Ao usar uma configuração do MetroCluster, é uma prática recomendada usar armazenamentos de objetos na nuvem pública que estão em diferentes zonas de disponibilidade. https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["Saiba mais sobre os requisitos do MetroCluster na documentação do ONTAP"^].
+Ao usar uma configuração do MetroCluster, é uma prática recomendada usar armazenamentos de objetos na nuvem pública que estão em diferentes zonas de disponibilidade. https://docs.netapp.com/us-en/ontap/fabricpool/setup-object-stores-mcc-task.html["Saiba mais sobre os requisitos do MetroCluster na documentação do ONTAP"^]. Dentro de um MetroCluster, não é recomendável usar agregados sem espelhamento, fazendo isso lhe dará uma mensagem de erro.
 
-Observe que ao usar o StorageGRID como armazenamento de objetos em uma configuração do MetroCluster, os sistemas ONTAP podem executar a disposição em camadas do FabricPool em um único sistema StorageGRID. Cada sistema ONTAP precisa categorizar os dados em diferentes buckets.
+Ao usar o StorageGRID como armazenamento de objetos em uma configuração do MetroCluster, os sistemas ONTAP podem executar a disposição em camadas do FabricPool em um único sistema StorageGRID. Cada sistema ONTAP precisa categorizar os dados em diferentes buckets.
 
 .Passos
 . Na página *clusters*, clique em *Configuração avançada* para o cluster selecionado.

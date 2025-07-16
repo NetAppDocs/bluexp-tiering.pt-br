@@ -17,7 +17,7 @@ indexpage:
       url: whats-new.html
     - title: Configure o licenciamento
       url: task-licensing-cloud-tiering.html
-  - title: Armazene dados ONTAP no local na nuvem
+  - title: Dados ONTAP locais em camadas para a nuvem
     links:
     - title: Faça a camada no Amazon S3
       url: task-tiering-onprem-aws.html

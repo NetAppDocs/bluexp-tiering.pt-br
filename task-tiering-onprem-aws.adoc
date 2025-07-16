@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-tiering-onprem-aws.html 
 keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, aws, amazon, s3 
-summary: Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos em camadas no Amazon S3. 
+summary: Libere espaço em seus clusters ONTAP locais hierarquizando dados inativos no Amazon S3. 
 ---
 = Disposição em camadas de dados de clusters ONTAP on-premises para o Amazon S3
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos
 
 
 [role="lead"]
-Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos em camadas no Amazon S3.
+Libere espaço em seus clusters ONTAP locais hierarquizando dados inativos no Amazon S3.
 
 
 
@@ -48,11 +48,11 @@ Descubra seu cluster ONTAP no BlueXP , verifique se o cluster atende aos requis
 Configure permissões para que o conetor crie e gerencie o bucket do S3. Você também precisará configurar permissões para o cluster do ONTAP no local para que ele possa ler e gravar dados no bucket do S3.
 
 [role="quick-margin-para"]
-<<Configure S3 permissões,Veja como configurar permissões para o conetor e para o cluster no local.>>
+<<Configure S3 permissões,Veja como configurar permissões para o Connector e para seu cluster local.>>
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"] Habilitar a disposição em camadas do BlueXP  no sistema
 [role="quick-margin-para"]
-Selecione um ambiente de trabalho local, clique em *Ativar* para o serviço de categorização e siga as instruções para categorizar dados no Amazon S3.
+Selecione um ambiente de trabalho local, selecione *Ativar* para o serviço de hierarquização e siga as instruções para hierarquizar os dados no Amazon S3.
 
 [role="quick-margin-para"]
 <<Categorize os dados inativos do primeiro cluster para o Amazon S3,Veja como habilitar a disposição em categorias para seus volumes.>>
@@ -62,7 +62,7 @@ Selecione um ambiente de trabalho local, clique em *Ativar* para o serviço de c
 Após o término da avaliação gratuita, pague pela disposição em camadas do BlueXP  por meio de uma assinatura com pagamento conforme o uso, uma licença BYOL em categorias da ONTAP BlueXP  ou uma combinação de ambos:
 
 [role="quick-margin-list"]
-* Para se inscrever no AWS Marketplace, https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["Vá para a oferta do mercado BlueXP "^] clique em *Subscribe* e siga as instruções.
+* Para assinar no AWS Marketplace,  https://aws.amazon.com/marketplace/pp/prodview-oorxakq6lq7m4?sr=0-8&ref_=beagle&applicationId=AWSMPContessa["Vá para a oferta do mercado BlueXP "^] , selecione *Inscrever-se* e siga as instruções.
 * Para pagar usando uma licença BYOL de disposição em camadas do BlueXP , envie um e-mail:ng-cloud-Tiering para NetApp.com?subject:Contact US if you need to purchase one] e, em seguidalink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["Adicione-o à sua conta a partir da carteira digital BlueXP "], .
 
 
@@ -255,7 +255,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 
 Se você planeja usar uma conexão pública padrão à Internet, todas as permissões serão definidas pelo conetor e não haverá mais nada que você precise fazer. Esse tipo de conexão é mostrado no <<Diagramas de rede para opções de conexão,primeiro diagrama acima>>.
 
-Se você quiser ter uma conexão mais segura pela Internet do data center local para a VPC, há uma opção para selecionar uma conexão do AWS PrivateLink no assistente de ativação de categorização. É necessário se você planeja usar uma VPN ou o AWS Direct Connect para conetar seu sistema local por meio de uma interface VPC Endpoint que use um endereço IP privado. Este tipo de ligação é apresentado no <<Diagramas de rede para opções de conexão,segundo diagrama acima>>.
+Se você quiser ter uma conexão mais segura pela internet do seu data center local para a VPC, há uma opção para selecionar uma conexão AWS PrivateLink no assistente de ativação de camadas. É necessário se você planeja usar uma VPN ou o AWS Direct Connect para conetar seu sistema local por meio de uma interface VPC Endpoint que use um endereço IP privado. Este tipo de ligação é apresentado no <<Diagramas de rede para opções de conexão,segundo diagrama acima>>.
 
 . Crie uma configuração de endpoint de interface usando o console Amazon VPC ou a linha de comando. https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html["Veja detalhes sobre como usar o AWS PrivateLink para Amazon S3"^].
 . Modifique a configuração do grupo de segurança associada ao conetor BlueXP . Você deve alterar a política para "Personalizado" (de "Acesso total"), e você deve<<Configure S3 permissões,Adicione as permissões de conetor S3 necessárias>>, como mostrado anteriormente.
@@ -313,31 +313,31 @@ Depois de preparar seu ambiente AWS, comece a categorizar os dados inativos do p
 
 
 .Passos
-. Selecione o ambiente de trabalho do ONTAP no local.
+. Selecione o ambiente de trabalho ONTAP local.
 . Clique em *Enable* para o serviço de categorização no painel direito.
 +
 Se o destino de disposição em camadas do Amazon S3 existir como um ambiente de trabalho no Canvas, você poderá arrastar o cluster para o ambiente de trabalho para iniciar o assistente de configuração.
 
 +
-image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção Habilitar que aparece no lado direito da tela depois de selecionar um ambiente de trabalho ONTAP local."]
+image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção Ativar que aparece no lado direito da tela depois que você seleciona um ambiente de trabalho ONTAP local."]
 
 . *Definir Nome do armazenamento de objetos*: Insira um nome para este armazenamento de objetos. Deve ser exclusivo de qualquer outro storage de objetos que você esteja usando com agregados nesse cluster.
-. *Selecione o provedor*: Selecione *Amazon Web Services* e clique em *continuar*.
+. *Selecionar provedor*: Selecione *Amazon Web Services* e selecione *Continuar*.
 +
 image:screenshot_tiering_aws_s3_bucket.png["Uma captura de tela mostrando os dados que devem ser fornecidos para configurar a disposição em camadas em um bucket do S3."]
 
 . Preencha as seções na página *Configuração de categorias*:
 +
-.. *S3 Bucket*: Adicione um novo bucket S3 ou selecione um bucket S3 existente, selecione a região do bucket e clique em *Continue*.
+.. *S3 Bucket*: adicione um novo bucket S3 ou selecione um bucket S3 existente, selecione a região do bucket e selecione *Continuar*.
 +
-Ao usar um conetor no local, você deve inserir o ID da conta da AWS que fornece acesso ao bucket do S3 existente ou ao novo bucket do S3 que será criado.
+Ao usar um conector local, você deve inserir o ID da conta da AWS que fornece acesso ao bucket S3 existente ou ao novo bucket S3 que será criado.
 
 +
 O prefixo _Fabric-pool_ é usado por padrão porque a política do IAM para o conetor permite que a instância execute ações S3 em buckets nomeados com esse prefixo exato. Por exemplo, você pode nomear o bucket S3 _Fabric-pool-AFF1_, onde AFF1 é o nome do cluster. Você também pode definir o prefixo para os buckets usados na disposição em camadas. Certifique<<Configure S3 permissões,Configurando permissões S3>>-se de que você tem permissões da AWS que reconhecem qualquer prefixo personalizado que você planeja usar.
 
 .. * Classe de storage*: A disposição em camadas do BlueXP  gerencia as transições de ciclo de vida dos dados em camadas. Os dados começam na classe _Standard_, mas você pode criar uma regra para aplicar uma classe de armazenamento diferente aos dados após um determinado número de dias.
 +
-Selecione a classe de armazenamento S3 para a qual você deseja transferir os dados em camadas e o número de dias antes que os dados sejam atribuídos a essa classe e clique em *continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Standard-IA_ da classe _Standard_ após 45 dias no armazenamento de objetos.
+Selecione a classe de armazenamento S3 para a qual você deseja fazer a transição dos dados em camadas e o número de dias antes que os dados sejam atribuídos a essa classe e selecione *Continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Standard-IA_ da classe _Standard_ após 45 dias no armazenamento de objetos.
 
 +
 Se você escolher *manter dados nesta classe de armazenamento*, os dados permanecerão na classe de armazenamento _Standard_ e nenhuma regra será aplicada. link:reference-aws-support.html["Consulte classes de armazenamento suportadas"^].
@@ -348,11 +348,11 @@ image:screenshot_tiering_lifecycle_selection_aws.png["Uma captura de tela mostra
 +
 Observe que a regra de ciclo de vida é aplicada a todos os objetos no intervalo selecionado.
 
-.. *Credenciais*: Insira a ID da chave de acesso e a chave secreta para um usuário do IAM que tenha as permissões S3 necessárias e clique em *continuar*.
+.. *Credenciais*: insira o ID da chave de acesso e a chave secreta para um usuário do IAM que tenha as permissões S3 necessárias e selecione *Continuar*.
 +
 O usuário do IAM deve estar na mesma conta da AWS que o intervalo selecionado ou criado na página *S3 Bucket*.
 
-.. *Rede*: Insira os detalhes da rede e clique em *continuar*.
+.. *Rede*: Insira os detalhes da rede e selecione *Continuar*.
 +
 Selecione o espaço de IPspace no cluster do ONTAP onde residem os volumes que você deseja categorizar. As LIFs entre clusters para esse IPspace devem ter acesso de saída à Internet para que possam se conetar ao armazenamento de objetos do seu provedor de nuvem.
 
@@ -366,15 +366,15 @@ Você também pode definir a largura de banda de rede disponível para carregar 
 
 . Na página _volumes de nível_, selecione os volumes para os quais você deseja configurar a disposição em categorias e inicie a página Diretiva de disposição em categorias:
 +
-** Para selecionar todos os volumes, marque a caixa na linha de título (image:button_backup_all_volumes.png[""]) e clique em *Configurar volumes*.
-** Para selecionar vários volumes, marque a caixa para cada volume (image:button_backup_1_volume.png[""]) e clique em *Configurar volumes*.
-** Para selecionar um único volume, clique na linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) do volume.
+** Para selecionar todos os volumes, marque a caixa na linha de título ( image:button_backup_all_volumes.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar vários volumes, marque a caixa para cada volume ( image:button_backup_1_volume.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar um único volume, selecione a linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) para o volume.
 +
 image:screenshot_tiering_initial_volumes.png["Uma captura de tela que mostra como selecionar um único volume, vários volumes ou todos os volumes e o botão modificar volumes selecionados."]
 
 
 
-. Na caixa de diálogo _Política de disposição em camadas_, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e clique em *aplicar*.
+. Na caixa de diálogo _Política de níveis_, selecione uma política de níveis, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e selecione *Aplicar*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
 

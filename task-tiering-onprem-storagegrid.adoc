@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-tiering-onprem-storagegrid.html 
 keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, storagegrid, tier to storagegrid, fabricpool storagegrid 
-summary: Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos em camadas no StorageGRID. 
+summary: Libere espaço em seus clusters ONTAP locais hierarquizando dados inativos para StorageGRID. 
 ---
 = Disposição de dados em camadas de clusters ONTAP on-premises para o StorageGRID
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos
 
 
 [role="lead"]
-Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos em camadas no StorageGRID.
+Libere espaço em seus clusters ONTAP locais hierarquizando dados inativos para StorageGRID.
 
 
 
@@ -27,7 +27,7 @@ Comece rapidamente seguindo estas etapas ou role para baixo até as seções res
 Você precisa do seguinte:
 
 [role="quick-margin-list"]
-* Um cluster ONTAP on-premise que está executando o ONTAP 9.4 ou posterior e uma conexão em uma porta especificada pelo usuário para o StorageGRID. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
+* Um cluster ONTAP local executando o ONTAP 9.4 ou posterior e uma conexão por meio de uma porta especificada pelo usuário para o StorageGRID.  https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^] .
 * StorageGRID 10,3 ou posterior com chaves de acesso AWS que têm permissões S3.
 * Um conetor instalado nas suas instalações.
 * Rede para o conetor que habilita uma conexão HTTPS de saída ao cluster ONTAP, ao StorageGRID e ao serviço de disposição em camadas do BlueXP .
@@ -35,7 +35,7 @@ Você precisa do seguinte:
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"] Configurar a disposição em camadas
 [role="quick-margin-para"]
-No BlueXP , selecione um ambiente de trabalho local, clique em *Ativar* para o serviço de categorização e siga as instruções para categorizar dados no StorageGRID.
+Selecione um ambiente de trabalho local, selecione *Ativar* para o serviço de camadas e siga as instruções para hierarquizar os dados no StorageGRID.
 
 
 
@@ -65,7 +65,7 @@ Plataformas ONTAP compatíveis::
 
 --
 Versão ONTAP suportada:: ONTAP 9 .4 ou posterior
-Licenciamento:: Uma licença de disposição em camadas do BlueXP  não é necessária na sua organização do BlueXP , nem é necessária uma licença do FabricPool no cluster do ONTAP ao separar os dados no StorageGRID.
+Licenciamento:: Se você estiver hierarquizando dados no StorageGRID, não precisará de uma licença para hierarquização ou de uma licença FabricPool .
 Requisitos de rede de cluster::
 +
 --
@@ -79,7 +79,7 @@ Não é necessária uma conexão entre o cluster e o serviço de disposição em
 
 * É necessário um LIF entre clusters em cada nó do ONTAP que hospeda os volumes que você deseja categorizar. O LIF deve estar associado ao _IPspace_ que o ONTAP deve usar para se conetar ao armazenamento de objetos.
 +
-Quando você configura a disposição de dados em categorias, o BlueXP  Tiering solicita que você use o espaço de IPspace. Você deve escolher o espaço IPspace ao qual cada LIF está associado. Esse pode ser o espaço IPspace "padrão" ou um espaço IPspace personalizado que você criou. Saiba mais sobre https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIFs"^] e https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["IPspaces"^].
+Ao configurar a hierarquização de dados, você será solicitado a informar o IPspace a ser usado. Você deve escolher o espaço IPspace ao qual cada LIF está associado. Esse pode ser o espaço IPspace "padrão" ou um espaço IPspace personalizado que você criou. Saiba mais sobre https://docs.netapp.com/us-en/ontap/networking/create_a_lif.html["LIFs"^] e https://docs.netapp.com/us-en/ontap/networking/standard_properties_of_ipspaces.html["IPspaces"^].
 
 
 
@@ -94,7 +94,7 @@ NOTE: A disposição em camadas do BlueXP  é compatível com volumes FlexGroup
 
 === Descobrindo um cluster ONTAP
 
-Você precisa criar um ambiente de trabalho do ONTAP no local no BlueXP  Canvas antes de começar a categorizar dados inativos.
+Você precisa criar um ambiente de trabalho ONTAP local no Canvas antes de começar a hierarquizar dados frios.
 
 https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
 
@@ -163,24 +163,24 @@ Depois de preparar seu ambiente, comece a categorizar os dados inativos do prime
 
 
 .Passos
-. Selecione o ambiente de trabalho do ONTAP no local.
+. Selecione o ambiente de trabalho ONTAP local.
 . Clique em *Enable* para o serviço de categorização no painel direito.
 +
 Se o destino de disposição em camadas do StorageGRID existir como um ambiente de trabalho no Canvas, você poderá arrastar o cluster para o ambiente de trabalho do StorageGRID para iniciar o assistente de configuração.
 
 +
-image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção disposição em camadas de configuração que aparece no lado direito da tela depois de selecionar um ambiente de trabalho ONTAP local."]
+image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção Configurar níveis que aparece no lado direito da tela depois que você seleciona um ambiente de trabalho ONTAP local."]
 
 . *Definir Nome do armazenamento de objetos*: Insira um nome para este armazenamento de objetos. Deve ser exclusivo de qualquer outro storage de objetos que você esteja usando com agregados nesse cluster.
-. *Selecione Fornecedor*: Selecione *StorageGRID* e clique em *continuar*.
+. *Selecionar provedor*: Selecione * StorageGRID* e selecione *Continuar*.
 . Conclua as etapas nas páginas *Create Object Storage*:
 +
 .. *Servidor*: Insira o FQDN do nó de gateway StorageGRID, a porta que o ONTAP deve usar para comunicação HTTPS com o StorageGRID e a chave de acesso e chave secreta para uma conta que tenha as permissões S3 necessárias.
-.. *Bucket*: Adicione um novo bucket ou selecione um bucket existente que comece com o prefixo _Fabric-pool_ e clique em *Continue*.
+.. *Bucket*: adicione um novo bucket ou selecione um bucket existente que comece com o prefixo _fabric-pool_ e selecione *Continuar*.
 +
 O prefixo _Fabric-pool_ é necessário porque a política do IAM para o conetor permite que a instância execute ações S3 em buckets nomeados com esse prefixo exato. Por exemplo, você pode nomear o bucket S3 _Fabric-pool-AFF1_, onde AFF1 é o nome do cluster.
 
-.. *Rede de cluster*: Selecione o espaço IPspace que o ONTAP deve usar para se conetar ao armazenamento de objetos e clique em *continuar*.
+.. *Rede de cluster*: Selecione o espaço IP que o ONTAP deve usar para se conectar ao armazenamento de objetos e selecione *Continuar*.
 +
 A seleção do espaço de IPspace correto garante que a disposição em camadas do BlueXP  possa configurar uma conexão do ONTAP ao storage de objetos do StorageGRID.
 
@@ -191,15 +191,15 @@ Você também pode definir a largura de banda de rede disponível para carregar 
 
 . Na página _volumes de nível_, selecione os volumes para os quais você deseja configurar a disposição em categorias e inicie a página Diretiva de disposição em categorias:
 +
-** Para selecionar todos os volumes, marque a caixa na linha de título (image:button_backup_all_volumes.png[""]) e clique em *Configurar volumes*.
-** Para selecionar vários volumes, marque a caixa para cada volume (image:button_backup_1_volume.png[""]) e clique em *Configurar volumes*.
-** Para selecionar um único volume, clique na linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) do volume.
+** Para selecionar todos os volumes, marque a caixa na linha de título ( image:button_backup_all_volumes.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar vários volumes, marque a caixa para cada volume ( image:button_backup_1_volume.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar um único volume, selecione a linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) para o volume.
 +
 image:screenshot_tiering_initial_volumes.png["Uma captura de tela que mostra como selecionar um único volume, vários volumes ou todos os volumes e o botão modificar volumes selecionados."]
 
 
 
-. Na caixa de diálogo _Política de disposição em camadas_, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e clique em *aplicar*.
+. Na caixa de diálogo _Política de níveis_, selecione uma política de níveis, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e selecione *Aplicar*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
 
@@ -207,9 +207,6 @@ link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as pol
 image:screenshot_tiering_initial_policy_settings.png["Uma captura de tela que mostra as configurações de diretiva de disposição em camadas configuráveis."]
 
 
-
-.Resultado
-Você configurou com sucesso a disposição de dados em categorias de volumes no cluster para o StorageGRID.
 
 .O que se segue?
 Você pode revisar informações sobre os dados ativos e inativos no cluster. link:task-managing-tiering.html["Saiba mais sobre como gerenciar suas configurações de disposição em camadas"].

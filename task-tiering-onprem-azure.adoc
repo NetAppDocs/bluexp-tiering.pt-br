@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-tiering-onprem-azure.html 
 keywords: data tiering, fabricpool, cloud tiering, tiering cold data, tiering inactive data, tiering aff, tiering fas, tiering ontap, tiering volumes, tier data, tier cold data, tier fas, tier aff, tier ontap, azure, blob, azure blob 
-summary: Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos em camadas no storage de Blob do Azure. 
+summary: Libere espaço em seus clusters ONTAP locais hierarquizando dados inativos no armazenamento de Blobs do Azure. 
 ---
 = Disposição em camadas de dados de clusters ONTAP on-premises para o storage Azure Blob
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos
 
 
 [role="lead"]
-Liberar espaço nos clusters do ONTAP no local ao dispor dados inativos em camadas no storage de Blob do Azure.
+Libere espaço em seus clusters ONTAP locais hierarquizando dados inativos no armazenamento de Blobs do Azure.
 
 
 
@@ -27,21 +27,21 @@ Comece rapidamente seguindo estas etapas ou role para baixo até as seções res
 Você precisa do seguinte:
 
 [role="quick-margin-list"]
-* Um cluster do ONTAP no local que executa o ONTAP 9.4 ou posterior e tem uma conexão HTTPS com o storage Blob do Azure. https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
+* Um cluster ONTAP local que executa o ONTAP 9.4 ou posterior e tem uma conexão HTTPS com o armazenamento de Blobs do Azure.  https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^] .
 * Um conetor instalado em um Azure VNet ou em suas instalações.
 * Rede para um conetor que habilita uma conexão HTTPS de saída ao cluster do ONTAP no data center, ao storage do Azure e ao serviço de disposição em camadas do BlueXP .
 
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dois"] Configurar a disposição em camadas
 [role="quick-margin-para"]
-No BlueXP , selecione um ambiente de trabalho do ONTAP local, clique em *Ativar* para o serviço de disposição em camadas e siga as instruções para categorizar dados no armazenamento de Blobs do Azure.
+No BlueXP, selecione um ambiente de trabalho ONTAP local, selecione *Habilitar* para o serviço de Hierarquia e siga as instruções para hierarquizar dados no armazenamento de Blobs do Azure.
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Três"] Configure o licenciamento
 [role="quick-margin-para"]
 Após o término da avaliação gratuita, pague pela disposição em camadas do BlueXP  por meio de uma assinatura com pagamento conforme o uso, uma licença BYOL em categorias da ONTAP BlueXP  ou uma combinação de ambos:
 
 [role="quick-margin-list"]
-* Para se inscrever no Azure Marketplace, https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Vá para a oferta do mercado BlueXP "^] clique em *Subscribe* e siga as instruções.
+* Para assinar no Azure Marketplace,  https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-manager?tab=Overview["Vá para a oferta do mercado BlueXP "^] , selecione *Inscrever-se* e siga as instruções.
 * Para pagar usando uma licença BYOL de disposição em camadas do BlueXP , envie um e-mail:ng-cloud-Tiering para NetApp.com?subject:Contact US if you need to purchase one] e, em seguidalink:https://docs.netapp.com/us-en/bluexp-digital-wallet/task-manage-data-services-licenses.html["Adicione-o à sua conta a partir da carteira digital BlueXP "], .
 
 
@@ -104,7 +104,7 @@ NOTE: A disposição em camadas do BlueXP  é compatível com volumes FlexGroup
 
 === Descobrindo um cluster ONTAP
 
-Você precisa criar um ambiente de trabalho ONTAP no local no BlueXP  antes de começar a separar em categorias os dados inativos.
+Você precisa criar um ambiente de trabalho ONTAP local no BlueXP antes de começar a hierarquizar dados frios.
 
 https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Saiba como descobrir um cluster"^].
 
@@ -131,7 +131,7 @@ Se você criou o conetor usando uma versão anterior do BlueXP , precisará edi
 
 === Preparar a rede para o conetor
 
-Certifique-se de que o conetor tem as ligações de rede necessárias. Um conetor pode ser instalado no local ou no Azure.
+Certifique-se de que o conetor tem as ligações de rede necessárias. Um conector pode ser instalado no local ou no Azure.
 
 .Passos
 . Certifique-se de que a rede onde o conetor está instalado permite as seguintes ligações:
@@ -169,29 +169,29 @@ Depois de preparar seu ambiente Azure, comece a categorizar os dados inativos do
 https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Um ambiente de trabalho no local"^].
 
 .Passos
-. Selecione o ambiente de trabalho do ONTAP no local.
+. Selecione o ambiente de trabalho ONTAP local.
 . Clique em *Enable* para o serviço de categorização no painel direito.
 +
 Se o destino de categorização de Blob do Azure existir como um ambiente de trabalho no Canvas, você poderá arrastar o cluster para o ambiente de trabalho do Blob do Azure para iniciar o assistente de configuração.
 
 +
-image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção Habilitar que aparece no lado direito da tela depois de selecionar um ambiente de trabalho ONTAP local."]
+image:screenshot_setup_tiering_onprem.png["Uma captura de tela que mostra a opção Ativar que aparece no lado direito da tela depois que você seleciona um ambiente de trabalho ONTAP local."]
 
 . *Definir Nome do armazenamento de objetos*: Insira um nome para este armazenamento de objetos. Deve ser exclusivo de qualquer outro storage de objetos que você esteja usando com agregados nesse cluster.
-. *Selecione Fornecedor*: Selecione *Microsoft Azure* e clique em *continuar*.
+. *Selecionar provedor*: Selecione *Microsoft Azure* e selecione *Continuar*.
 . Conclua as etapas nas páginas *Create Object Storage*:
 +
-.. *Grupo de recursos*: Selecione um grupo de recursos onde um contentor existente é gerenciado ou onde você gostaria de criar um novo contentor para dados em camadas e clique em *continuar*.
+.. *Grupo de recursos*: selecione um grupo de recursos onde um contêiner existente é gerenciado ou onde você gostaria de criar um novo contêiner para dados em camadas e selecione *Continuar*.
 +
-Ao usar um conetor no local, você deve inserir a assinatura do Azure que fornece acesso ao grupo de recursos.
+Ao usar um Conector local, você deve inserir a Assinatura do Azure que fornece acesso ao grupo de recursos.
 
-.. *Recipiente Azure*: Selecione o botão de opção para adicionar um novo contentor Blob a uma conta de armazenamento ou para usar um contentor existente. Em seguida, selecione a conta de armazenamento e escolha o contentor existente ou insira o nome do novo contentor. Em seguida, clique em *continuar*.
+.. *Recipiente Azure*: Selecione o botão de opção para adicionar um novo contentor Blob a uma conta de armazenamento ou para usar um contentor existente. Em seguida, selecione a conta de armazenamento e escolha o contentor existente ou insira o nome do novo contentor. Em seguida, selecione *Continuar*.
 +
 As contas de armazenamento e contentores que aparecem nesta etapa pertencem ao grupo de recursos selecionado na etapa anterior.
 
 .. *Ciclo de vida da camada de acesso*: A disposição em camadas do BlueXP  gerencia as transições de ciclo de vida de seus dados em camadas. Os dados começam na classe _Hot_, mas você pode criar uma regra para aplicar a classe _Cool_ aos dados após um determinado número de dias.
 +
-Selecione o nível de acesso para o qual você deseja transferir os dados em camadas e o número de dias antes que os dados sejam atribuídos a esse nível e clique em *continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Cool_ da classe _Hot_ após 45 dias no armazenamento de objetos.
+Selecione o nível de acesso para o qual você deseja transferir os dados em camadas e o número de dias antes que os dados sejam atribuídos a esse nível e selecione *Continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Cool_ da classe _Hot_ após 45 dias no armazenamento de objetos.
 
 +
 Se você escolher *manter dados neste nível de acesso*, os dados permanecerão no nível _Hot_ Access e nenhuma regra será aplicada. link:reference-azure-support.html["Consulte níveis de acesso compatíveis"^].
@@ -202,7 +202,7 @@ image:screenshot_tiering_lifecycle_selection_azure.png["Uma captura de tela most
 +
 Observe que a regra de ciclo de vida é aplicada a todos os contentores blob na conta de armazenamento selecionada.
 
-.. *Rede de cluster*: Selecione o espaço IPspace que o ONTAP deve usar para se conetar ao armazenamento de objetos e clique em *continuar*.
+.. *Rede de cluster*: Selecione o espaço IP que o ONTAP deve usar para se conectar ao armazenamento de objetos e selecione *Continuar*.
 +
 A seleção do espaço de IPspace correto garante que a disposição em camadas do BlueXP  possa configurar uma conexão do ONTAP ao storage de objetos do seu provedor de nuvem.
 
@@ -213,15 +213,15 @@ Você também pode definir a largura de banda de rede disponível para carregar 
 
 . Na página _volumes de nível_, selecione os volumes para os quais você deseja configurar a disposição em categorias e inicie a página Diretiva de disposição em categorias:
 +
-** Para selecionar todos os volumes, marque a caixa na linha de título (image:button_backup_all_volumes.png[""]) e clique em *Configurar volumes*.
-** Para selecionar vários volumes, marque a caixa para cada volume (image:button_backup_1_volume.png[""]) e clique em *Configurar volumes*.
-** Para selecionar um único volume, clique na linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) do volume.
+** Para selecionar todos os volumes, marque a caixa na linha de título ( image:button_backup_all_volumes.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar vários volumes, marque a caixa para cada volume ( image:button_backup_1_volume.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar um único volume, selecione a linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) para o volume.
 +
 image:screenshot_tiering_initial_volumes.png["Uma captura de tela que mostra como selecionar um único volume, vários volumes ou todos os volumes e o botão modificar volumes selecionados."]
 
 
 
-. Na caixa de diálogo _Política de disposição em camadas_, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e clique em *aplicar*.
+. Na caixa de diálogo _Política de níveis_, selecione uma política de níveis, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e selecione *Aplicar*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
 

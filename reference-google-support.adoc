@@ -20,7 +20,7 @@ O BlueXP  Tiering é compatível com várias classes de storage do Google Cloud
 
 == Classes de armazenamento do GCP compatíveis
 
-Quando você configura a disposição de dados em categorias no GCP a partir dos sistemas ONTAP locais, a disposição em camadas do BlueXP  usa automaticamente a classe de storage _padrão_ para os dados inativos. A disposição em camadas do BlueXP  pode aplicar uma regra de ciclo de vida para que os dados transitem da classe de storage _padrão_ para outras classes de storage depois de um certo número de dias. Você pode escolher entre as seguintes classes de armazenamento:
+Ao configurar o armazenamento em camadas de dados no Google Cloud a partir dos seus sistemas ONTAP locais, o armazenamento em camadas usa automaticamente a classe de armazenamento _Standard_ para seus dados inativos. O armazenamento em camadas pode aplicar uma regra de ciclo de vida para que os dados transitem da classe de armazenamento _Standard_ para outras classes de armazenamento após um determinado número de dias. Você pode escolher entre as seguintes classes de armazenamento:
 
 * Nearline
 * Coldline
@@ -29,7 +29,7 @@ Quando você configura a disposição de dados em categorias no GCP a partir dos
 
 Se você não escolher outra classe de armazenamento, os dados permanecerão na classe de armazenamento _Standard_ e nenhuma regra será aplicada.
 
-Quando você configura uma regra de ciclo de vida de disposição em camadas do BlueXP , não deve configurar nenhuma regra de ciclo de vida ao configurar o bucket na sua conta do Google.
+Ao configurar uma regra de ciclo de vida em camadas, você não deve configurar nenhuma regra de ciclo de vida ao configurar o bucket na sua conta do Google.
 
 https://cloud.google.com/storage/docs/storage-classes["Saiba mais sobre as aulas do Google Cloud Storage"^].
 
@@ -37,7 +37,7 @@ https://cloud.google.com/storage/docs/storage-classes["Saiba mais sobre as aulas
 
 == Regiões compatíveis do Google Cloud
 
-O BlueXP  Tiering é compatível com as seguintes regiões.
+A hierarquização oferece suporte às seguintes regiões.
 
 
 

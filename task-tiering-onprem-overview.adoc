@@ -14,13 +14,13 @@ summary: A disposição em camadas do BlueXP  fornece uma visualização agrega
 
 
 [role="lead"]
-A disposição em camadas do BlueXP  fornece uma visualização agregada de categorização de dados em cada um dos seus clusters no local. Esta visão geral fornece uma imagem clara do seu ambiente e permite que você tome as medidas adequadas.
+A disposição em camadas do BlueXP  fornece uma visualização agregada de categorização de dados em cada um dos seus clusters no local.
 
-Basta clicar em *Categorização > Painel no local*. O BlueXP  Tiering fornece os detalhes a seguir sobre seu ambiente.
+Selecione *Níveis > Painel Local*. Os seguintes detalhes estão incluídos no painel.
 
 image:screenshot_tiering_onprem_dashboard.png["Uma captura de tela da página do Painel local."]
 
-Clusters descobertos:: O número de clusters no local descobertos pelo BlueXP  Tiering. O gráfico fornece uma visão geral do status de disposição em camadas desses clusters.
+Clusters descobertos:: O número de clusters locais que foram descobertos. O gráfico fornece uma visão geral do status de disposição em camadas desses clusters.
 +
 --
 * Alta disposição em camadas - clusters que estão em camadas mais de 20% dos dados inativos

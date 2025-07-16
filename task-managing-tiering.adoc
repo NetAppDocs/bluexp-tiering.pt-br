@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-managing-tiering.html 
 keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed 
-summary: Agora que você configurou a disposição de dados em camadas nos clusters do ONTAP no local, pode categorizar dados de volumes adicionais, alterar a política de disposição em categorias de volume, descobrir clusters adicionais e muito mais. 
+summary: Agora que você configurou o armazenamento em camadas de dados dos seus clusters ONTAP locais, você pode armazenar em camadas dados de volumes adicionais, alterar a política de armazenamento em camadas de um volume, descobrir clusters adicionais e muito mais. 
 ---
 = Gerenciamento de categorização de dados para seus clusters
 :hardbreaks:
@@ -14,17 +14,17 @@ summary: Agora que você configurou a disposição de dados em camadas nos clust
 
 
 [role="lead"]
-Agora que você configurou a disposição de dados em camadas nos clusters do ONTAP no local, pode categorizar dados de volumes adicionais, alterar a política de disposição em categorias de volume, descobrir clusters adicionais e muito mais.
+Agora que você configurou o armazenamento em camadas de dados dos seus clusters ONTAP locais, você pode armazenar em camadas dados de volumes adicionais, alterar a política de armazenamento em camadas de um volume, descobrir clusters adicionais e muito mais.
 
 
 
 == Analisar as informações de disposição em camadas de um cluster
 
-Talvez você queira ver a quantidade de dados na camada de nuvem e a quantidade de dados nos discos. Ou, talvez você queira ver a quantidade de dados ativos e inativos nos discos do cluster. A disposição em camadas do BlueXP  fornece essas informações para cada cluster.
+Você pode visualizar a quantidade de dados na camada de nuvem e nos discos. Você também pode ver a quantidade de dados ativos e inativos nos discos do cluster para cada cluster gerenciado com o BlueXP tiering. Essas informações estão disponíveis na página _Clusters_.
 
 .Passos
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique no ícone de menu image:icon-action.png["Ícone ações"]de um cluster e selecione *informações de cluster*.
+. Na página *Clusters*, selecione o ícone de menu image:icon-action.png["Ícone ações"] para um cluster e selecione *Informações do cluster*.
 +
 image:screenshot_tiering_cluster_info_button.png["Uma captura de tela da seleção do botão informações do cluster na página clusters."]
 
@@ -54,21 +54,21 @@ TIP: Não é necessário configurar o armazenamento de objetos porque ele já es
 
 .Passos
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique em *volumes de nível* para o cluster.
+. Na página *Clusters*, selecione *Volumes de camada* para o cluster.
 +
 image:screenshot_tiering_tier_volumes_button.png["Uma captura de tela mostrando como selecionar o botão volumes de nível para um cluster."]
 
 . Na página _volumes de nível_, selecione os volumes para os quais você deseja configurar a disposição em categorias e inicie a página Diretiva de disposição em categorias:
 +
-** Para selecionar todos os volumes, marque a caixa na linha de título (image:button_backup_all_volumes.png[""]) e clique em *Configurar volumes*.
-** Para selecionar vários volumes, marque a caixa para cada volume (image:button_backup_1_volume.png[""]) e clique em *Configurar volumes*.
-** Para selecionar um único volume, clique na linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) do volume.
+** Para selecionar todos os volumes, marque a caixa na linha de título ( image:button_backup_all_volumes.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar vários volumes, marque a caixa para cada volume ( image:button_backup_1_volume.png[""] ) e selecione *Configurar volumes*.
+** Para selecionar um único volume, selecione a linha (ou image:screenshot_edit_icon.gif["editar ícone de lápis"] ícone) para o volume.
 +
 image:screenshot_tiering_tier_volumes.png["Uma captura de tela que mostra como selecionar um único volume, vários volumes ou todos os volumes e o botão modificar volumes selecionados."]
 
 
 
-. Na caixa de diálogo _Política de disposição em camadas_, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e clique em *aplicar*.
+. Na caixa de diálogo _Política de níveis_, selecione uma política de níveis, ajuste opcionalmente os dias de resfriamento para os volumes selecionados e selecione *Aplicar*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
 
@@ -88,8 +88,8 @@ A alteração da política de disposição em camadas de um volume altera a form
 
 .Passos
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique em *volumes de nível* para o cluster.
-. Clique na linha de um volume, selecione uma política de disposição em camadas, ajuste opcionalmente os dias de resfriamento e clique em *aplicar*.
+. Na página *Clusters*, selecione *Volumes de camada* para o cluster.
+. Clique na linha de um volume, selecione uma política de níveis, ajuste opcionalmente os dias de resfriamento e selecione *Aplicar*.
 +
 link:concept-cloud-tiering.html#volume-tiering-policies["Saiba mais sobre as políticas de disposição em camadas de volume e os dias de resfriamento"].
 
@@ -107,14 +107,14 @@ A política de disposição em camadas é alterada e os dados começam a ser dis
 
 == Alteração da largura de banda da rede disponível para carregar dados inativos para o armazenamento de objetos
 
-Quando você ativa a disposição em camadas do BlueXP  para um cluster, por padrão, o ONTAP pode usar uma quantidade ilimitada de largura de banda para transferir os dados inativos de volumes no ambiente de trabalho para o storage de objetos. Se você notar que a disposição em categorias de tráfego está afetando as cargas de trabalho normais do usuário, poderá controlar a quantidade de largura de banda da rede usada durante a transferência. Você pode escolher um valor entre 1 e 10.000 Mbps como a taxa de transferência máxima.
+Quando você ativa o armazenamento em camadas para um cluster, por padrão, o ONTAP usa uma quantidade ilimitada de largura de banda para transferir os dados inativos dos volumes no ambiente de trabalho para o armazenamento de objetos. Se você notar que a disposição em categorias de tráfego está afetando as cargas de trabalho normais do usuário, poderá controlar a quantidade de largura de banda da rede usada durante a transferência. Você pode escolher um valor entre 1 e 10.000 Mbps como a taxa de transferência máxima.
 
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique no ícone de menu image:icon-action.png["Ícone ações"]de um cluster e selecione *taxa de transferência máxima*.
+. Na página *Clusters*, selecione o ícone de menu image:icon-action.png["Ícone ações"] para um cluster e selecione *Taxa máxima de transferência*.
 +
 image:screenshot_tiering_transfer_rate_button.png["Uma captura de tela da seleção do botão de taxa de transferência máxima na página clusters."]
 
-. Na página _maximum transfer rate_, selecione o botão de opção *Limited* e insira a largura de banda máxima que pode ser usada ou selecione *Unlimited* para indicar que não há limite. Em seguida, clique em *Apply*.
+. Na página _maximum transfer rate_, selecione o botão de opção *Limited* e insira a largura de banda máxima que pode ser usada ou selecione *Unlimited* para indicar que não há limite. Em seguida, selecione *Aplicar*.
 +
 image:screenshot_tiering_transfer_rate.png["Uma captura de tela da caixa de diálogo Maximum Transfer Rate (taxa de transferência máxima) para um cluster."]
 
@@ -126,7 +126,7 @@ Essa configuração não afeta a largura de banda alocada a outros clusters que 
 
 == Faça download de um relatório de disposição em camadas para seus volumes
 
-É possível fazer download de um relatório da página volumes de categorias para verificar o status de categorias de todos os volumes nos clusters que você está gerenciando. Basta clicar no image:button_download.png["Transferir"] botão. O BlueXP  Tiering gera um arquivo .CSV que pode ser revisado e enviado a outros grupos conforme necessário. O arquivo .CSV inclui até 10.000 linhas de dados.
+É possível fazer download de um relatório da página volumes de categorias para verificar o status de categorias de todos os volumes nos clusters que você está gerenciando. Basta selecionar o image:button_download.png["Transferir"] botão para baixar um arquivo .CSV que você pode revisar e enviar para outros grupos, conforme necessário. O arquivo .CSV inclui até 10.000 linhas de dados.
 
 image:screenshot_tiering_report_download.png["Uma captura de tela mostrando como gerar um arquivo CSV listando o status de disposição em categorias de todos os seus volumes."]
 
@@ -136,7 +136,7 @@ image:screenshot_tiering_report_download.png["Uma captura de tela mostrando como
 
 Os dados em camadas acessados a partir da nuvem podem ser "reaquecidos" e movidos de volta para a camada de performance. No entanto, se você quiser promover proativamente os dados para o nível de desempenho a partir do nível de nuvem, faça isso na caixa de diálogo _Política de disposição em categorias_. Essa capacidade está disponível quando se usa o ONTAP 9.8 e superior.
 
-Você pode fazer isso se quiser parar de usar a disposição em categorias em um volume ou se decidir manter todos os dados de usuário na categoria de performance, mas manter cópias Snapshot na categoria de nuvem.
+Você pode fazer isso se quiser parar de usar camadas em um volume ou se decidir manter todos os dados do usuário na camada de desempenho, mas manter cópias do Snapshot na camada de nuvem.
 
 Existem duas opções:
 
@@ -157,8 +157,8 @@ NOTE: Você pode ser cobrado pelo seu provedor de nuvem com base nessa quantidad
 Certifique-se de que você tenha espaço suficiente na categoria de performance para todos os dados que estão sendo movidos de volta da nuvem.
 
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique em *volumes de nível* para o cluster.
-. Clique no image:screenshot_edit_icon.gif["ícone de edição que aparece no final de cada linha na tabela para separar volumes"] ícone do volume, escolha a opção de recuperação que deseja usar e clique em *aplicar*.
+. Na página *Clusters*, selecione *Volumes de camada* para o cluster.
+. Clique no image:screenshot_edit_icon.gif["ícone de edição que aparece no final de cada linha na tabela para separar volumes"] ícone do volume, escolha a opção de recuperação que deseja usar e selecione *Aplicar*.
 +
 image:screenshot_tiering_policy_settings_with_retrieve.png["Uma captura de tela que mostra as configurações de diretiva de disposição em camadas configuráveis."]
 
@@ -171,7 +171,7 @@ A política de disposição em camadas é alterada e os dados em camadas começa
 
 == Gerenciamento de configurações de disposição em camadas em agregados
 
-Cada agregado em seus sistemas ONTAP locais tem duas configurações que você pode ajustar: O limite de preenchimento de disposição em categorias e se os relatórios de dados inativos estão ativados.
+Cada agregado em seus sistemas ONTAP locais tem duas configurações que você pode ajustar: o limite de preenchimento de camadas e se o relatório de dados inativos está habilitado.
 
 Disposição em camadas no limite de plenitude:: Definir o limite para um número menor reduz a quantidade de dados necessária para ser armazenada na camada de performance antes da disposição em categorias. Isso pode ser útil para grandes agregados que contêm poucos dados ativos.
 +
@@ -189,11 +189,11 @@ TIP: É melhor manter o IDR ativado porque ajuda a identificar seus dados inativ
 
 
 .Passos
-. Na página *clusters*, clique em *Configuração avançada* para o cluster selecionado.
+. Na página *Clusters*, selecione *Configuração avançada* para o cluster selecionado.
 +
 image:screenshot_tiering_advanced_setup_button.png["Uma captura de tela mostrando o botão Configuração Avançada para um cluster."]
 
-. Na página Configuração avançada, clique no ícone de menu do agregado e selecione *Modificar agregado*.
+. Na página Configuração avançada, selecione o ícone de menu do agregado e selecione *Modificar agregado*.
 +
 image:screenshot_tiering_modify_aggr.png["Uma captura de tela mostrando a opção Modificar agregado para um agregado."]
 
@@ -208,7 +208,7 @@ image:screenshot_tiering_modify_aggregate.png["Uma captura de tela que mostra um
 
 == Fixação da saúde operacional
 
-Falhas podem acontecer. Quando isso acontece, a disposição em camadas do BlueXP  exibe um status de integridade operacional "com falha" no painel do cluster. A integridade reflete o status do sistema ONTAP e do BlueXP .
+Falhas podem acontecer. Quando isso acontece, a hierarquização exibe um status de integridade operacional "Falha" no Painel do Cluster. A integridade reflete o status do sistema ONTAP e do BlueXP .
 
 .Passos
 . Identifique quaisquer clusters que tenham uma integridade operacional de "Falha".
@@ -225,13 +225,13 @@ Falhas podem acontecer. Quando isso acontece, a disposição em camadas do BlueX
 
 == Descoberta de clusters adicionais com a disposição em camadas do BlueXP 
 
-Você pode adicionar clusters do ONTAP locais não descobertos ao BlueXP  na página disposição em categorias _Cluster_, para que você possa habilitar a disposição em categorias para o cluster.
+Você pode adicionar seus clusters ONTAP locais não descobertos ao BlueXP na página Tiering _Cluster_ para poder habilitar o hierarquização do cluster.
 
 Observe que os botões também aparecem na página Categorização _on-Prem dashboard_ para você descobrir clusters adicionais.
 
 .Passos
-. Na disposição em camadas do BlueXP , clique na guia *clusters*.
-. Para ver quaisquer clusters não descobertos, clique em *Mostrar clusters não descobertos*.
+. Selecione a aba *Clusters*.
+. Para ver quaisquer clusters não descobertos, selecione *Mostrar clusters não descobertos*.
 +
 image:screenshot_tiering_show_undiscovered_cluster.png["Uma captura de tela mostrando o botão Mostrar clusters não descobertos no Painel de disposição em camadas."]
 
@@ -244,16 +244,16 @@ Se suas credenciais NSS não forem salvas no BlueXP , você será solicitado a 
 +
 image:screenshot_tiering_discover_cluster.png["Uma captura de tela mostrando como descobrir um cluster existente para adicionar ao BlueXP  e ao Painel de disposição em camadas."]
 
-. Clique em *Discover Cluster* para o cluster que você deseja gerenciar por meio do BlueXP  e implemente a disposição de dados em camadas.
-. Na página _Detalhes do cluster_, digite a senha da conta de usuário admin e clique em *descobrir*.
+. Selecione *Descobrir Cluster* para o cluster que você deseja gerenciar e implementar a divisão de dados em camadas.
+. Na página _Detalhes do cluster_, insira a senha da conta de usuário administrador e selecione *Descobrir*.
 +
 Observe que o endereço IP de gerenciamento de cluster é preenchido com base nas informações da conta do NSS.
 
-. Na página _Detalhes e credenciais_, o nome do cluster é adicionado como o nome do ambiente de trabalho, então basta clicar em *Go*.
+. Na página _Detalhes e credenciais_, o nome do cluster é adicionado como Nome do ambiente de trabalho, então basta selecionar *Ir*.
 
 
 .Resultado
-O BlueXP  descobre o cluster e o adiciona a um ambiente de trabalho no Canvas usando o nome do cluster como o nome do ambiente de trabalho.
+Um ambiente de trabalho é criado no Canvas usando o nome do cluster como nome do ambiente de trabalho.
 
 Você pode ativar o serviço de disposição em camadas ou outros serviços para esse cluster no painel direito.
 
@@ -261,16 +261,13 @@ Você pode ativar o serviço de disposição em camadas ou outros serviços para
 
 == PESQUISE um cluster em todos os conetores BlueXP
 
-Se você estiver usando vários conetores para gerenciar todo o storage no ambiente, alguns clusters nos quais você deseja implementar a disposição em camadas podem estar em outro conector. Se você não tiver certeza de qual conetor está gerenciando um determinado cluster, poderá pesquisar em todos os conetores usando a disposição em camadas do BlueXP .
+Se você estiver usando vários Conectores para gerenciar todo o armazenamento em seu ambiente, alguns clusters nos quais você deseja implementar a hierarquização podem estar associados a um Conector diferente. Se não tiver certeza de qual Conector está gerenciando um determinado cluster, você pode pesquisar em todos os Conectores.
 
 .Passos
-. Na barra de menu BlueXP  Tiering, clique no menu de ação e selecione *pesquisar cluster em todos os conetores*.
+. Na barra de menu de BlueXP tiering , selecione o menu de ação e selecione *Pesquisar cluster em todos os conectores*.
 +
 image:screenshot_tiering_search for_cluster.png["Uma captura de tela mostrando como pesquisar um cluster que pode estar em qualquer um dos seus conetores BlueXP ."]
 
-. Na caixa de diálogo Pesquisa exibida, digite o nome do cluster e clique em *pesquisar*.
-+
-A disposição em camadas do BlueXP  exibe o nome do conetor se ele for capaz de encontrar o cluster.
-
+. Na caixa de diálogo Pesquisar exibida, insira o nome do cluster e selecione *Pesquisar*.
 . https://docs.netapp.com/us-en/bluexp-setup-admin/task-manage-multiple-connectors.html#switch-between-connectors["Mude para o conetor e configure a disposição em camadas para o cluster"^].
 

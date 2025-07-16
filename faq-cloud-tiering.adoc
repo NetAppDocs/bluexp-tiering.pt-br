@@ -144,7 +144,7 @@ Não, não.
 
 
 
-=== A reidratação dos sistemas locais está sujeita ao custo de saída cobrado pelos fornecedores de nuvem?
+=== A reidratação de sistemas locais está sujeita ao custo de saída cobrado pelos provedores de nuvem?
 
 Sim. Todas as leituras da nuvem pública estão sujeitas a taxas de saída.
 
@@ -156,7 +156,7 @@ A melhor maneira de estimar o quanto um provedor de nuvem cobrará por hospedar 
 
 
 
-=== Os provedores de nuvem cobram taxas extras para ler/recuperar dados do storage de objetos para o storage no local?
+=== Há alguma cobrança extra por parte dos provedores de nuvem para leitura/recuperação de dados do armazenamento de objetos para o armazenamento local?
 
 Sim. Verifique https://aws.amazon.com/s3/pricing/["Definição de preço do Amazon S3"], https://azure.microsoft.com/en-us/pricing/details/storage/blobs/["Preços de Blob em bloco"] e https://cloud.google.com/storage/pricing["Preços do Cloud Storage"] para obter preços adicionais incorridos com a leitura/recuperação de dados.
 
@@ -170,7 +170,7 @@ Para obter uma estimativa, basta adicionar seu cluster ONTAP ao BlueXP  e inspe
 
 === Como sou cobrado por disposição em categorias quando uso um ONTAP MetroCluster?
 
-Quando usado em ambientes MetroCluster, a capacidade licenciada em camadas é aplicada igualmente aos buckets espelhados. Por exemplo, se você tiver uma licença para 100TiB TB de disposição em camadas, ambos os buckets podem ser dispostos em camadas até 100 TIB. Não há custo adicional para baldes espelhados. Ao dispor em camadas de agregados sem espelhamento em ambientes MetroCluster, a licença de disposição em camadas do BlueXP  é aplicada normalmente e a capacidade total categorizada em ambos os buckets é usada. Por exemplo, se você tiver uma licença para 100TiB TB de disposição em camadas, ambos os buckets podem ser dispostos em camadas até 50TB TB.
+Quando usado em ambientes MetroCluster , a licença de escalonamento total é aplicada ao uso de ambos os clusters. Por exemplo, se você tiver uma licença para 100 TiB de escalonamento, a capacidade de escalonamento utilizada por cada cluster contribuirá para a capacidade total de 100 TiB.
 
 
 
@@ -326,7 +326,7 @@ A partir do ONTAP 9.6, se o agregado de destino estiver usando a mesma camada de
 
 
 
-=== Como posso trazer meus dados em categorias de volta no local para o nível de performance?
+=== Como posso trazer meus dados em camadas de volta para o nível de desempenho no local?
 
 Em geral, a gravação é feita de acordo com as leituras e depende do tipo de diretiva de disposição em camadas. Antes do ONTAP 9.8, a gravação de todo o volume pode ser feita com uma operação _volume Move_. A partir do ONTAP 9.8, a IU em categorias tem opções para *trazer de volta todos os dados* ou *trazer de volta o sistema de arquivos ativo*. link:task-managing-tiering.html#migrating-data-from-the-cloud-tier-back-to-the-performance-tier["Veja como mover os dados de volta para o nível de performance"].
 

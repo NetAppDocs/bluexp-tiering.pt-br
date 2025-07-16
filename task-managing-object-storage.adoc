@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-managing-object-storage.html 
 keywords: object storage, mirror object storage, create object storage, remove object storage, swap object storage, display object storage, license 
-summary: Depois de configurar os clusters do ONTAP no local para categorizar dados em um storage de objetos específico, você pode executar tarefas adicionais de storage de objetos. Você pode adicionar um novo storage de objetos, espelhar seus dados em camadas em um storage de objetos secundário, trocar o storage de objetos primário e espelhado, remover um armazenamento de objetos espelhados de um agregado e muito mais. 
+summary: Depois de configurar seus clusters ONTAP locais para hierarquizar dados em um armazenamento de objetos específico, você pode executar tarefas adicionais de armazenamento de objetos. Você pode adicionar um novo storage de objetos, espelhar seus dados em camadas em um storage de objetos secundário, trocar o storage de objetos primário e espelhado, remover um armazenamento de objetos espelhados de um agregado e muito mais. 
 ---
 = Gerenciamento do storage de objetos usado para categorização de dados
 :hardbreaks:
@@ -14,16 +14,16 @@ summary: Depois de configurar os clusters do ONTAP no local para categorizar dad
 
 
 [role="lead"]
-Depois de configurar os clusters do ONTAP no local para categorizar dados em um storage de objetos específico, você pode executar tarefas adicionais de storage de objetos. Você pode adicionar um novo storage de objetos, espelhar seus dados em camadas em um storage de objetos secundário, trocar o storage de objetos primário e espelhado, remover um armazenamento de objetos espelhados de um agregado e muito mais.
+Depois de configurar seus clusters ONTAP locais para hierarquizar dados em um armazenamento de objetos específico, você pode executar tarefas adicionais de armazenamento de objetos. Você pode adicionar um novo storage de objetos, espelhar seus dados em camadas em um storage de objetos secundário, trocar o storage de objetos primário e espelhado, remover um armazenamento de objetos espelhados de um agregado e muito mais.
 
 
 
 == Exibindo armazenamentos de objetos configurados para um cluster
 
-Talvez você queira ver todos os armazenamentos de objetos que foram configurados para o cluster e aos quais agregados estão anexados. A disposição em camadas do BlueXP  fornece essas informações para cada cluster.
+Você pode ver todos os armazenamentos de objetos que foram configurados para cada cluster e a quais agregados eles estão anexados.
 
 .Passos
-. Na página *clusters*, clique no ícone de menu de um cluster e selecione *informações de armazenamento de objetos*.
+. Na página *Clusters*, selecione o ícone de menu para um cluster e selecione *Informações do repositório de objetos*.
 . Reveja os detalhes sobre os armazenamentos de objetos.
 +
 Este exemplo mostra um armazenamento de objetos Amazon S3 e Azure Blob anexado a diferentes agregados em um cluster.
@@ -37,11 +37,11 @@ image:screenshot_tiering_object_store_view.png["Uma captura de tela que mostra a
 
 == Adicionando um novo armazenamento de objetos
 
-Você pode adicionar um novo armazenamento de objetos que estará disponível para agregados em seu cluster. Depois de criá-lo, você pode anexá-lo a um agregado.
+Adicione um novo armazenamento de objetos que você pode anexar a um agregado.
 
 .Passos
-. Na página *clusters*, clique no ícone de menu de um cluster e selecione *informações de armazenamento de objetos*.
-. Na página informações do armazenamento de objetos, clique em *criar novo armazenamento de objetos*.
+. Na página *Clusters*, selecione o ícone de menu para um cluster e selecione *Informações do repositório de objetos*.
+. Na página Informações do Object Store, selecione *Criar novo Object Store*.
 +
 image:screenshot_tiering_object_store_create_button.png["Uma captura de tela mostrando o botão criar novo armazenamento de objetos para criar um novo armazenamento de objetos."]
 
@@ -49,16 +49,16 @@ image:screenshot_tiering_object_store_create_button.png["Uma captura de tela mos
 O assistente de armazenamento de objetos é iniciado. O exemplo abaixo mostra como criar um armazenamento de objetos no Amazon S3.
 
 . *Definir Nome do armazenamento de objetos*: Insira um nome para este armazenamento de objetos. Deve ser exclusivo de qualquer outro storage de objetos que você esteja usando com agregados nesse cluster.
-. *Selecione o provedor*: Selecione o provedor, por exemplo *Amazon Web Services* e clique em *continuar*.
+. *Selecionar provedor*: selecione o provedor, por exemplo, *Amazon Web Services*, e selecione *Continuar*.
 . Conclua as etapas nas páginas *Create Object Storage*:
 +
-.. *S3 Bucket*: Adicione um novo bucket S3 ou selecione um bucket S3 existente que comece com o prefixo _Fabric-pool_. Em seguida, insira o ID da conta da AWS que fornece acesso ao intervalo, selecione a região do intervalo e clique em *continuar*.
+.. *S3 Bucket*: Adicione um novo bucket S3 ou selecione um bucket S3 existente que comece com o prefixo _Fabric-pool_. Em seguida, insira o ID da conta da AWS que fornece acesso ao bucket, selecione a região do bucket e selecione *Continuar*.
 +
 O prefixo _Fabric-pool_ é necessário porque a política do IAM para o conetor permite que a instância execute ações S3 em buckets nomeados com esse prefixo exato. Por exemplo, você pode nomear o bucket S3 _Fabric-pool-AFF1_, onde AFF1 é o nome do cluster.
 
 .. *Ciclo de vida da classe de storage*: A disposição em camadas do BlueXP  gerencia as transições de ciclo de vida dos dados em camadas. Os dados começam na classe _Standard_, mas você pode criar uma regra para aplicar uma classe de armazenamento diferente aos dados após um determinado número de dias.
 +
-Selecione a classe de armazenamento S3 para a qual você deseja transferir os dados em camadas e o número de dias antes que os dados sejam atribuídos a essa classe e clique em *continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Standard-IA_ da classe _Standard_ após 45 dias no armazenamento de objetos.
+Selecione a classe de armazenamento S3 para a qual você deseja fazer a transição dos dados em camadas e o número de dias antes que os dados sejam atribuídos a essa classe e selecione *Continuar*. Por exemplo, a captura de tela abaixo mostra que os dados em camadas são atribuídos à classe _Standard-IA_ da classe _Standard_ após 45 dias no armazenamento de objetos.
 
 +
 Se você escolher *manter dados nesta classe de armazenamento*, os dados permanecerão na classe de armazenamento _Standard_ e nenhuma regra será aplicada. link:reference-aws-support.html["Consulte classes de armazenamento suportadas"^].
@@ -69,11 +69,11 @@ image:screenshot_tiering_lifecycle_selection_aws.png["Uma captura de tela mostra
 +
 Observe que a regra de ciclo de vida é aplicada a todos os objetos no intervalo selecionado.
 
-.. *Credenciais*: Insira a ID da chave de acesso e a chave secreta para um usuário do IAM que tenha as permissões S3 necessárias e clique em *continuar*.
+.. *Credenciais*: insira o ID da chave de acesso e a chave secreta para um usuário do IAM que tenha as permissões S3 necessárias e selecione *Continuar*.
 +
 O usuário do IAM deve estar na mesma conta da AWS que o intervalo selecionado ou criado na página *S3 Bucket*. Consulte as permissões necessárias na seção sobre como ativar a disposição em camadas.
 
-.. *Rede de cluster*: Selecione o espaço IPspace que o ONTAP deve usar para se conetar ao armazenamento de objetos e clique em *continuar*.
+.. *Rede de cluster*: Selecione o espaço IP que o ONTAP deve usar para se conectar ao armazenamento de objetos e selecione *Continuar*.
 +
 A seleção do espaço de IPspace correto garante que a disposição em camadas do BlueXP  possa configurar uma conexão do ONTAP ao storage de objetos do seu provedor de nuvem.
 
@@ -96,7 +96,7 @@ Ao usar uma configuração do MetroCluster, é uma prática recomendada usar arm
 Ao usar o StorageGRID como armazenamento de objetos em uma configuração do MetroCluster, os sistemas ONTAP podem executar a disposição em camadas do FabricPool em um único sistema StorageGRID. Cada sistema ONTAP precisa categorizar os dados em diferentes buckets.
 
 .Passos
-. Na página *clusters*, clique em *Configuração avançada* para o cluster selecionado.
+. Na página *Clusters*, selecione *Configuração avançada* para o cluster selecionado.
 +
 image:screenshot_tiering_advanced_setup_button.png["Uma captura de tela mostrando o botão Configuração Avançada para um cluster."]
 
@@ -104,7 +104,7 @@ image:screenshot_tiering_advanced_setup_button.png["Uma captura de tela mostrand
 +
 image:screenshot_tiering_mirror_config.png["Uma captura de tela mostrando como arrastar um segundo armazenamento de objetos para um agregado para criar um espelho de disposição em camadas."]
 
-. Na caixa de diálogo Anexar armazenamento de objetos, clique em *Anexar* e o segundo armazenamento de objetos é anexado ao agregado.
+. Na caixa de diálogo Anexar armazenamento de objetos, selecione *Anexar* e o segundo armazenamento de objetos será anexado ao agregado.
 +
 image:screenshot_tiering_mirror_config_complete.png["Uma captura de tela mostrando um segundo armazenamento de objetos anexado a um agregado."]
 
@@ -119,11 +119,11 @@ O status espelho aparecerá como "Sincronizar em andamento" enquanto os armazena
 Você pode trocar o armazenamento de objetos primário e espelhado por um agregado. O espelho de armazenamento de objetos torna-se o primário e o primário original torna-se o espelho.
 
 .Passos
-. Na página *clusters*, clique em *Configuração avançada* para o cluster selecionado.
+. Na página *Clusters*, selecione *Configuração avançada* para o cluster selecionado.
 +
 image:screenshot_tiering_advanced_setup_button.png["Uma captura de tela mostrando o botão Configuração Avançada para um cluster."]
 
-. Na página Configuração avançada, clique no ícone de menu do agregado e selecione *trocar destinos*.
+. Na página Configuração avançada, selecione o ícone de menu para o agregado e selecione *Trocar destinos*.
 +
 image:screenshot_tiering_mirror_swap.png["Uma captura de tela mostrando a opção Swap Destination para um agregado."]
 
@@ -137,11 +137,11 @@ image:screenshot_tiering_mirror_swap.png["Uma captura de tela mostrando a opçã
 Você pode remover um espelho FabricPool se não precisar mais replicar para um armazenamento de objetos adicional.
 
 .Passos
-. Na página *clusters*, clique em *Configuração avançada* para o cluster selecionado.
+. Na página *Clusters*, selecione *Configuração avançada* para o cluster selecionado.
 +
 image:screenshot_tiering_advanced_setup_button.png["Uma captura de tela mostrando o botão Configuração Avançada para um cluster."]
 
-. Na página Configuração avançada, clique no ícone de menu do agregado e selecione *Unmirror Object Store*.
+. Na página Configuração avançada, selecione o ícone de menu para o agregado e selecione *Desespelhar armazenamento de objetos*.
 +
 image:screenshot_tiering_mirror_delete.png["Uma captura de tela mostrando a opção Unmirror Object Store para um agregado."]
 

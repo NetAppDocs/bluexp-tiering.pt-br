@@ -25,8 +25,8 @@ image:screenshot_cloud_performance_test.png["Uma captura de tela dos resultados 
 
 .Etapas para um cluster que não foi configurado para disposição em camadas
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique no ícone de menu de um cluster e selecione *Teste de desempenho em nuvem*.
-. Reveja os detalhes e clique em *continuar*.
+. Na página *Clusters*, selecione o ícone de menu para um cluster e selecione *Teste de desempenho em nuvem*.
+. Revise os detalhes e selecione *Continuar*.
 . Siga as instruções para fornecer as informações necessárias.
 +
 As informações que você precisa fornecer são as mesmas que se você estivesse configurando a disposição em categorias no cluster.
@@ -36,7 +36,7 @@ As informações que você precisa fornecer são as mesmas que se você estivess
 
 .Etapas para um cluster configurado para disposição em camadas
 . No menu de navegação à esquerda, selecione *Mobilidade > disposição em camadas*.
-. Na página *clusters*, clique no ícone de menu de um cluster e selecione *Teste de desempenho em nuvem*.
+. Na página *Clusters*, selecione o ícone de menu para um cluster e selecione *Teste de desempenho em nuvem*.
 . Selecione um nó na lista suspensa.
 . Veja os resultados ou volte a verificar o desempenho.
 

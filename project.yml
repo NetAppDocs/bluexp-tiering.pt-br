@@ -19,7 +19,7 @@ sidebar:
     entries:
     - title: Saiba mais sobre a disposição em camadas do BlueXP
       url: "/concept-cloud-tiering.html"
-    - title: Armazene dados no local na nuvem
+    - title: Dados locais em camadas para a nuvem
       entries:
       - title: Faça a camada no Amazon S3
         url: "/task-tiering-onprem-aws.html"

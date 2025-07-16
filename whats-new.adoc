@@ -106,7 +106,7 @@ Consulte a lista completa de pontos de extremidade do seu https://docs.netapp.co
 
 === Arraste e solte para ativar a disposição em camadas para destinos adicionais
 
-Se o destino de disposição em camadas do Azure Blob, Google Cloud Storage ou StorageGRID existir como um ambiente de trabalho no Canvas, você poderá arrastar seu ambiente de trabalho do ONTAP local para o destino para iniciar o assistente de configuração de disposição em categorias.
+Se o destino de camadas do Azure Blob, Google Cloud Storage ou StorageGRID existir como um ambiente de trabalho no Canvas, você poderá arrastar seu ambiente de trabalho ONTAP local para o destino para iniciar o assistente de configuração de camadas.
 
 
 
@@ -124,7 +124,7 @@ https://docs.netapp.com/us-en/bluexp-tiering/task-tiering-onprem-aws.html["Revis
 
 === Arraste e solte para habilitar a disposição em camadas no Amazon S3
 
-Se o destino de disposição em camadas do Amazon S3 existir como um ambiente de trabalho no Canvas, você poderá arrastar o ambiente de trabalho do ONTAP local para o destino para iniciar o assistente de configuração de disposição em categorias.
+Se o destino de hierarquização do Amazon S3 existir como um ambiente de trabalho no Canvas, você poderá arrastar seu ambiente de trabalho ONTAP local para o destino para iniciar o assistente de configuração de hierarquização.
 
 
 

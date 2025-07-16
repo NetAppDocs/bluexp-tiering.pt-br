@@ -16,7 +16,9 @@ summary: O serviço de disposição em camadas BlueXP  do NetApp estende o data
 [role="lead"]
 O serviço de disposição em camadas BlueXP  do NetApp estende o data center para a nuvem ao dispor automaticamente em camadas os dados inativos de clusters ONTAP on-premises para o storage de objetos. Isso libera espaço valioso no cluster para mais workloads, sem fazer alterações na camada de aplicação. A disposição em camadas do BlueXP  pode reduzir custos no data center e permite que você alterne de um modelo CAPEX para um modelo OPEX.
 
-O serviço de disposição em camadas do BlueXP  aproveita os recursos do _FabricPool_. O FabricPool é uma tecnologia NetApp Data Fabric que permite a disposição automatizada em camadas de dados em storage de objetos de baixo custo. Os dados ativos (quentes) permanecem na categoria local (agregados ONTAP on-premises), enquanto os dados inativos (frios) são movidos para a categoria de nuvem. Tudo isso preservando a eficiência de dados da ONTAP.
+O serviço de BlueXP tiering usa _FabricPool_. O FabricPool é uma tecnologia NetApp Data Fabric que permite a disposição automatizada em camadas de dados em storage de objetos de baixo custo. Os dados ativos (quentes) permanecem na categoria local (agregados ONTAP on-premises), enquanto os dados inativos (frios) são movidos para a categoria de nuvem. Tudo isso preservando a eficiência de dados da ONTAP.
+
+Sugestão: os dados ativos (quentes) permanecem na camada local (agregados ONTAP locais), enquanto os dados inativos (frios) são movidos para a camada de nuvem, mantendo os dados ONTAP eficientes.
 
 Originalmente compatível com sistemas AFF, FAS e ONTAP Select com agregados all-SSD, a partir do ONTAP 9.8, você pode categorizar dados de agregados que consistem em HDDs, além de SSDs de alta performance.  https://docs.netapp.com/us-en/ontap/fabricpool/requirements-concept.html["Considerações e requisitos para usar o FabricPool"^]Consulte para obter detalhes.
 
@@ -30,7 +32,7 @@ https://bluexp.netapp.com/cloud-tiering-service-tco["Use a calculadora de TCO de
 
 A disposição em camadas do BlueXP  oferece automação, monitoramento, relatórios e uma interface de gerenciamento comum:
 
-* Com a automação, é mais fácil configurar e gerenciar a disposição de dados em camadas de clusters ONTAP no local para a nuvem
+* A automação facilita a configuração e o gerenciamento de camadas de dados de clusters ONTAP locais para a nuvem
 * Você pode escolher a classe de storage/camada de acesso do fornecedor de nuvem padrão ou usar o gerenciamento de ciclo de vida para atribuir uma camada mais econômica a dados em camadas mais antigos
 * Você pode criar conexões com armazenamentos de objetos adicionais que podem ser usados para outros agregados em seu cluster
 * Usando a IU, você pode arrastar armazenamentos de objetos para um agregado para disposição em camadas e para espelhamento FabricPool
@@ -133,7 +135,7 @@ Atualmente, os contratos anuais não são compatíveis com a disposição em cam
 
 === Traga sua própria licença
 
-Traga sua própria licença comprando uma licença *BlueXP  Tiering* da NetApp (anteriormente conhecida como uma licença de "disposição em camadas na nuvem"). Você pode comprar licenças de prazo de 1, 2 ou 3 anos e especificar qualquer quantidade de capacidade de disposição em camadas (começando no mínimo 10 TIB). A licença de disposição em camadas do BYOL BlueXP  é uma licença _flutuante_ que pode ser usada em vários clusters ONTAP locais. A capacidade de disposição em camadas total definida na sua licença de disposição em camadas do BlueXP  pode ser usada por todos os clusters no local.
+Traga sua própria licença comprando uma licença *BlueXP  Tiering* da NetApp (anteriormente conhecida como uma licença de "disposição em camadas na nuvem"). Você pode comprar licenças de prazo de 1, 2 ou 3 anos e especificar qualquer quantidade de capacidade de disposição em camadas (começando no mínimo 10 TIB). A licença de disposição em camadas do BYOL BlueXP  é uma licença _flutuante_ que pode ser usada em vários clusters ONTAP locais. A capacidade total de camadas que você define na sua licença de BlueXP tiering pode ser usada por todos os seus clusters locais.
 
 Depois de comprar uma licença de disposição em camadas do BlueXP , você precisará usar a carteira digital do BlueXP  no BlueXP  para adicionar a licença. link:task-licensing-cloud-tiering.html#use-a-bluexp-tiering-byol-license["Veja como usar uma licença BYOL em camadas do BlueXP "].
 
@@ -154,7 +156,7 @@ image:diagram_cloud_tiering.png["Imagem de arquitetura que mostra o serviço de 
 
 Em um alto nível, a disposição em camadas do BlueXP  funciona assim:
 
-. Descubra seu cluster no local com a BlueXP .
+. Você descobre seu cluster local no BlueXP.
 . Configure a disposição em camadas fornecendo detalhes sobre o storage de objetos, incluindo o bucket/contêiner, uma classe de storage ou camada de acesso, e regras de ciclo de vida dos dados categorizados.
 . O BlueXP  configura o ONTAP para usar o fornecedor de storage de objetos e descobre a quantidade de dados ativos e inativos no cluster.
 . Você escolhe os volumes a categorizar e a política de disposição em camadas a serem aplicados a esses volumes.

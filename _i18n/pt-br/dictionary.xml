@@ -432,8 +432,6 @@
   <block id="9d06990508d25d367d9158c6558eb9c8" category="list-text"><block ref="9d06990508d25d367d9158c6558eb9c8" category="inline-link-macro-rx"></block></block>
   <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="inline-link-macro">Azure NetApp Files</block>
   <block id="2e0c742f4616eb27b5b7646aa790edfe" category="list-text"><block ref="2e0c742f4616eb27b5b7646aa790edfe" category="inline-link-macro-rx"></block></block>
-  <block id="b0cee72642f5457a71ddd0b49efb6d93" category="inline-link-macro">Cloud Volumes Service para Google Cloud</block>
-  <block id="cf14bff66a8b72d3675db8ffe0f02ee3" category="list-text"><block ref="cf14bff66a8b72d3675db8ffe0f02ee3" category="inline-link-macro-rx"></block></block>
   <block id="3880ae5df9fdc4d0fc4a6d00a2239530" category="paragraph">Para receber suporte técnico específico da BlueXP  e de suas soluções e serviços de storage, use as opções de suporte descritas abaixo.</block>
   <block id="edd15fbeb7b2dffa163336ecd4f3e80c" category="section-title">Use opções de suporte autônomo</block>
   <block id="5e4b821a1a82558dead1ef6961e90666" category="paragraph">Estas opções estão disponíveis gratuitamente, 24 horas por dia, 7 dias por semana:</block>
@@ -1415,4 +1413,6 @@
   <block id="0e271c8fadf9496816e223bef1dddce1" category="paragraph">Se o destino de hierarquização do Amazon S3 existir como um ambiente de trabalho no Canvas, você poderá arrastar seu ambiente de trabalho ONTAP local para o destino para iniciar o assistente de configuração de hierarquização.</block>
   <block id="f88599376f5e75e17ca7b493801e3fe0" category="sidebar">Dados ONTAP locais em camadas para a nuvem</block>
   <block id="7d2282c510a7fb8e2271e7bebbf67d76" category="sidebar">Dados locais em camadas para a nuvem</block>
+  <block id="1215f8190533dfdf63d2224a6d88266f" category="inline-link-macro">Google Cloud NetApp volumes</block>
+  <block id="cb4bf32603c89d08cad17e7e7dd302f2" category="list-text"><block ref="cb4bf32603c89d08cad17e7e7dd302f2" category="inline-link-macro-rx"></block></block>
 </blocks>
